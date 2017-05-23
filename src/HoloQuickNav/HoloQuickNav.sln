@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HoloQuickNav", "HoloQuickNav.csproj", "{0C214E61-1DB6-4F1A-0B07-EF8BB6ED5D70}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HoloQuickNav.Editor", "HoloQuickNav.Editor.csproj", "{E0B27B3C-38AC-95ED-5032-E1E1631418FD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0C214E61-1DB6-4F1A-0B07-EF8BB6ED5D70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C214E61-1DB6-4F1A-0B07-EF8BB6ED5D70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C214E61-1DB6-4F1A-0B07-EF8BB6ED5D70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C214E61-1DB6-4F1A-0B07-EF8BB6ED5D70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0B27B3C-38AC-95ED-5032-E1E1631418FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0B27B3C-38AC-95ED-5032-E1E1631418FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0B27B3C-38AC-95ED-5032-E1E1631418FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0B27B3C-38AC-95ED-5032-E1E1631418FD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
