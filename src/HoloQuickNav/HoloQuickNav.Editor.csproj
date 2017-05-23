@@ -126,7 +126,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\HoloToolkit-UnitTests\Editor\Utilities\Extensions\VectorExtensionsTests.cs" />
     <Compile Include="Assets\HoloToolkit\Build\Editor\BuildDeployPortal.cs" />
     <Compile Include="Assets\HoloToolkit\Build\Editor\BuildDeployPrefs.cs" />
     <Compile Include="Assets\HoloToolkit\Build\Editor\BuildDeployTools.cs" />
@@ -162,10 +161,6 @@
     <Compile Include="Assets\HoloToolkit\Utilities\Shaders\FastConfigurable\Editor\ShaderGUIUtils.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\003 Drawing Lines\src\BlackLine.shader" />
-    <None Include="Assets\HoloToolkit-Examples\Prototyping\Shaders\UnlitTransparentTriplanar.shader" />
-    <None Include="Assets\HoloToolkit-Examples\Prototyping\Shaders\UnlitTriplanar.shader" />
-    <None Include="Assets\HoloToolkit-Tests\Input\Shaders\button_unlit_shader.shader" />
     <None Include="Assets\HoloToolkit\Input\Shaders\Cursor.shader" />
     <None Include="Assets\HoloToolkit\Input\Shaders\CursorShader.shader" />
     <None Include="Assets\HoloToolkit\Input\Shaders\EditorHands.shader" />
@@ -199,6 +194,8 @@
     <None Include="Assets\HoloToolkit\Utilities\Shaders\VertexLitConfigurableTransparent.shader" />
     <None Include="Assets\HoloToolkit\Utilities\Shaders\WindowOcclusion.shader" />
     <None Include="Assets\HoloToolkit\Utilities\Shaders\macro.cginc" />
+    <None Include="Assets\Prototyping\Shaders\UnlitTransparentTriplanar.shader" />
+    <None Include="Assets\Prototyping\Shaders\UnlitTriplanar.shader" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
