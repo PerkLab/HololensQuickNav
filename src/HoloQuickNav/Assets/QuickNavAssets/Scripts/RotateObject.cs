@@ -4,18 +4,53 @@ using UnityEngine;
 
 public class RotateObject : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
+    [Tooltip("Object you wish to rotate")]
+    public GameObject selectedObject;
+    private Transform childTransform;
+
+    // Use this for initialization
+    void Start () {
+        Align();
 	}
-	
-	// Update is called once per frame
-	public void RotateRight () {
-        gameObject.transform.Rotate(new Vector3(0.0f, -2.0f, 0.0f));
+
+    public void Align()
+    {
+        gameObject.transform.position = new Vector3(selectedObject.transform.position.x, selectedObject.transform.position.y, selectedObject.transform.position.z);
+        gameObject.transform.rotation = selectedObject.transform.rotation;
+    }
+
+    public void RotateRight () {
+        selectedObject.transform.Rotate(new Vector3(0.0f, -1.0f, 0.0f));
+        Align();
 	}
 
     public void RotateLeft()
     {
-        gameObject.transform.Rotate(new Vector3(0.0f, 2.0f, 0.0f));
+        selectedObject.transform.Rotate(new Vector3(0.0f, 1.0f, 0.0f));
+        Align();
+    }
+
+    public void RotateUpS()
+    {
+        selectedObject.transform.Rotate(new Vector3(0.0f, 0.0f, 5.0f));
+        Align();
+    }
+
+    public void RotateDownS()
+    {
+        selectedObject.transform.Rotate(new Vector3(0.0f, 0.0f, -5.0f));
+        Align();
+    }
+
+    public void RotateUpR()
+    {
+        selectedObject.transform.Rotate(new Vector3(5.0f, 0.0f, 0.0f));
+        Align();
+    }
+
+    public void RotateDownR()
+    {
+        selectedObject.transform.Rotate(new Vector3(-5.0f, 0.0f, 0.0f));
+        Align();
     }
 }

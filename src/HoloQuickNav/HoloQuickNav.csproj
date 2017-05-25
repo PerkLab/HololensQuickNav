@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>WSAPlayer:21</UnityBuildTarget>
     <UnityVersion>5.6.0f3</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion Condition=" '$(VisualStudioVersion)' != '10.0' ">4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -386,6 +388,7 @@
     <Compile Include="Assets\QuickNavAssets\Scripts\DrawBoundsGroup.cs" />
     <Compile Include="Assets\QuickNavAssets\Scripts\RotateObject.cs" />
     <Compile Include="Assets\QuickNavAssets\Scripts\SetTransparent.cs" />
+    <Compile Include="Assets\ScaleObject.cs" />
     <Compile Include="Assets\ShiftDirection.cs" />
   </ItemGroup>
   <ItemGroup>
