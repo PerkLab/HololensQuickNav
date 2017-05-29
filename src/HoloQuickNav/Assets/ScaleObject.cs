@@ -28,15 +28,15 @@ public class ScaleObject : MonoBehaviour
     }
 
 
-    public void ScaleUp()
+    public void ScaleUp(float amount)
     {
-        selectedObject.transform.localScale += new Vector3(0.01f, 0.01f, 0.01f);
+        selectedObject.transform.localScale += new Vector3(amount, amount, amount);
         Align();
     }
 
-    public void ScaleDown()
+    public void ScaleDown(float amount)
     {
-        selectedObject.transform.localScale += new Vector3(-0.01f, -0.01f, -0.01f);
+        selectedObject.transform.localScale += new Vector3(-amount, -amount, -amount);
         Align();
     }
 

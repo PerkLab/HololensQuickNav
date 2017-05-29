@@ -9,6 +9,10 @@ public class ShiftDirection : MonoBehaviour {
     private Transform childTransform;
 
     // Use this for initialization
+    void OnEnable()
+    {
+        Align();
+    }
     void Start()
     {
         Align();
@@ -16,42 +20,41 @@ public class ShiftDirection : MonoBehaviour {
 
     public void Align()
     {
-        gameObject.transform.localPosition = new Vector3(selectedObject.transform.position.x, selectedObject.transform.position.y, selectedObject.transform.position.z);
-        gameObject.transform.rotation = selectedObject.transform.rotation;
+        gameObject.transform.position = new Vector3(selectedObject.transform.position.x, selectedObject.transform.position.y, selectedObject.transform.position.z);
+        //gameObject.transform.rotation = selectedObject.transform.rotation;
     }
-
 
     public void ArrowRight() {
-        selectedObject.transform.localPosition += new Vector3(0.01f, 0.0f, 0.0f);
+        Vector3 direction = Quaternion.Euler(0, 90, 0) * gameObject.transform.forward.normalized;
+        selectedObject.transform.position += direction * 0.01f;
         Align();
-	}
-
+    }
     public void ArrowLeft()
     {
-        selectedObject.transform.localPosition -= new Vector3(0.01f, 0.0f, 0.0f);
+        Vector3 direction = Quaternion.Euler(0, -90, 0) * gameObject.transform.forward.normalized;
+        selectedObject.transform.position += direction * 0.01f;
         Align();
     }
-
     public void ArrowUp()
     {
-        selectedObject.transform.localPosition += new Vector3(0.0f, 0.01f, 0.0f);
+        selectedObject.transform.position += new Vector3(0.0f, 0.01f, 0.0f);
         Align();
     }
-
     public void ArrowDown()
     {
-        selectedObject.transform.localPosition -= new Vector3(0.0f, 0.01f, 0.0f);
+        selectedObject.transform.position -= new Vector3(0.0f, 0.01f, 0.0f);
         Align();
     }
     public void ArrowForward()
     {
-        selectedObject.transform.localPosition -= new Vector3(0.0f, 0.0f, 0.01f);
+        Vector3 direction = Quaternion.Euler(0, 180, 0) * gameObject.transform.forward.normalized;
+        selectedObject.transform.position += direction * 0.01f;
         Align();
     }
-
     public void ArrowBack()
     {
-        selectedObject.transform.localPosition += new Vector3(0.0f, 0.0f, 0.01f);
+        Vector3 direction = gameObject.transform.forward.normalized;
+        selectedObject.transform.position += direction * 0.01f;
         Align();
     }
 

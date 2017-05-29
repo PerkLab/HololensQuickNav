@@ -72,6 +72,7 @@ namespace HoloToolkit.Examples.InteractiveElements
         public UnityEvent OnDownEvent;
         public UnityEvent OnHoldEvent;
         public UnityEvent OnGazeEvent;
+        public UnityEvent OffGazeEvent;
 
         /// <summary>
         /// A button typically has 8 potential states.
@@ -500,6 +501,11 @@ namespace HoloToolkit.Examples.InteractiveElements
             if(HasGaze)
             {
                 OnGazeEvent.Invoke();
+            }
+
+            if(!HasGaze)
+            {
+                OffGazeEvent.Invoke();
             }
         }
 
