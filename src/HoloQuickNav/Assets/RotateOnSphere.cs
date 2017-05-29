@@ -11,6 +11,8 @@ public class RotateOnSphere : MonoBehaviour {
     private Vector3 newForwardDir;
     private Vector3 oldForwardDir;
     private Vector3 rotation;
+    private float delay = 0.5f;
+    private float timer = 0;
 
     // Use this for initialization
     void OnEnable () {
@@ -20,16 +22,34 @@ public class RotateOnSphere : MonoBehaviour {
         oldForwardDir = emptyObject.transform.forward;
     }
 
+
 	// Update is called once per frame
 	void Update () {
+        if(timer < delay)
+        {
+            timer += Time.deltaTime;
+
+            emptyObject.transform.LookAt(selectedCursor.transform);
+            newForwardDir = emptyObject.transform.forward;
+
+            Quaternion q = Quaternion.FromToRotation(oldForwardDir, newForwardDir);
+            oldForwardDir = newForwardDir;
+
+        }
+        else
+        {
+            Rotate();
+        }
         
+    }
+
+    void Rotate()
+    {
         emptyObject.transform.LookAt(selectedCursor.transform);
         newForwardDir = emptyObject.transform.forward;
-        
 
         Quaternion q = Quaternion.FromToRotation(oldForwardDir, newForwardDir);
         selectedObject.transform.rotation = q * selectedObject.transform.rotation;
-        //selectedObject.transform.Rotate(new Vector3(q.x, q.y, q.z));
         oldForwardDir = newForwardDir;
     }
 

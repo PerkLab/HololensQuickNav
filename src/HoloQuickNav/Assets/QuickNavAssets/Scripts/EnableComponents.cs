@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class EnableComponents : MonoBehaviour {
 
-
+    private bool SphereOn = false;
+    private float DelayTimer = 0;
+    private float WaitTime = 1;
 	
 	// functions to call from voice commands
 	public void Done()
@@ -74,13 +76,25 @@ public class EnableComponents : MonoBehaviour {
         GameObject.Find("MoveDownArrow").GetComponent<MeshCollider>().enabled = false;
         GameObject.Find("MoveForwardArrow").GetComponent<MeshCollider>().enabled = false;
         GameObject.Find("MoveBackArrow").GetComponent<MeshCollider>().enabled = false;
-        GameObject.Find("MoveRightArrow").GetComponent<MeshRenderer>().sharedMaterial.SetFloat("_Metallic", 0.1f);
+        GameObject.Find("MoveRightArrow").transform.FindChild("Box").GetComponent<MeshRenderer>().sharedMaterial.SetFloat("_Metallic", 0.1f);
     }
     public void SphereRotate()
     {
         SetAllInactive();
         SphereOnOff(true);
+        SphereOn = true;
     }
+    public void Options()
+    {
+        SetAllInactive();
+        OptionsOnOff(true);
+    }
+    public void Transparent()
+    {
+        SetAllInactive();
+        TransparentOnOff(true);
+    }
+
 
     public void SetAllInactive()
     {
@@ -95,9 +109,31 @@ public class EnableComponents : MonoBehaviour {
         ShiftArrowsOnOff(false);
         AlignOnOff(false);
         SphereOnOff(false);
+        (GameObject.Find("Controls").transform.FindChild("Sphere").GetComponent("Interactive") as MonoBehaviour).enabled = false;
+        OptionsOnOff(false);
+        TransparentOnOff(false);
         GameObject.Find("InteractiveMeshCursor").transform.FindChild("CursorDot").gameObject.SetActive(true);
         GameObject.Find("InteractiveMeshCursor").transform.FindChild("CursorRing").gameObject.SetActive(true);
         GameObject.Find("InteractiveMeshCursor").transform.FindChild("Spotlight").gameObject.SetActive(true);
+    }
+
+    //Updates every frame
+    private void Update()
+    {
+        // delay interactive component on Sphere Rotation
+        if (SphereOn)
+        {
+            if(DelayTimer < WaitTime)
+            {
+                DelayTimer += Time.deltaTime;
+            }
+            else
+            {
+                (GameObject.Find("Controls").transform.FindChild("Sphere").GetComponent("Interactive") as MonoBehaviour).enabled = true;
+                SphereOn = false;
+                DelayTimer = 0;
+            }
+        }
     }
 
 
@@ -142,11 +178,6 @@ public class EnableComponents : MonoBehaviour {
         GameObject.Find("Head").transform.FindChild("AxisR").gameObject.SetActive(visible);
     }
 
-    void ScaleOnOff(bool visible)
-    {
-        GameObject.Find("Controls").transform.FindChild("ScaleArrows").gameObject.SetActive(visible);
-    }
-
     void ShiftArrowsOnOff(bool visible)
     {
         GameObject.Find("Controls").transform.FindChild("ShiftArrows").gameObject.SetActive(visible);
@@ -156,9 +187,21 @@ public class EnableComponents : MonoBehaviour {
         GameObject.Find("Controls").transform.FindChild("RotateShiftArrows").gameObject.SetActive(visible);
     }
 
+    void ScaleOnOff(bool visible)
+    {
+        GameObject.Find("Controls").transform.FindChild("ScaleArrows").gameObject.SetActive(visible);
+    }
     void SphereOnOff(bool visible)
     {
         GameObject.Find("Controls").transform.FindChild("Sphere").gameObject.SetActive(visible);
+    }
+    void OptionsOnOff(bool visible)
+    {
+        GameObject.Find("Controls").transform.FindChild("Options").gameObject.SetActive(visible);
+    }
+    void TransparentOnOff(bool visible)
+    {
+        GameObject.Find("Controls").transform.FindChild("Transparent").gameObject.SetActive(visible);
     }
 
 

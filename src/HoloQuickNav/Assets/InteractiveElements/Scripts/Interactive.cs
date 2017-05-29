@@ -54,6 +54,9 @@ namespace HoloToolkit.Examples.InteractiveElements
         /// </summary>
         public float RollOffTime = 0.02f;
 
+        public float GazeTime = 0.1f;
+       // public float setDelay = 0f;
+
         /// <summary>
         /// Current selected state, can be set from the Unity Editor for default behavior
         /// </summary>
@@ -88,6 +91,8 @@ namespace HoloToolkit.Examples.InteractiveElements
         protected float mHoldTimer = 0;
         protected bool mCheckRollOff = false;
         protected bool mCheckHold = false;
+        protected float mHoldGaze = 0;
+        protected float mDelay = 0;
 
         protected KeywordRecognizer mKeywordRecognizer;
         protected Dictionary<string, int> mKeywordDictionary;
@@ -186,7 +191,6 @@ namespace HoloToolkit.Examples.InteractiveElements
             SetKeywordListener(true);
 
             UpdateEffects();
-            //OnGazeEvent.Invoke();
             
 
         }
@@ -304,6 +308,13 @@ namespace HoloToolkit.Examples.InteractiveElements
             mHoldTimer = 0;
             mCheckHold = false;
         }
+
+        public virtual void OnGaze()
+        {
+            UpdateEffects();
+            OnGazeEvent.Invoke();
+        }
+
 
         private void CollectWidgets(bool forceCollection = false)
         {
@@ -491,6 +502,27 @@ namespace HoloToolkit.Examples.InteractiveElements
                 }
             }
 
+            if (HasGaze)         //*****************************
+            {
+                if (mHoldGaze < GazeTime)
+                {
+                    mHoldGaze += Time.deltaTime;
+                    //mDelay += Time.deltaTime;
+                }
+                else
+                {
+                    OnGaze();
+                    //mDelay = 0;
+                }
+            }
+
+            if (!HasGaze)
+            {
+                mHoldGaze = 0;
+                //mDelay = 0;
+                OffGazeEvent.Invoke();
+            }
+
             if (!UserInitiatedEvent && (mCheckEnabled != IsEnabled || mCheckSelected != IsSelected))
             {
                 UpdateEffects();
@@ -498,15 +530,16 @@ namespace HoloToolkit.Examples.InteractiveElements
 
             UserInitiatedEvent = false;
 
-            if(HasGaze)
-            {
-                OnGazeEvent.Invoke();
-            }
+            //if(HasGaze)
+            //{
 
-            if(!HasGaze)
-            {
-                OffGazeEvent.Invoke();
-            }
+              //  OnGazeEvent.Invoke();
+            //}
+
+            //if(!HasGaze)
+            //{
+               // OffGazeEvent.Invoke();
+            //}
         }
 
         protected virtual void OnDestroy()

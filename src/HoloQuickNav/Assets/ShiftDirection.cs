@@ -24,38 +24,38 @@ public class ShiftDirection : MonoBehaviour {
         //gameObject.transform.rotation = selectedObject.transform.rotation;
     }
 
-    public void ArrowRight() {
+    public void ArrowRight(float amount)
+    {
         Vector3 direction = Quaternion.Euler(0, 90, 0) * gameObject.transform.forward.normalized;
-        selectedObject.transform.position += direction * 0.01f;
+        selectedObject.transform.position += direction * amount;
         Align();
     }
-    public void ArrowLeft()
+    public void ArrowLeft(float amount)
     {
         Vector3 direction = Quaternion.Euler(0, -90, 0) * gameObject.transform.forward.normalized;
-        selectedObject.transform.position += direction * 0.01f;
+        selectedObject.transform.position += direction * amount;
         Align();
     }
-    public void ArrowUp()
+    public void ArrowUp(float amount)
     {
-        selectedObject.transform.position += new Vector3(0.0f, 0.01f, 0.0f);
+        selectedObject.transform.position += new Vector3(0.0f, amount, 0.0f);
         Align();
     }
-    public void ArrowDown()
+    public void ArrowDown(float amount)
     {
-        selectedObject.transform.position -= new Vector3(0.0f, 0.01f, 0.0f);
+        selectedObject.transform.position -= new Vector3(0.0f, amount, 0.0f);
         Align();
     }
-    public void ArrowForward()
+    public void ArrowForward(float amount)
     {
         Vector3 direction = Quaternion.Euler(0, 180, 0) * gameObject.transform.forward.normalized;
-        selectedObject.transform.position += direction * 0.01f;
+        selectedObject.transform.position += direction * amount;
         Align();
     }
-    public void ArrowBack()
+    public void ArrowBack(float amount)
     {
         Vector3 direction = gameObject.transform.forward.normalized;
-        selectedObject.transform.position += direction * 0.01f;
+        selectedObject.transform.position += direction * amount;
         Align();
     }
-
 }
