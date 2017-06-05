@@ -6,22 +6,24 @@ public class ShiftDirection : MonoBehaviour {
 
     [Tooltip("Object you wish to move")]
     public GameObject selectedObject;
-    private Transform childTransform;
+    public GameObject cam;
 
     // Use this for initialization
     void OnEnable()
     {
         Align();
+        gameObject.transform.LookAt(cam.transform.position);
     }
+
     void Start()
     {
         Align();
+        gameObject.transform.LookAt(cam.transform.position);
     }
 
     public void Align()
     {
         gameObject.transform.position = new Vector3(selectedObject.transform.position.x, selectedObject.transform.position.y, selectedObject.transform.position.z);
-        //gameObject.transform.rotation = selectedObject.transform.rotation;
     }
 
     public void ArrowRight(float amount)

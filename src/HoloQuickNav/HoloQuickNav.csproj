@@ -13,13 +13,11 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>WSAPlayer:21</UnityBuildTarget>
     <UnityVersion>5.6.0f3</UnityVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <LangVersion Condition=" '$(VisualStudioVersion)' != '10.0' ">4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -383,14 +381,19 @@
     <Compile Include="Assets\Prototyping\Scripts\SceneSwitcher.cs" />
     <Compile Include="Assets\Prototyping\Scripts\Tests\CycleClicker.cs" />
     <Compile Include="Assets\Prototyping\Scripts\Tests\CycleDots.cs" />
-    <Compile Include="Assets\QuickNavAssets\Scripts\AxisOfRotation.cs" />
-    <Compile Include="Assets\QuickNavAssets\Scripts\DrawBounds.cs" />
-    <Compile Include="Assets\QuickNavAssets\Scripts\DrawBoundsGroup.cs" />
+    <Compile Include="Assets\QuickNavAssets\Model\Menu\MenuBehaviour.cs" />
+    <Compile Include="Assets\QuickNavAssets\Scripts\DepthTest.cs" />
+    <Compile Include="Assets\QuickNavAssets\Scripts\DepthTest2.cs" />
+    <Compile Include="Assets\QuickNavAssets\Scripts\DepthWithHead.cs" />
     <Compile Include="Assets\QuickNavAssets\Scripts\EnableComponents.cs" />
+    <Compile Include="Assets\QuickNavAssets\Scripts\Initialize.cs" />
+    <Compile Include="Assets\QuickNavAssets\Scripts\MoveWithHead.cs" />
     <Compile Include="Assets\QuickNavAssets\Scripts\PlacementOptions.cs" />
+    <Compile Include="Assets\QuickNavAssets\Scripts\Reset.cs" />
     <Compile Include="Assets\QuickNavAssets\Scripts\RotateObject.cs" />
     <Compile Include="Assets\QuickNavAssets\Scripts\RotateOnGaze.cs" />
-    <Compile Include="Assets\QuickNavAssets\Scripts\RotateTest.cs" />
+    <Compile Include="Assets\QuickNavAssets\Scripts\RotateWithHead.cs" />
+    <Compile Include="Assets\QuickNavAssets\Scripts\ScaleWithHead.cs" />
     <Compile Include="Assets\QuickNavAssets\Scripts\SetTransparent.cs" />
     <Compile Include="Assets\RotateOnSphere.cs" />
     <Compile Include="Assets\ScaleObject.cs" />

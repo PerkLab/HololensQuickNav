@@ -8,7 +8,7 @@ public class PlacementOptions : MonoBehaviour {
     public GameObject cam;
 	
     // Use this for initialization
-	void Start () {
+	void OnEnable () {
         gameObject.transform.position = new Vector3(selectedObject.transform.position.x, selectedObject.transform.position.y, selectedObject.transform.position.z);
         gameObject.transform.LookAt(cam.transform);
     }

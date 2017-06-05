@@ -11,7 +11,7 @@ public class RotateOnSphere : MonoBehaviour {
     private Vector3 newForwardDir;
     private Vector3 oldForwardDir;
     private Vector3 rotation;
-    private float delay = 0.5f;
+    private float delay = 0.3f;
     private float timer = 0;
 
     // Use this for initialization
@@ -20,6 +20,7 @@ public class RotateOnSphere : MonoBehaviour {
         emptyObject.transform.position = new Vector3(selectedObject.transform.position.x, selectedObject.transform.position.y, selectedObject.transform.position.z);
         emptyObject.transform.LookAt(selectedCursor.transform);
         oldForwardDir = emptyObject.transform.forward;
+        timer = 0;
     }
 
 
