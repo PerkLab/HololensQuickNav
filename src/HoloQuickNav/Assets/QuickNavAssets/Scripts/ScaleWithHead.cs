@@ -22,12 +22,12 @@ public class ScaleWithHead : MonoBehaviour {
 
         if(currentDistance < lastDistance)
         {
-            amount = Mathf.Abs(currentDistance - lastDistance) * 1f;
+            amount = Mathf.Abs(currentDistance - lastDistance);
             selectedObject.transform.localScale += new Vector3(-amount, -amount, -amount);
         }
         else if(currentDistance > lastDistance)
         {
-            amount = Mathf.Abs(currentDistance - lastDistance) * 1f;
+            amount = Mathf.Abs(currentDistance - lastDistance);
             selectedObject.transform.localScale += new Vector3(amount, amount, amount);
         }
         else

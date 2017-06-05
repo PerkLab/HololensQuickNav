@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class EnableComponents : MonoBehaviour {
 
-    private bool SphereOn = false;
-    private float DelayTimer = 0;
-    private float WaitTime = 1;
     private GameObject shiftArrows;
+    private bool headOnOff;
+    private float skinVisibility;
 	
 	// functions to call from voice commands
+
 	public void Done()
     {
         SetAllInactive();
@@ -23,13 +23,18 @@ public class EnableComponents : MonoBehaviour {
         //if visible, turn off
         //if not visible, turn on
         if(GameObject.Find("Head").transform.FindChild("Brain_Reduced").gameObject.activeSelf)
-        {
-            BrainOnOff(false);
-        }
+        { BrainOnOff(false); }
         else
-        {
-            BrainOnOff(true);
-        }
+        { BrainOnOff(true); }
+    }
+    public void Head()
+    {
+        //if visible, turn off
+        //if not visible, turn on
+        if(headOnOff)
+        { HeadOnOff(false); }
+        else
+        { HeadOnOff(true); }
     }
     public void ResetModel()
     {
@@ -99,11 +104,23 @@ public class EnableComponents : MonoBehaviour {
         shiftArrows = GameObject.Find("ShiftArrows");
         shiftArrows.transform.FindChild("MoveRightArrow").transform.FindChild("Box").GetComponent<MeshRenderer>().sharedMaterial.SetFloat("_Metallic", 0.1f);
     }
+    public void ShiftWithHead()
+    {
+        SetAllInactive();
+        ShiftWithHeadOnOff(true);
+        //turn on visiblity of all arrows
+        GameObject LRArrows = GameObject.Find("ShiftWithHead");
+        LRArrows.transform.FindChild("MoveRightArrow").transform.FindChild("Box").GetComponent<MeshRenderer>().sharedMaterial.SetFloat("_Metallic", 0.5f);
+        GameObject UDArrows = GameObject.Find("ShiftWithHead");
+        UDArrows.transform.FindChild("MoveUpArrow").transform.FindChild("Box").GetComponent<MeshRenderer>().sharedMaterial.SetFloat("_Metallic", 0.5f);
+        GameObject FBArrows = GameObject.Find("ShiftWithHead");
+        FBArrows.transform.FindChild("MoveForwardArrow").transform.FindChild("Box").GetComponent<MeshRenderer>().sharedMaterial.SetFloat("_Metallic", 0.5f);
+    }
+
     public void SphereRotate()
     {
         SetAllInactive();
         SphereOnOff(true);
-        SphereOn = true;
     }
     public void Options()
     {
@@ -133,23 +150,31 @@ public class EnableComponents : MonoBehaviour {
         GameObject.Find("Head").transform.FindChild("Skin_Reduced").gameObject.SetActive(false);
     }
 
+    //turn all tools off before switching to a new tool
 
     public void SetAllInactive()
     {
-        BrainOnOff(false);
+        
+        //rotate tools
         RotateAOnOff(false);
         RotateSOnOff(false);
         RotateROnOff(false);
-        ScaleOnOff(false);
+        SphereOnOff(false);
+        
+        //shift tools
         ShiftArrowsOnOff(false);
         AlignOnOff(false);
-        SphereOnOff(false);
-        (GameObject.Find("Controls").transform.FindChild("Sphere").GetComponent("Interactive") as MonoBehaviour).enabled = false;
+        ShiftWithHeadOnOff(false);
+
+        ScaleOnOff(false);
         OptionsOnOff(false);
         TransparentOnOff(false);
         MoveWithHeadOnOff(false);
         DepthOnOff(false);
         MenuOnOff(false);
+
+        HeadOnOff(true);
+        BrainOnOff(false);
         DoneOnOff(false);
         ResetOnOff(false);
         GameObject.Find("InteractiveMeshCursor").transform.FindChild("CursorDot").gameObject.SetActive(true);
@@ -157,27 +182,28 @@ public class EnableComponents : MonoBehaviour {
         GameObject.Find("InteractiveMeshCursor").transform.FindChild("Spotlight").gameObject.SetActive(true);
     }
 
-    //Updates every frame
-    private void Update()
-    {
-        // delay interactive component on Sphere Rotation
-        if (SphereOn)
-        {
-            if(DelayTimer < WaitTime)
-            {
-                DelayTimer += Time.deltaTime;
-            }
-            else
-            {
-                (GameObject.Find("Controls").transform.FindChild("Sphere").GetComponent("Interactive") as MonoBehaviour).enabled = true;
-                SphereOn = false;
-                DelayTimer = 0;
-            }
-        }
-    }
-
 
     //turn visibility of components on and off
+
+
+    void HeadOnOff(bool visible)
+    {
+        float amountVisible = 0f;
+        float amountSmooth = 0f;
+        headOnOff = visible;
+
+        if (visible)
+        {
+            amountVisible = skinVisibility;
+            amountSmooth = 0.2f;
+        }
+        
+        GameObject Head = GameObject.Find("Head");
+        Head.transform.FindChild("Brain_Reduced/grp1/grp1_MeshPart0").GetComponent<MeshRenderer>().sharedMaterial.SetFloat("_Metallic", amountVisible);
+        Head.transform.FindChild("Skin_Reduced/grp1/grp1_MeshPart0").GetComponent<MeshRenderer>().sharedMaterial.SetFloat("_Metallic", amountVisible);
+        Head.transform.FindChild("Brain_Reduced/grp1/grp1_MeshPart0").GetComponent<MeshRenderer>().sharedMaterial.SetFloat("_Glossiness", amountSmooth);
+        Head.transform.FindChild("Skin_Reduced/grp1/grp1_MeshPart0").GetComponent<MeshRenderer>().sharedMaterial.SetFloat("_Glossiness", amountSmooth);
+    }
     void BrainOnOff(bool visible)
     {
         GameObject.Find("Head").transform.FindChild("Brain_Reduced").gameObject.SetActive(visible);
@@ -316,6 +342,10 @@ public class EnableComponents : MonoBehaviour {
         shiftArrows.transform.FindChild("MoveBackArrow").transform.FindChild("Box2").GetComponent<MeshCollider>().enabled = visible;
         shiftArrows.transform.FindChild("MoveBackArrow").transform.FindChild("Box3").GetComponent<MeshCollider>().enabled = visible;
     }
+    void ShiftWithHeadOnOff(bool visible)
+    {
+        GameObject.Find("Controls").transform.FindChild("ShiftWithHead").gameObject.SetActive(visible);
+    }
 
     //Scale Tools
     void ScaleOnOff(bool visible)
@@ -346,6 +376,11 @@ public class EnableComponents : MonoBehaviour {
     }
     void TransparentOnOff(bool visible)
     {
+        if(!visible)
+        {
+            GameObject Head = GameObject.Find("Head");
+            skinVisibility = Head.transform.FindChild("Skin_Reduced/grp1/grp1_MeshPart0").GetComponent<MeshRenderer>().material.GetFloat("_Metallic");
+        }
         GameObject.Find("Controls").transform.FindChild("Transparent").gameObject.SetActive(visible);
     }
     void MoveWithHeadOnOff(bool visible)

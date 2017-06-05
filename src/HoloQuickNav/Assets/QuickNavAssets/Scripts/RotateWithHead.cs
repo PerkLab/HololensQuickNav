@@ -21,9 +21,6 @@ public class RotateWithHead : MonoBehaviour {
     // the offset rotation at start
     private Quaternion mOffsetRotation;
 
-    // the offset distance at start
-    private float mOffsetDistance = 0;
-
     private Vector3 mNormalzedOffsetDirection;
 
     public bool RotateA = false;
@@ -38,7 +35,6 @@ public class RotateWithHead : MonoBehaviour {
     private void OnEnable()
     {
         mOffsetDirection = selectedObject.transform.position - ReferenceObject.transform.position;
-        mOffsetDistance = mOffsetDirection.magnitude;
         mDirection = ReferenceObject.transform.forward.normalized;
         mNormalzedOffsetDirection = mOffsetDirection.normalized;
         mOffsetRotation = Quaternion.FromToRotation(mDirection, mNormalzedOffsetDirection);
@@ -50,6 +46,8 @@ public class RotateWithHead : MonoBehaviour {
     {
         gameObject.transform.position = new Vector3(selectedObject.transform.position.x, selectedObject.transform.position.y, selectedObject.transform.position.z);
         gameObject.transform.LookAt(ReferenceObject.transform);
+        //update vector from users head to model
+        mOffsetDirection = selectedObject.transform.position - ReferenceObject.transform.position;
     }
 
     /// <summary>
@@ -60,7 +58,8 @@ public class RotateWithHead : MonoBehaviour {
         if (IsRunning)
         {
             Vector3 newDirection = ReferenceObject.transform.forward;
-            newDirection = Vector3.Normalize(mOffsetRotation * ReferenceObject.transform.forward);
+            //newDirection = Vector3.Normalize(mOffsetRotation * ReferenceObject.transform.forward);
+            newDirection = Vector3.Normalize(ReferenceObject.transform.forward);
 
 
             float angle = Vector3.Angle(mOffsetDirection, newDirection);
@@ -86,7 +85,7 @@ public class RotateWithHead : MonoBehaviour {
                 {
                     if (RotateA) //RotateA
                     { selectedObject.transform.Rotate(new Vector3(0.0f, angle * 0.1f, 0.0f)); }
-                    else if (RotateR) //RotateS
+                    else if (RotateS) //RotateS
                     { selectedObject.transform.Rotate(new Vector3(0.0f, 0.0f, angle * 0.1f)); }
                     else if (RotateR)//RotateR
                     { selectedObject.transform.Rotate(new Vector3(angle * 0.1f, 0.0f, 0.0f)); }

@@ -107,5 +107,6 @@ public class MoveWithHead : MonoBehaviour {
             selectedObject.transform.position = Vector3.Lerp(selectedObject.transform.position, lerpPosition, LerpPositionSpeed * Time.deltaTime);
             //UpdatePosition(lerpPosition, Time.deltaTime);
         }
+        
     }
 }

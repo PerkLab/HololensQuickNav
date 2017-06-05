@@ -11,8 +11,9 @@ public class RotateOnSphere : MonoBehaviour {
     private Vector3 newForwardDir;
     private Vector3 oldForwardDir;
     private Vector3 rotation;
-    private float delay = 0.3f;
-    private float timer = 0;
+
+    private bool IsRunning = false;
+    private bool HasGaze = false;
 
     // Use this for initialization
     void OnEnable () {
@@ -20,28 +21,44 @@ public class RotateOnSphere : MonoBehaviour {
         emptyObject.transform.position = new Vector3(selectedObject.transform.position.x, selectedObject.transform.position.y, selectedObject.transform.position.z);
         emptyObject.transform.LookAt(selectedCursor.transform);
         oldForwardDir = emptyObject.transform.forward;
-        timer = 0;
     }
 
+    void Setup()
+    {
+        gameObject.transform.position = new Vector3(selectedObject.transform.position.x, selectedObject.transform.position.y, selectedObject.transform.position.z);
+        emptyObject.transform.position = new Vector3(selectedObject.transform.position.x, selectedObject.transform.position.y, selectedObject.transform.position.z);
+        emptyObject.transform.LookAt(selectedCursor.transform);
+        oldForwardDir = emptyObject.transform.forward;
+    }
 
-	// Update is called once per frame
+    public void OnGaze(bool gaze)
+    {
+        HasGaze = gaze; 
+    }
+
+    public void StartRotation()
+    {
+        Setup();
+        if (HasGaze)
+        {
+            IsRunning = true;
+        }
+    }
+
+    public void PauseRotation()
+    {
+        IsRunning = false;
+    }
+    
+    // Update is called once per frame
 	void Update () {
-        if(timer < delay)
+        if (HasGaze)
         {
-            timer += Time.deltaTime;
-
-            emptyObject.transform.LookAt(selectedCursor.transform);
-            newForwardDir = emptyObject.transform.forward;
-
-            Quaternion q = Quaternion.FromToRotation(oldForwardDir, newForwardDir);
-            oldForwardDir = newForwardDir;
-
+            if (IsRunning)
+            {
+                Rotate();
+            }
         }
-        else
-        {
-            Rotate();
-        }
-        
     }
 
     void Rotate()

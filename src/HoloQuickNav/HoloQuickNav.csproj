@@ -382,8 +382,6 @@
     <Compile Include="Assets\Prototyping\Scripts\Tests\CycleClicker.cs" />
     <Compile Include="Assets\Prototyping\Scripts\Tests\CycleDots.cs" />
     <Compile Include="Assets\QuickNavAssets\Model\Menu\MenuBehaviour.cs" />
-    <Compile Include="Assets\QuickNavAssets\Scripts\DepthTest.cs" />
-    <Compile Include="Assets\QuickNavAssets\Scripts\DepthTest2.cs" />
     <Compile Include="Assets\QuickNavAssets\Scripts\DepthWithHead.cs" />
     <Compile Include="Assets\QuickNavAssets\Scripts\EnableComponents.cs" />
     <Compile Include="Assets\QuickNavAssets\Scripts\Initialize.cs" />
@@ -395,6 +393,7 @@
     <Compile Include="Assets\QuickNavAssets\Scripts\RotateWithHead.cs" />
     <Compile Include="Assets\QuickNavAssets\Scripts\ScaleWithHead.cs" />
     <Compile Include="Assets\QuickNavAssets\Scripts\SetTransparent.cs" />
+    <Compile Include="Assets\QuickNavAssets\Scripts\ShiftWithHead.cs" />
     <Compile Include="Assets\RotateOnSphere.cs" />
     <Compile Include="Assets\ScaleObject.cs" />
     <Compile Include="Assets\ShiftDirection.cs" />

@@ -15,12 +15,6 @@ public class ShiftDirection : MonoBehaviour {
         gameObject.transform.LookAt(cam.transform.position);
     }
 
-    void Start()
-    {
-        Align();
-        gameObject.transform.LookAt(cam.transform.position);
-    }
-
     public void Align()
     {
         gameObject.transform.position = new Vector3(selectedObject.transform.position.x, selectedObject.transform.position.y, selectedObject.transform.position.z);
