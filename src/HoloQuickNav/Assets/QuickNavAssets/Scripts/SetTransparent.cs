@@ -6,13 +6,15 @@ public class SetTransparent : MonoBehaviour {
 
     // Use this for initialization
 
-    private MeshRenderer rend;
+    private MeshRenderer rend0;
+    private MeshRenderer rend1;
     private float current;
     public GameObject selectedObject;
     public GameObject cam;
 
     void Start() {
-        rend = selectedObject.transform.FindChild("Skin_Reduced/grp1/grp1_MeshPart0").GetComponent<MeshRenderer>();
+        rend0 = selectedObject.transform.FindChild("Model/Skin_Reduced/grp1/grp1_MeshPart0").GetComponent<MeshRenderer>();
+        rend1 = selectedObject.transform.FindChild("Model/Skin_Reduced/grp1/grp1_MeshPart1").GetComponent<MeshRenderer>();
 
     }
 
@@ -30,28 +32,32 @@ public class SetTransparent : MonoBehaviour {
 
     public void Increase(float amount)
     {
-        current = rend.sharedMaterial.GetFloat("_Metallic");
+        current = rend0.sharedMaterial.GetFloat("_Metallic");
         if((current-amount)<0)
         {
-            rend.sharedMaterial.SetFloat("_Metallic", 0f);
+            rend0.sharedMaterial.SetFloat("_Metallic", 0f);
+            rend1.sharedMaterial.SetFloat("_Metallic", 0f);
         }
         else
         {
-            rend.sharedMaterial.SetFloat("_Metallic", (current - amount));
+            rend0.sharedMaterial.SetFloat("_Metallic", (current - amount));
+            rend1.sharedMaterial.SetFloat("_Metallic", (current - amount));
         }
         
     }
 
     public void Decrease(float amount)
     {
-        current = rend.sharedMaterial.GetFloat("_Metallic");
+        current = rend0.sharedMaterial.GetFloat("_Metallic");
         if ((current + amount) > 1)
         {
-            rend.sharedMaterial.SetFloat("_Metallic", 1f);
+            rend0.sharedMaterial.SetFloat("_Metallic", 1f);
+            rend1.sharedMaterial.SetFloat("_Metallic", 1f);
         }
         else
         {
-            rend.sharedMaterial.SetFloat("_Metallic", (current + amount));
+            rend0.sharedMaterial.SetFloat("_Metallic", (current + amount));
+            rend1.sharedMaterial.SetFloat("_Metallic", (current + amount));
         }
     }
 	

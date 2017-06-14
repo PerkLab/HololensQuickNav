@@ -10,7 +10,9 @@ public class MoveWithHead : MonoBehaviour {
     public GameObject selectedObject;
 
     [Tooltip("Auto start? or status")]
-    public bool IsRunning = false;
+    bool IsRunning = false;
+
+    public bool StayClose = false;
 
     [Tooltip("translation speed : higher is faster")]
     public float LerpPositionSpeed = 1f;
@@ -51,6 +53,10 @@ public class MoveWithHead : MonoBehaviour {
     {
         mOffsetDirection = selectedObject.transform.position - ReferenceObject.transform.position;
         mOffsetDistance = mOffsetDirection.magnitude;
+        if(StayClose)
+        {
+            mOffsetDistance = 0.75f;
+        }
         mDirection = ReferenceObject.transform.forward.normalized;
         mNormalzedOffsetDirection = mOffsetDirection.normalized;
         mOffsetRotation = Quaternion.FromToRotation(mDirection, mNormalzedOffsetDirection);

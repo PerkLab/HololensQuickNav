@@ -15,6 +15,9 @@ public class RotateOnSphere : MonoBehaviour {
     private bool IsRunning = false;
     private bool HasGaze = false;
 
+    private float timer = 0f; 
+    private float delay = 0.1f;
+
     // Use this for initialization
     void OnEnable () {
         gameObject.transform.position = new Vector3(selectedObject.transform.position.x, selectedObject.transform.position.y, selectedObject.transform.position.z);
@@ -43,11 +46,13 @@ public class RotateOnSphere : MonoBehaviour {
         {
             IsRunning = true;
         }
+        GameObject.Find("CommandText").transform.FindChild("CommandName").GetComponent<TextMesh>().text = "Rotate Free > Start";
     }
 
     public void PauseRotation()
     {
         IsRunning = false;
+        GameObject.Find("CommandText").transform.FindChild("CommandName").GetComponent<TextMesh>().text = "Rotate Free > Pause";
     }
     
     // Update is called once per frame
@@ -56,8 +61,20 @@ public class RotateOnSphere : MonoBehaviour {
         {
             if (IsRunning)
             {
-                Rotate();
+                if (timer < delay) //delay when running if user moves their gaze onto sphere
+                {
+                    timer += Time.deltaTime;
+                    Setup();
+                }
+                else
+                {
+                    Rotate();
+                }  
             }
+        }
+        else //user takes gaze off sphere
+        {
+            timer = 0f; 
         }
     }
 

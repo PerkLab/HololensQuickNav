@@ -44,10 +44,20 @@ public class RotateWithHead : MonoBehaviour {
 
     public void Align()
     {
-        gameObject.transform.position = new Vector3(selectedObject.transform.position.x, selectedObject.transform.position.y, selectedObject.transform.position.z);
+        gameObject.transform.position = new Vector3(selectedObject.transform.position.x, selectedObject.transform.FindChild("Model").transform.position.y, selectedObject.transform.position.z);
         gameObject.transform.LookAt(ReferenceObject.transform);
         //update vector from users head to model
         mOffsetDirection = selectedObject.transform.position - ReferenceObject.transform.position;
+    }
+
+    public void StartRunning()
+    {
+        IsRunning = true;
+    }
+
+    public void StopRunning()
+    {
+        IsRunning = false;
     }
 
     /// <summary>
@@ -72,7 +82,7 @@ public class RotateWithHead : MonoBehaviour {
                 if(angle > minAngle)
                 {
                     if (RotateA) //RotateA
-                    { selectedObject.transform.Rotate(new Vector3(0.0f, -angle * 0.1f, 0.0f)); }
+                    { selectedObject.transform.Rotate(new Vector3(0.0f, angle * 0.1f, 0.0f)); }
                     else if (RotateS) //RotateS
                     { selectedObject.transform.Rotate(new Vector3(0.0f, 0.0f, -angle * 0.1f)); }
                     else if (RotateR) //RotateR
@@ -84,7 +94,7 @@ public class RotateWithHead : MonoBehaviour {
                 if(angle > minAngle)
                 {
                     if (RotateA) //RotateA
-                    { selectedObject.transform.Rotate(new Vector3(0.0f, angle * 0.1f, 0.0f)); }
+                    { selectedObject.transform.Rotate(new Vector3(0.0f, -angle * 0.1f, 0.0f)); }
                     else if (RotateS) //RotateS
                     { selectedObject.transform.Rotate(new Vector3(0.0f, 0.0f, angle * 0.1f)); }
                     else if (RotateR)//RotateR

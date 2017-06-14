@@ -116,8 +116,8 @@ public class ShiftWithHead : MonoBehaviour {
 
                 else if (forwardBack) //move forward
                 {
-                    Vector3 direction = Quaternion.Euler(0, 180, 0) * gameObject.transform.forward.normalized;
-                    selectedObject.transform.position += direction * amount * 0.1f;
+                    Vector3 direction = gameObject.transform.forward.normalized;
+                    selectedObject.transform.position += direction * amount * 0.5f;
                 }
             }
             else if (currentDistance < lastDistance) //user moves closer
@@ -132,8 +132,8 @@ public class ShiftWithHead : MonoBehaviour {
 
                 else if (forwardBack) //move back
                 {
-                    Vector3 direction = gameObject.transform.forward.normalized;
-                    selectedObject.transform.position += direction * amount * 0.1f;
+                    Vector3 direction = Quaternion.Euler(0, 180, 0) * gameObject.transform.forward.normalized;
+                    selectedObject.transform.position += direction * amount * 0.5f;
                 }
             }
             else { } //do nothing if the user hasn't moved their head

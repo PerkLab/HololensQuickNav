@@ -23,7 +23,7 @@ public class RotateOnGaze : MonoBehaviour
     public void Align()
     {
 
-        gameObject.transform.position = new Vector3(selectedObject.transform.position.x, selectedObject.transform.position.y, selectedObject.transform.position.z);
+        gameObject.transform.position = new Vector3(selectedObject.transform.position.x, selectedObject.transform.FindChild("Model").transform.position.y, selectedObject.transform.position.z);
         gameObject.transform.LookAt(cam.transform);
     }
 

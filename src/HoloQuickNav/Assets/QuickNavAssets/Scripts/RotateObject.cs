@@ -20,36 +20,36 @@ public class RotateObject : MonoBehaviour {
 
     public void Align()
     {
-        gameObject.transform.position = new Vector3(selectedObject.transform.position.x, selectedObject.transform.position.y, selectedObject.transform.position.z);
+        gameObject.transform.position = new Vector3(selectedObject.transform.position.x, selectedObject.transform.FindChild("Model").transform.position.y, selectedObject.transform.position.z);
         gameObject.transform.LookAt(cam.transform.position);
     }
 
     public void RotateRight () {
-        selectedObject.transform.Rotate(new Vector3(0.0f, -1.0f, 0.0f));
+        selectedObject.transform.Rotate(new Vector3(0.0f, -3.0f, 0.0f));
 	}
 
     public void RotateLeft()
     {
-        selectedObject.transform.Rotate(new Vector3(0.0f, 1.0f, 0.0f));
+        selectedObject.transform.Rotate(new Vector3(0.0f, 3.0f, 0.0f));
     }
 
     public void RotateUpS()
     {
-        selectedObject.transform.Rotate(new Vector3(0.0f, 0.0f, 5.0f));
+        selectedObject.transform.Rotate(new Vector3(0.0f, 0.0f, 3.0f));
     }
 
     public void RotateDownS()
     {
-        selectedObject.transform.Rotate(new Vector3(0.0f, 0.0f, -5.0f));
+        selectedObject.transform.Rotate(new Vector3(0.0f, 0.0f, -3.0f));
     }
 
     public void RotateUpR()
     {
-        selectedObject.transform.Rotate(new Vector3(5.0f, 0.0f, 0.0f));
+        selectedObject.transform.Rotate(new Vector3(3.0f, 0.0f, 0.0f));
     }
 
     public void RotateDownR()
     {
-        selectedObject.transform.Rotate(new Vector3(-5.0f, 0.0f, 0.0f));
+        selectedObject.transform.Rotate(new Vector3(-3.0f, 0.0f, 0.0f));
     }
 }
