@@ -5,15 +5,17 @@ using UnityEngine;
 public class DepthWithHead : MonoBehaviour
 {
 
+    [Tooltip("Hololens Camera")]
     public GameObject cam;
+    [Tooltip("Object to move")]
     public GameObject selectedObject;
 
     private Vector3 axisDirection;
-
     private float currentDistance;
     private float lastDistance;
+    //amount to shift by
     private float amount;
-    public bool IsRunning = false;
+    private bool IsRunning = false;
 
     // Use this for initialization
     void OnEnable()
@@ -33,13 +35,16 @@ public class DepthWithHead : MonoBehaviour
     {
         if (IsRunning)
         {
+            //calculate current distance between camera and model
             currentDistance = Vector3.Distance(cam.transform.position, transform.position);
 
-            if (currentDistance < lastDistance)
+            //if user has moved closer, shift object in positive direction
+            if (currentDistance < lastDistance) 
             {
                 amount = Mathf.Abs(currentDistance - lastDistance) * 0.5f;
                 selectedObject.transform.position += axisDirection * (-amount);
             }
+            //if user has moved farther, shift object in negative direction
             else if (currentDistance > lastDistance)
             {
                 amount = Mathf.Abs(currentDistance - lastDistance) * 0.5f;
@@ -50,16 +55,11 @@ public class DepthWithHead : MonoBehaviour
                 //do nothing if user hasn't moved thier head
             }
 
+            //update distance 
             lastDistance = currentDistance;
 
-            //Align();
         }
 
     }
 
-    void Align()
-    {
-        gameObject.transform.position = new Vector3(selectedObject.transform.position.x, selectedObject.transform.position.y, selectedObject.transform.position.z);
-        //axisDirection = gameObject.transform.forward.normalized;
-    }
 }

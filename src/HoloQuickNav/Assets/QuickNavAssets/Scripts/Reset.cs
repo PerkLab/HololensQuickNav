@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Reset : MonoBehaviour {
 
+    [Tooltip("Object you wish to move")]
     public GameObject selectedObject;
 
-	// Use this for initialization
 	void OnEnable () {
-        selectedObject.transform.position = new Vector3(0f, .1f, 1.5f);
-	}
+        //move object back to it's original position 
+        selectedObject.transform.position = new Vector3(0f, 0.1f, 1.5f);
+    }
 }

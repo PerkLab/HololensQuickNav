@@ -352,8 +352,8 @@
     <Compile Include="Assets\InteractiveElements\Scripts\Widgets\ScaleThemeWidget.cs" />
     <Compile Include="Assets\InteractiveElements\Scripts\Widgets\TextMeshColorThemeWidget.cs" />
     <Compile Include="Assets\InteractiveElements\Scripts\Widgets\TextureThemeWidget.cs" />
-    <Compile Include="Assets\LocationValues.cs" />
-    <Compile Include="Assets\PositionOnObject.cs" />
+    <Compile Include="Assets\OBJImport\OBJLoader.cs" />
+    <Compile Include="Assets\OBJImport\TextureLoader.cs" />
     <Compile Include="Assets\Prototyping\Scripts\ColorTransition.cs" />
     <Compile Include="Assets\Prototyping\Scripts\CycleArray.cs" />
     <Compile Include="Assets\Prototyping\Scripts\CycleColors.cs" />
@@ -383,27 +383,29 @@
     <Compile Include="Assets\Prototyping\Scripts\Tests\CycleClicker.cs" />
     <Compile Include="Assets\Prototyping\Scripts\Tests\CycleDots.cs" />
     <Compile Include="Assets\QuickNavAssets\Model\Menu\MenuBehaviour.cs" />
+    <Compile Include="Assets\QuickNavAssets\Scripts\AirTapInput.cs" />
     <Compile Include="Assets\QuickNavAssets\Scripts\CommandText.cs" />
     <Compile Include="Assets\QuickNavAssets\Scripts\CopyRotation.cs" />
     <Compile Include="Assets\QuickNavAssets\Scripts\DepthWithHead.cs" />
     <Compile Include="Assets\QuickNavAssets\Scripts\EnableComponents.cs" />
     <Compile Include="Assets\QuickNavAssets\Scripts\EnableRegistration.cs" />
     <Compile Include="Assets\QuickNavAssets\Scripts\Initialize.cs" />
-    <Compile Include="Assets\QuickNavAssets\Scripts\InitializeSphere.cs" />
     <Compile Include="Assets\QuickNavAssets\Scripts\LeftEyeRotation.cs" />
+    <Compile Include="Assets\QuickNavAssets\Scripts\LocationValues.cs" />
     <Compile Include="Assets\QuickNavAssets\Scripts\MoveWithHead.cs" />
     <Compile Include="Assets\QuickNavAssets\Scripts\PlacementOptions.cs" />
+    <Compile Include="Assets\QuickNavAssets\Scripts\PositionOnObject.cs" />
     <Compile Include="Assets\QuickNavAssets\Scripts\Reset.cs" />
     <Compile Include="Assets\QuickNavAssets\Scripts\RotateObject.cs" />
     <Compile Include="Assets\QuickNavAssets\Scripts\RotateOnGaze.cs" />
+    <Compile Include="Assets\QuickNavAssets\Scripts\RotateOnSphere.cs" />
     <Compile Include="Assets\QuickNavAssets\Scripts\RotateWithHead.cs" />
-    <Compile Include="Assets\QuickNavAssets\Scripts\ScaleSphereTest.cs" />
+    <Compile Include="Assets\QuickNavAssets\Scripts\ScaleObject.cs" />
     <Compile Include="Assets\QuickNavAssets\Scripts\ScaleWithHead.cs" />
     <Compile Include="Assets\QuickNavAssets\Scripts\SetTransparent.cs" />
+    <Compile Include="Assets\QuickNavAssets\Scripts\ShiftDirection.cs" />
     <Compile Include="Assets\QuickNavAssets\Scripts\ShiftWithHead.cs" />
-    <Compile Include="Assets\RotateOnSphere.cs" />
-    <Compile Include="Assets\ScaleObject.cs" />
-    <Compile Include="Assets\ShiftDirection.cs" />
+    <Compile Include="Assets\QuickNavAssets\Scripts\SwapScene.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\HoloToolkit\Input\Shaders\Cursor.shader" />
@@ -439,6 +441,7 @@
     <None Include="Assets\HoloToolkit\Utilities\Shaders\VertexLitConfigurableTransparent.shader" />
     <None Include="Assets\HoloToolkit\Utilities\Shaders\WindowOcclusion.shader" />
     <None Include="Assets\HoloToolkit\Utilities\Shaders\macro.cginc" />
+    <None Include="Assets\OBJImport\readme.txt" />
     <None Include="Assets\Prototyping\Shaders\UnlitTransparentTriplanar.shader" />
     <None Include="Assets\Prototyping\Shaders\UnlitTriplanar.shader" />
   </ItemGroup>

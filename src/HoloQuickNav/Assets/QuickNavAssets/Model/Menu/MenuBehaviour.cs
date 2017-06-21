@@ -4,28 +4,29 @@ using UnityEngine;
 
 public class MenuBehaviour : MonoBehaviour {
 
+    [Tooltip("Hololens camera")]
     public GameObject cam;
-    public GameObject cursor;
+
+    //developer can choose which window they're displaying
     public bool HelpWindow;
     public bool Menu;
 
-	// Use this for initialization
 	void OnEnable () {
-        if(Menu)
+        if(Menu) //place menu 1.5 meters infront of user
         {
             gameObject.transform.position = cam.transform.position + cam.transform.forward * 1.5f;
         }
-        else if(HelpWindow)
+        else if(HelpWindow) //place help window infront of user but slightly to the side so as to not cover model
         {
             Vector3 direction = Quaternion.Euler(0f, 20f, 0f) * cam.transform.forward;
             gameObject.transform.position = cam.transform.position + direction * 1.5f;
         }
-
+        //turn window to face user
         gameObject.transform.LookAt(2 * gameObject.transform.position - cam.transform.position);
 	}
 	
-	// Update is called once per frame
 	void Update () {
+        //always have window face user
         gameObject.transform.LookAt(2 * gameObject.transform.position - cam.transform.position);
     }
 }

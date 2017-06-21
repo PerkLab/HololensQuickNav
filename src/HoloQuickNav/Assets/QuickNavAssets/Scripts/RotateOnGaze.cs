@@ -7,6 +7,7 @@ public class RotateOnGaze : MonoBehaviour
 
     [Tooltip("Object you wish to rotate")]
     public GameObject selectedObject;
+    [Tooltip("Hololens camera")]
     public GameObject cam;
 
     // Use this for initialization
@@ -22,12 +23,12 @@ public class RotateOnGaze : MonoBehaviour
 
     public void Align()
     {
-
+        // position the arrows around the selected object and face the user
         gameObject.transform.position = new Vector3(selectedObject.transform.position.x, selectedObject.transform.FindChild("Model").transform.position.y, selectedObject.transform.position.z);
         gameObject.transform.LookAt(cam.transform);
     }
 
-
+    // rotate the object by the specified amount by calling the functions
     public void RotateRight(float amount)
     {
         selectedObject.transform.Rotate(new Vector3(0.0f, -amount, 0.0f));

@@ -6,9 +6,9 @@ public class RotateObject : MonoBehaviour {
 
     [Tooltip("Object you wish to rotate")]
     public GameObject selectedObject;
+    [Tooltip("Hololens camera")]
     public GameObject cam;
 
-    // Use this for initialization
     void Start () {
         Align();
 	}
@@ -20,10 +20,12 @@ public class RotateObject : MonoBehaviour {
 
     public void Align()
     {
+        // position the arrows around the selected object and face the user
         gameObject.transform.position = new Vector3(selectedObject.transform.position.x, selectedObject.transform.FindChild("Model").transform.position.y, selectedObject.transform.position.z);
         gameObject.transform.LookAt(cam.transform.position);
     }
 
+    // rotate the selected object by calling each funtion
     public void RotateRight () {
         selectedObject.transform.Rotate(new Vector3(0.0f, -3.0f, 0.0f));
 	}

@@ -530,16 +530,7 @@ namespace HoloToolkit.Examples.InteractiveElements
 
             UserInitiatedEvent = false;
 
-            //if(HasGaze)
-            //{
 
-              //  OnGazeEvent.Invoke();
-            //}
-
-            //if(!HasGaze)
-            //{
-               // OffGazeEvent.Invoke();
-            //}
         }
 
         protected virtual void OnDestroy()
@@ -557,7 +548,6 @@ namespace HoloToolkit.Examples.InteractiveElements
 
         protected virtual void OnDisable()
         {
-            //SetKeywordListener(false);
             OnFocusExit();
         }
     }

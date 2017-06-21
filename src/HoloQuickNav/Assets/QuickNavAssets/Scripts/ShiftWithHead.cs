@@ -6,25 +6,28 @@ public class ShiftWithHead : MonoBehaviour {
 
     [Tooltip("Object you wish to move")]
     public GameObject selectedObject;
+    [Tooltip("Hololens camera")]
     public GameObject cam;
 
+    //variables for tracking user's head movement
     private float currentDistance;
     private float lastDistance;
     private float amount;
 
+    //options for selecting axis of movement
     private bool rightLeft = false;
     private bool upDown = false;
     private bool forwardBack = false;
 
     private bool IsRunning = false;
 
-    // Use this for initialization
     void OnEnable()
     {
         Align();
+        //rotate around y axis so forward arrow is facing user
         Vector3 lookPos = new Vector3(cam.transform.position.x, this.transform.position.y, cam.transform.position.z);
         this.transform.LookAt(lookPos);
-
+        //calculate user's distance from model
         lastDistance = Vector3.Distance(cam.transform.position, selectedObject.transform.position);
     }
 
@@ -78,11 +81,13 @@ public class ShiftWithHead : MonoBehaviour {
 
     public void Pause()
     {
+        //disable all motion and deselect any direction of movement
         IsRunning = false;
         rightLeft = false;
         upDown = false;
         forwardBack = false;
 
+        //make all arrows fully visible
         GameObject LRArrows = GameObject.Find("ShiftWithHead");
         LRArrows.transform.FindChild("MoveRightArrow").transform.FindChild("Box").GetComponent<MeshRenderer>().sharedMaterial.SetFloat("_Metallic", 0.5f);
         GameObject UDArrows = GameObject.Find("ShiftWithHead");
@@ -94,13 +99,15 @@ public class ShiftWithHead : MonoBehaviour {
 
     public void Align()
     {
+        //position arrows around model
         gameObject.transform.position = new Vector3(selectedObject.transform.position.x, selectedObject.transform.position.y, selectedObject.transform.position.z);
     }
 	
-	// Update is called once per frame
+	
 	void Update () {
         if(IsRunning)
         {
+            //calculate current distance and change in user's head position
             currentDistance = Vector3.Distance(cam.transform.position, selectedObject.transform.position);
             amount = Mathf.Abs(currentDistance - lastDistance);
 
@@ -138,6 +145,7 @@ public class ShiftWithHead : MonoBehaviour {
             }
             else { } //do nothing if the user hasn't moved their head
 
+            //reposition arrows and update distances
             Align();
             lastDistance = currentDistance;
         }

@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class MoveWithHead : MonoBehaviour {
 
-    [Tooltip("The game object this object will follow : Main Camera by default")]
+    [Tooltip("The game object the object will follow")]
     public GameObject ReferenceObject;
 
+    [Tooltip("The object to move")]
     public GameObject selectedObject;
 
-    [Tooltip("Auto start? or status")]
-    bool IsRunning = false;
-
+    [Tooltip("Use short offset distance")]
     public bool StayClose = false;
 
     [Tooltip("translation speed : higher is faster")]
@@ -38,7 +37,11 @@ public class MoveWithHead : MonoBehaviour {
     // the offset distance at start
     private float mOffsetDistance = 0;
 
+    // this object's normalized direction
     private Vector3 mNormalzedOffsetDirection;
+
+    // is command updating every frame
+    bool IsRunning = false;
 
     /// <summary>
     /// set the reference object if not set already
@@ -75,18 +78,6 @@ public class MoveWithHead : MonoBehaviour {
     }
 
     /// <summary>
-    /// update the position of the object based on the reference object and configuration
-    /// </summary>
-    /// <param name="position"></param>
-    /// <param name="time"></param>
-    protected virtual void UpdatePosition(Vector3 position, float time)
-    {
-        // update the position
-        selectedObject.transform.position = Vector3.Lerp(selectedObject.transform.position, position, LerpPositionSpeed * time);
-
-    }
-
-    /// <summary>
     /// Animate!
     /// </summary>
     protected virtual void Update()
@@ -106,12 +97,11 @@ public class MoveWithHead : MonoBehaviour {
             else
             {
                 newDirection = mNormalzedOffsetDirection;
-                // could we allow drifting?
             }
 
+            // update the object's position using specified lerpSpeed for movement
             Vector3 lerpPosition = ReferenceObject.transform.position + newDirection * mOffsetDistance;
             selectedObject.transform.position = Vector3.Lerp(selectedObject.transform.position, lerpPosition, LerpPositionSpeed * Time.deltaTime);
-            //UpdatePosition(lerpPosition, Time.deltaTime);
         }
         
     }

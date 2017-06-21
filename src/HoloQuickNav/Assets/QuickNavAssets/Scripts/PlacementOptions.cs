@@ -4,22 +4,26 @@ using UnityEngine;
 
 public class PlacementOptions : MonoBehaviour {
 
+    [Tooltip("Object you wish to move")]
     public GameObject selectedObject;
+    [Tooltip("Hololens camera")]
     public GameObject cam;
 	
-    // Use this for initialization
 	void OnEnable () {
+        //align models of options with actual model
         gameObject.transform.position = new Vector3(selectedObject.transform.FindChild("Model").transform.position.x, 
                                                     selectedObject.transform.FindChild("Model").transform.position.y, 
                                                     selectedObject.transform.FindChild("Model").transform.position.z);
-        gameObject.transform.LookAt(cam.transform);
-    }
-	
-	// Update is called once per frame
-	void Update () {
+        //turn models to face user
         gameObject.transform.LookAt(cam.transform);
     }
 
+	void Update () {
+        //always face user
+        gameObject.transform.LookAt(cam.transform);
+    }
+
+    //when an option is selected, update model's rotation to match the model selected
     public void Option1()
     {
         selectedObject.transform.rotation = gameObject.transform.FindChild("Placement1").transform.rotation;
