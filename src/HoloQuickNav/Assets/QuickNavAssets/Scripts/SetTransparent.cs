@@ -6,8 +6,7 @@ public class SetTransparent : MonoBehaviour {
 
     
     //empty mesh rendererd for materials in model
-    private MeshRenderer rend0;
-    private MeshRenderer rend1;
+    private MeshRenderer[] Renderers;
     //empty variable for current material parameter
     private float current;
 
@@ -16,10 +15,20 @@ public class SetTransparent : MonoBehaviour {
     [Tooltip("Hololens camera")]
     public GameObject cam;
 
-    void Start() {
+    void OnEnable() {
+
+        Renderers = new MeshRenderer[0]; //empty array initially 
+        
         //assign mesh renderers from objects
-        rend0 = selectedObject.transform.FindChild("Model/Skin_Reduced/grp1/grp1_MeshPart0").GetComponent<MeshRenderer>();
-        rend1 = selectedObject.transform.FindChild("Model/Skin_Reduced/grp1/grp1_MeshPart1").GetComponent<MeshRenderer>();
+        GameObject Skin = GameObject.Find("Head").transform.FindChild("Model/Skin_Reduced/grp1").gameObject;
+        if (Skin.transform.childCount > 0) //mesh has multiple sections
+        {
+            Renderers = Skin.transform.GetComponentsInChildren<MeshRenderer>();
+        }
+        else //mesh is only one part
+        {
+            Renderers[0] = Skin.GetComponent<MeshRenderer>();
+        }
 
     }
 
@@ -39,17 +48,21 @@ public class SetTransparent : MonoBehaviour {
     public void Increase(float amount)
     {
         //check the current material parameter
-        current = rend0.sharedMaterial.GetFloat("_Metallic");
+        current = Renderers[0].sharedMaterial.GetFloat("_Metallic");
         //paramaeter cannot be negative, limit at 0
         if((current-amount)<0)
         {
-            rend0.sharedMaterial.SetFloat("_Metallic", 0f);
-            rend1.sharedMaterial.SetFloat("_Metallic", 0f);
+            foreach(MeshRenderer rend in Renderers)
+            {
+                rend.sharedMaterial.SetFloat("_Metallic", 0f);
+            }
         }
         else
         {
-            rend0.sharedMaterial.SetFloat("_Metallic", (current - amount));
-            rend1.sharedMaterial.SetFloat("_Metallic", (current - amount));
+            foreach (MeshRenderer rend in Renderers)
+            {
+                rend.sharedMaterial.SetFloat("_Metallic", (current - amount));
+            } 
         }
         
     }
@@ -58,17 +71,21 @@ public class SetTransparent : MonoBehaviour {
     public void Decrease(float amount)
     {
         //check the current material parameter
-        current = rend0.sharedMaterial.GetFloat("_Metallic");
+        current = Renderers[0].sharedMaterial.GetFloat("_Metallic");
         //parameter cannot be greater than 1
         if ((current + amount) > 1)
         {
-            rend0.sharedMaterial.SetFloat("_Metallic", 1f);
-            rend1.sharedMaterial.SetFloat("_Metallic", 1f);
+            foreach (MeshRenderer rend in Renderers)
+            {
+                rend.sharedMaterial.SetFloat("_Metallic", 1f);
+            }
         }
         else
         {
-            rend0.sharedMaterial.SetFloat("_Metallic", (current + amount));
-            rend1.sharedMaterial.SetFloat("_Metallic", (current + amount));
+            foreach (MeshRenderer rend in Renderers)
+            {
+                rend.sharedMaterial.SetFloat("_Metallic", (current + amount));
+            }
         }
     }
 	

@@ -25,28 +25,13 @@ public class LocationValues : MonoBehaviour {
     public static float LEyeA;
     public static float LEyeS;
 
-    void OnEnable()
+    void Awake()
     {
-
         readData();
-        //scale down from meters to mm
-        // positive R is negative X, multiply by -1
-        //NoseR = -4.118f * 0.001f * -1f;
-        //NoseA = 131.456f * 0.001f;
-        //NoseS = -13.409f * 0.001f;
-
-        //REyeR = 31.411f * 0.001f * -1f;
-        //REyeA = 105.699f * 0.001f;
-        //REyeS = 26.204f * 0.001f;
-
-        //LEyeR = -38.416f * 0.001f * -1f;
-        //LEyeA = 98.403f * 0.001f;
-        //LEyeS = 21.539f * 0.001f;
     }
 
     void readData()
     {
-
         string[] records = csvMarkers.text.Split(lineSeperator);
         int count = 0;
         foreach (string record in records)
@@ -82,5 +67,6 @@ public class LocationValues : MonoBehaviour {
         LEyeR = float.Parse(LEye[1]) * 0.001f * -1f;
         LEyeA = float.Parse(LEye[2]) * 0.001f;
         LEyeS = float.Parse(LEye[3]) * 0.001f;
+
     }
 }

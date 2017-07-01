@@ -58,7 +58,7 @@ public class MoveWithHead : MonoBehaviour {
         mOffsetDistance = mOffsetDirection.magnitude;
         if(StayClose)
         {
-            mOffsetDistance = 0.75f;
+            mOffsetDistance = .9f;
         }
         mDirection = ReferenceObject.transform.forward.normalized;
         mNormalzedOffsetDirection = mOffsetDirection.normalized;

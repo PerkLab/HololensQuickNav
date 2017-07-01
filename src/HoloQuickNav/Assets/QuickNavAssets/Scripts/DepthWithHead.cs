@@ -41,13 +41,13 @@ public class DepthWithHead : MonoBehaviour
             //if user has moved closer, shift object in positive direction
             if (currentDistance < lastDistance) 
             {
-                amount = Mathf.Abs(currentDistance - lastDistance) * 0.5f;
+                amount = Mathf.Abs(currentDistance - lastDistance) * 0.8f; //0.5
                 selectedObject.transform.position += axisDirection * (-amount);
             }
             //if user has moved farther, shift object in negative direction
             else if (currentDistance > lastDistance)
             {
-                amount = Mathf.Abs(currentDistance - lastDistance) * 0.5f;
+                amount = Mathf.Abs(currentDistance - lastDistance) * 0.8f;
                 selectedObject.transform.position += axisDirection * amount;
             }
             else

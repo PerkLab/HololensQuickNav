@@ -19,7 +19,7 @@ public class CopyRotation : MonoBehaviour {
     private bool IsRunning = false;
 
 
-    private void Start()
+    private void OnEnable()
     {
         CopyRS();
     }
@@ -28,17 +28,17 @@ public class CopyRotation : MonoBehaviour {
 	public void CopyRS()
     {
         lastDirectionCam = cam.transform.forward.normalized;
-        IsRunning = true;
         Copy1 = true;
         Copy2 = false;
+        IsRunning = true;
     }
 
     public void CopyA()
     {
         lastDistance = Vector3.Distance(cam.transform.position, selectedObject.transform.position);
-        IsRunning = true;
         Copy1 = false;
         Copy2 = true;
+        IsRunning = true;
     }
 	
 	// Update is called once per frame
@@ -53,14 +53,14 @@ public class CopyRotation : MonoBehaviour {
                 {
                     //user's right direction is +x, model's right is -x
                     //to rotate right, rotate in positive direction about z axis
-                    amount = Mathf.Abs(currentDirectionCam.x - lastDirectionCam.x) * 50f;
+                    amount = Mathf.Abs(currentDirectionCam.x - lastDirectionCam.x) * 80f;
                     selectedObject.transform.Rotate(new Vector3(0f, 0f, amount));
                 }
                 else if (currentDirectionCam.x < lastDirectionCam.x)
                 {
                     //user's left direction is -x, model's left is +x
                     //to rotate left, rotate in negative direction about z axis
-                    amount = Mathf.Abs(currentDirectionCam.x - lastDirectionCam.x) * 50f;
+                    amount = Mathf.Abs(currentDirectionCam.x - lastDirectionCam.x) * 80f;
                     selectedObject.transform.Rotate(new Vector3(0f, 0f, -amount));
                 }
 
@@ -69,14 +69,14 @@ public class CopyRotation : MonoBehaviour {
                 {
                     //user's up direction is +y, model's up is +y
                     //to rotate up, rotate in positive direction about x axis
-                    amount = Mathf.Abs(currentDirectionCam.y - lastDirectionCam.y) * 50f;
+                    amount = Mathf.Abs(currentDirectionCam.y - lastDirectionCam.y) * 80f;
                     selectedObject.transform.Rotate(new Vector3(amount, 0f, 0f));
                 }
                 else if (currentDirectionCam.y < lastDirectionCam.y)
                 {
                     //user's left direction is -x, model's left is +x
                     //to rotate left, rotate in negative direction about z axis
-                    amount = Mathf.Abs(currentDirectionCam.y - lastDirectionCam.y) * 50f;
+                    amount = Mathf.Abs(currentDirectionCam.y - lastDirectionCam.y) * 80f;
                     selectedObject.transform.Rotate(new Vector3(-amount, 0f, 0f));
                 }
                 else
@@ -99,16 +99,13 @@ public class CopyRotation : MonoBehaviour {
                     amount = Mathf.Abs(currentDistance - lastDistance)*50;
                     selectedObject.transform.Rotate(0f, amount, 0f);
                 }
-                else if (currentDistance > lastDistance) //if user is farther from the model
+                else//(currentDistance > lastDistance) //if user is farther from the model
                 {
-                    //scale the model to a larger size
-                    amount = Mathf.Abs(currentDistance - lastDistance);
+                    
+                    amount = Mathf.Abs(currentDistance - lastDistance)*50;
                     selectedObject.transform.Rotate(0f, -amount, 0f);
                 }
-                else
-                {
-                    //do nothing if user hasn't moved thier head
-                }
+
                 //update the distances
                 lastDistance = currentDistance;
             }

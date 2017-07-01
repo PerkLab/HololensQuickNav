@@ -38,7 +38,7 @@ public class EnableRegistration : MonoBehaviour {
         GameObject.Find("CommandText").transform.FindChild("HelpAndMenu").gameObject.SetActive(false);
         //text.GetComponent<TextMesh>().text = "";
         GameObject.Find("RegistrationText").transform.FindChild("CommandName").gameObject.SetActive(true);
-        //GameObject.Find("RegistrationText").transform.FindChild("Help-Menu").gameObject.SetActive(true);
+        GameObject.Find("RegistrationText").transform.FindChild("AirTapCommands").gameObject.SetActive(true);
 
         //initialize at step 0 and call first step
         stepCount = 0;
@@ -53,6 +53,11 @@ public class EnableRegistration : MonoBehaviour {
         if(stepCount < 0)
         {
             Done();
+        }
+        else if(stepCount == 1 || stepCount ==3)
+        {
+            //if the last step was a depth tool, go back to the move tool before it
+            Back();
         }
         else
         {
@@ -134,8 +139,8 @@ public class EnableRegistration : MonoBehaviour {
             GameObject.Find("3PointRegistration").transform.FindChild("Frame/SubFrame/LeftEye").gameObject.SetActive(false);
             GameObject.Find("3PointRegistration").transform.FindChild("Frame/SubFrame/Axis").gameObject.SetActive(false);
 
-            //change material of nose marker to show it locked in place 
-           //GameObject.Find("3PointRegistration").transform.FindChild("Frame/SubFrame/Nose/Marker").gameObject.GetComponent<Renderer>().material = lockedMat;
+            //centre command name text around marker
+            CommandText.ToggleObject(true);
 
             //update text
             CommandName.text = "Right Eye > Move";
@@ -197,11 +202,11 @@ public class EnableRegistration : MonoBehaviour {
             GameObject.Find("3PointRegistration").transform.FindChild("Frame/SubFrame/LeftEye").gameObject.SetActive(true);
             GameObject.Find("3PointRegistration").transform.FindChild("Frame/SubFrame/Axis").gameObject.SetActive(true);
 
+            //centre command name text around nose marker
+            CommandText.ToggleObject(false);
+
             //update text
             CommandName.text = "Left Eye";
-
-            //change material of nose and right eye markers to show them locked in place 
-            //GameObject.Find("3PointRegistration").transform.FindChild("Frame/SubFrame/RightEye/Marker").gameObject.GetComponent<Renderer>().material = lockedMat;
 
 
         }
@@ -236,7 +241,7 @@ public class EnableRegistration : MonoBehaviour {
         GameObject.Find("CommandText").transform.FindChild("CommandName").gameObject.SetActive(true);
         GameObject.Find("CommandText").transform.FindChild("HelpAndMenu").GetComponent<TextMesh>().gameObject.SetActive(true);
         GameObject.Find("RegistrationText").transform.FindChild("CommandName").gameObject.SetActive(false);
-        //GameObject.Find("RegistrationText").transform.FindChild("Help-Menu").gameObject.SetActive(false);
+        GameObject.Find("RegistrationText").transform.FindChild("AirTapCommands").gameObject.SetActive(false);
 
         //turn voice commands from main program back on
         GameObject.Find("InputManager").transform.FindChild("VoiceInput").gameObject.SetActive(true);

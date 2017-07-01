@@ -23,9 +23,11 @@ public class AirTapInput : MonoBehaviour//, IInputClickHandler
     private float holdTimer = 0f;
     private float holdDelay = 0f;
     private bool holdStarted = false;
+    private bool holdComplete = false;
     private bool timerEnabled = false;
     private bool tapOccured = false;
     private bool secondTapOccured = false;
+    private Material[] cursor;
 
     private bool IsEnabled = false;
 
@@ -40,6 +42,9 @@ public class AirTapInput : MonoBehaviour//, IInputClickHandler
         recognizer.HoldStartedEvent += HoldStart;
         recognizer.StartCapturingGestures();
         IsEnabled = true;
+
+        cursor = GameObject.Find("InteractiveMeshCursor").transform.FindChild("CursorDot").GetComponent<MeshRenderer>().materials;
+
     }
 
     private void HoldStart(InteractionSourceKind source, Ray headRay)
@@ -85,17 +90,18 @@ public class AirTapInput : MonoBehaviour//, IInputClickHandler
         if(holdDelay > 2f)
         {
             recognizer.HoldStartedEvent += HoldStart;
+            //recognizer.HoldCompletedEvent += HoldComplete;
         }
 
         if(timerEnabled)
         {
-            if (timeBetweenTaps < 1f && secondTapOccured) //double tap
+            if (timeBetweenTaps < 0.8f && secondTapOccured) //double tap
             {
                 OnDoubleTapEvents.Invoke();
                 tapOccured = false;
                 secondTapOccured = false;
             }
-            else if (timeBetweenTaps > 1.1f && tapOccured) //single tap, wait for possible second tap
+            else if (timeBetweenTaps > 0.8f && tapOccured) //single tap, wait for possible second tap
             {
                 if(!toggle)
                 {
@@ -119,15 +125,36 @@ public class AirTapInput : MonoBehaviour//, IInputClickHandler
             }
         }
 
-        if(holdTimer > 1f && holdStarted)
+        if(holdTimer > 0.8f && holdStarted)
         {
-            OnHoldEvents.Invoke();
-            holdStarted = false;
-            holdTimer = 0f;
+            //indicate the hold is complete
+            //cursor[0].color = Color.green;
+            //cursor[1].color = Color.green;
+            //if (holdTimer < 2f && holdStarted)
+            //{
+                //wait for hold complete
+                //if(holdComplete)
+                //{
+                    holdStarted = false;
+                    //holdComplete = false;
+                    holdTimer = 0f;
+                    //cursor[0].color = Color.white;
+                    //cursor[1].color = Color.white;
+                    OnHoldEvents.Invoke();
+                    //stop recognizing hold gesture for a bit
+                    holdDelay = 0f;
+                    recognizer.HoldStartedEvent -= HoldStart;
+                    //recognizer.HoldCompletedEvent -= HoldComplete;
+                //} 
+            //}
+            //else //times out, no hold cancelled detected
+            //{
+                //cursor[0].color = Color.white;
+                //cursor[1].color = Color.white;
+                //holdStarted = false;
+                //holdTimer = 0f;
+            //}
 
-            //stop recognizing hold gesture for a bit
-            holdDelay = 0f;
-            recognizer.HoldStartedEvent -= HoldStart;
         }
     }
 }

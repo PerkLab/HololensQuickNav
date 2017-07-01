@@ -10,13 +10,12 @@ public class SwapScene : MonoBehaviour {
 		
 	}
 	
-	// Update is called once per frame
 	public void LoadTest1 () {
         SceneManager.LoadScene("Test1");
 	}
 
-    public void LoadScene2()
+    public void LoadMalePlastic()
     {
-        SceneManager.LoadScene("Scene2");
+        SceneManager.LoadScene("MalePlasticPhantom");
     }
 }

@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/QuickNavAssets/Scenes/Test1.unity
+- path: Assets/QuickNavAssets/Scenes/RoomTest2.unity
   isLoaded: 1
   isActive: 1
