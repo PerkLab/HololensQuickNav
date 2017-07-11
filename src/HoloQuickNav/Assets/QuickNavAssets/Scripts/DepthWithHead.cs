@@ -20,6 +20,7 @@ public class DepthWithHead : MonoBehaviour
     // Use this for initialization
     void OnEnable()
     {
+        WriteLog.WriteData("Command: Depth");
         //align axis on model, facing user
         gameObject.transform.position = new Vector3(selectedObject.transform.position.x, selectedObject.transform.position.y, selectedObject.transform.position.z);
         gameObject.transform.LookAt(cam.transform.position);

@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class EnableComponents : MonoBehaviour {
 
+    public Material cursorFaceMat;
+    public Material cursorEdgeMat;
+    public Material cursorTransparent;
+
     //visibility of head and brain
     private bool headOnOff;
     //level of transparency of skin
@@ -16,6 +20,7 @@ public class EnableComponents : MonoBehaviour {
 
     //global variable for text to display current command for user
     private TextMesh CommandName;
+    private TextMesh DoneCommandName;
 
     private void Start()
     {
@@ -24,6 +29,18 @@ public class EnableComponents : MonoBehaviour {
 
         //assign text mesh to global variable for use when calling commands
         CommandName = GameObject.Find("CommandText").transform.FindChild("CommandName").GetComponent<TextMesh>();
+        DoneCommandName = GameObject.Find("CommandText").transform.FindChild("DoneCommandName").GetComponent<TextMesh>();
+
+        //get skinVisiblity value of initial material
+        GameObject Skin = GameObject.Find("Head").transform.FindChild("Model/Skin_Reduced/grp1").gameObject;
+        if (Skin.transform.childCount > 0) //mesh has multiple parts
+        {
+            skinVisibility = Skin.transform.FindChild("grp1_MeshPart0").GetComponent<MeshRenderer>().material.GetFloat("_Metallic");
+        }
+        else //mesh is one part
+        {
+            skinVisibility = Skin.GetComponent<MeshRenderer>().material.GetFloat("_Metallic");
+        }
 
         SetAllInactive();
         Done();
@@ -57,13 +74,10 @@ public class EnableComponents : MonoBehaviour {
         SetAllInactive();
         DoneOnOff(true);
 
-        //disable cursor on user's gaze for easier visibility of model
-        GameObject.Find("InteractiveMeshCursor").transform.FindChild("CursorDot").gameObject.SetActive(false);
-        GameObject.Find("InteractiveMeshCursor").transform.FindChild("CursorRing").gameObject.SetActive(false);
-        GameObject.Find("InteractiveMeshCursor").transform.FindChild("Spotlight").gameObject.SetActive(false);
+        CursorOnOff(false);
 
         //display command
-        CommandName.text = "Done > Brain:Off > Head:On";
+        CommandName.text = "Done";
 
         //write to log
         WriteLog.WriteData("Command: Done");
@@ -74,38 +88,38 @@ public class EnableComponents : MonoBehaviour {
         //if visible, turn brain off
         //if not visible, turn brain on
 
-        if(GameObject.Find("Head").transform.FindChild("Model/Brain_Reduced").gameObject.activeSelf) //brain on
+        if(GameObject.Find("Head").transform.FindChild("Model/Brain_Reduced").gameObject.activeSelf) //brain on  >> detail must be off
         {
             BrainOnOff(false);
             //display proper current states of head and brain visibility 
             if(headOnOff)
             {
-                CommandName.text = "Done > Brain:Off > Head:On";
+                DoneCommandName.text = "Head:On > Brain:Off > Detail:Off";
                 //write to log
-                WriteLog.WriteData("Command: Brain (Done > Brain:Off > Head:On)");
+                WriteLog.WriteData("Command: Brain (Done > Head:On > Brain:Off > Detail:Off)");
             } 
             else if(!headOnOff)
             {
-                CommandName.text = "Done > Brain:Off > Head:Off";
+                DoneCommandName.text = "Head:Off > Brain:Off > Detail:Off";
                 //write to log
-                WriteLog.WriteData("Command: Brain (Done > Brain:Off > Head:Off)");
+                WriteLog.WriteData("Command: Brain (Done > Head:Off > Brain:Off > Detail:Off)");
             }
         }
-        else //brain off
+        else //brain off >> turn brain on, detail off
         {
             BrainOnOff(true);
             //display proper current states of head and brain visibility 
             if (headOnOff)
             {
-                CommandName.text = "Done > Brain:On > Head:On";
+                DoneCommandName.text = "Head:On > Brain:On > Detail:Off";
                 //write to log
-                WriteLog.WriteData("Command: Brain (Done > Brain:On > Head:On)");
+                WriteLog.WriteData("Command: Brain (Done > Head:On > Brain:On > Detail:Off)");
             }
             else if (!headOnOff)
             {
-                CommandName.text = "Done > Brain:On > Head:Off";
+                CommandName.text = "Head:Off > Brain:On > Detail:Off";
                 //write to log
-                WriteLog.WriteData("Command: Brain (Done > Brain:On > Head:Off)");
+                WriteLog.WriteData("Command: Brain (Done > Head:Off > Brain:On > Detail:Off)");
             }
         }
     }
@@ -117,34 +131,94 @@ public class EnableComponents : MonoBehaviour {
         {
             HeadOnOff(false);
             //display proper current states of head and brain visibility
-            if (GameObject.Find("Head").transform.FindChild("Model/Brain_Reduced").gameObject.activeSelf)
+            if (GameObject.Find("Head").transform.FindChild("Model/Brain_Reduced").gameObject.activeSelf) //if brain on detail off
             {
-                CommandName.text = "Done > Brain:On > Head:Off";
+                DoneCommandName.text = "Head:Off > Brain:On > Detail:Off";
                 //write to log
-                WriteLog.WriteData("Command: Head (Done > Brain:On > Head:Off)");
+                WriteLog.WriteData("Command: Head (Done > Head:Off > Brain:On > Detail:Off)");
             }
-            else
+            else //if brain off, detail may be on
             {
-                CommandName.text = "Done > Brain:Off > Head:Off";
-                //write to log
-                WriteLog.WriteData("Command: Head (Done > Brain:Off > Head:Off)");
+                if(GameObject.Find("Head").transform.FindChild("Model/BurrHoleMarker").gameObject.activeSelf)
+                {
+                    DoneCommandName.text = "Head:Off > Brain:Off > Detail:On";
+                    //write to log
+                    WriteLog.WriteData("Command: Head (Done > Head:Off > Brain:Off > Detail:On)");
+                }
+                else //brain and detail off
+                {
+                    DoneCommandName.text = "Head:Off > Brain:Off > Detail:Off";
+                    //write to log
+                    WriteLog.WriteData("Command: Head (Done > Head:Off > Brain:Off > Detail:Off)");
+                }
+                
             }
         }
         else //head off
         {
             HeadOnOff(true);
             //display proper current states of head and brain visibility
-            if (GameObject.Find("Head").transform.FindChild("Model/Brain_Reduced").gameObject.activeSelf)
+            if (GameObject.Find("Head").transform.FindChild("Model/Brain_Reduced").gameObject.activeSelf) //if brain on detail off
             {
-                CommandName.text = "Done > Brain:On > Head:On";
+                DoneCommandName.text = "Head:On > Brain:On > Detail:Off";
                 //write to log
-                WriteLog.WriteData("Command: Head (Done > Brain:On > Head:On)");
+                WriteLog.WriteData("Command: Head (Done > Head:On > Brain:On > Detail:Off)");
             }
-            else
+            else //if brain off, detail may be on
             {
-                CommandName.text = "Done > Brain:Off > Head:On";
+                if (GameObject.Find("Head").transform.FindChild("Model/BurrHoleMarker").gameObject.activeSelf)
+                {
+                    DoneCommandName.text = "Head:On > Brain:Off > Detail:On";
+                    //write to log
+                    WriteLog.WriteData("Command: Head (Done > Head:On > Brain:Off > Detail:On)");
+                }
+                else //brain and detail off
+                {
+                    DoneCommandName.text = "Head:On > Brain:Off > Detail:Off";
+                    //write to log
+                    WriteLog.WriteData("Command: Head (Done > Head:On > Brain:Off > Detail:Off)");
+                }
+
+            }
+        }
+    }
+    public void Detail()
+    {
+        if (GameObject.Find("Head").transform.FindChild("Model/BurrHoleMarker").gameObject.activeSelf)
+        {
+            BrainOnOff(false);
+            DetailOnOff(false);
+            CommandName.text = "Done > Detail";
+
+            if (headOnOff)
+            {
+                DoneCommandName.text = "Head:On > Brain:Off > Detail:Off";
                 //write to log
-                WriteLog.WriteData("Command: Head (Done > Brain:Off > Head:On)");
+                WriteLog.WriteData("Command: Detail (Done > Head:On > Brain:Off > Detail:Off)");
+            }
+            else if (!headOnOff)
+            {
+                DoneCommandName.text = "Head:Off > Brain:Off > Detail:Off";
+                //write to log
+                WriteLog.WriteData("Command: Detail (Done > Head:Off > Brain:Off > Detail:Off)");
+            }
+        }
+        else
+        {
+            BrainOnOff(false);
+            DetailOnOff(true);
+
+            if (headOnOff)
+            {
+                DoneCommandName.text = "Head:On > Brain:Off > Detail:On";
+                //write to log
+                WriteLog.WriteData("Command: Detail (Done > Head:On > Brain:Off > Detail:On)");
+            }
+            else if (!headOnOff)
+            {
+                DoneCommandName.text = "Head:Off > Brain:Off > Detail:On";
+                //write to log
+                WriteLog.WriteData("Command: Detail (Done > Head:Off > Brain:Off > Detail:On)");
             }
         }
     }
@@ -322,8 +396,12 @@ public class EnableComponents : MonoBehaviour {
 
     public void Move()
     {
+        //write to log
+        WriteLog.WriteData("Command: MoveFull");
+
         SetAllInactive();
         MoveOnOff(true);
+        
     }
 
     public void MoveWithHead()
@@ -367,12 +445,13 @@ public class EnableComponents : MonoBehaviour {
         WriteLog.WriteData("Command: Menu");
     }
 
-    public void Begin()
+    public void ThreePointReg()
     {
         SetAllInactive();
-        DoneOnOff(false);
+        CursorOnOff(false);
         //write to log
-        WriteLog.WriteData("Command: 3 Point Registration");
+        WriteLog.WriteData("Command: 3 Pt Registration");
+        GameObject.Find("3PointRegistration").transform.FindChild("Frame").transform.GetComponent<AirTapInput>().enabled = true;
     }
 
     public void GroundTruth()
@@ -389,18 +468,12 @@ public class EnableComponents : MonoBehaviour {
 
         //rotate tools
         RotateAOnOff(false);
-        WriteLog.WriteData("test2");
         RotateSOnOff(false);
-        WriteLog.WriteData("test2");
         RotateROnOff(false);
-        WriteLog.WriteData("test2");
         Rotate3AxisOnOff(false);
-        WriteLog.WriteData("test2");
         SphereOnOff(false);
-        WriteLog.WriteData("test1");
         //disable RotateFree script until enabled by voice command
         (GameObject.Find("Controls").transform.FindChild("Sphere").GetComponent("Interactive") as MonoBehaviour).enabled = false;
-        WriteLog.WriteData("test2");
 
 
         //shift tools
@@ -410,32 +483,22 @@ public class EnableComponents : MonoBehaviour {
         OrientationOnOff(false);
         TransparentOnOff(false);
         MoveWithHeadOnOff(false);
+        MoveOnOff(false);
         DepthOnOff(false);
         CopyOnOff(false);
-        WriteLog.WriteData("test3");
 
-        MenuOnOff(false);
-        WriteLog.WriteData("test4");
+        
+        
         HeadOnOff(true);
-        WriteLog.WriteData("test5");
         BrainOnOff(false);
-        WriteLog.WriteData("test6");
         DoneOnOff(false);
-        WriteLog.WriteData("test7");
 
         ResetOnOff(false);
-        WriteLog.WriteData("test8");
 
         GroundTruthOnOff(false);
-        WriteLog.WriteData("test9");
+        MenuOnOff(false);
 
-
-
-        //make cursor visible if previously using Done command, in which case it is hidden
-        GameObject.Find("InteractiveMeshCursor").transform.FindChild("CursorDot").gameObject.SetActive(true);
-        GameObject.Find("InteractiveMeshCursor").transform.FindChild("CursorRing").gameObject.SetActive(true);
-        GameObject.Find("InteractiveMeshCursor").transform.FindChild("Spotlight").gameObject.SetActive(true);
-        WriteLog.WriteData("test10");
+        CursorOnOff(true);
 
     }
 
@@ -445,16 +508,22 @@ public class EnableComponents : MonoBehaviour {
     void HeadOnOff(bool visible)
     {
         //declare values for material parameters
-        float amountVisible = 0f;
-        float amountSmooth = 0f;
+        float amountVisibleSkin = 0f;
+        float amountVisibleBrain = 0f;
+        float amountSmoothSkin = 0f;
+        float amountSmoothBrain = 0f;
         //declare state of headOnOff
         headOnOff = visible;
 
         if (visible)
         {
             //if making head visible set amountVisible as skinVisility, the previous value of the material last time it was set by Transparent command
-            amountVisible = skinVisibility;
-            amountSmooth = 0.2f;
+            //amountVisibleSkin = skinVisibility;
+            amountVisibleSkin = 0.3f;
+            amountSmoothSkin = 0.1f;
+
+            amountVisibleBrain = 0.1f;
+            amountSmoothBrain = 0.2f;
         }
 
         //set visibility of mesh compononets in Brain and Skin
@@ -463,14 +532,14 @@ public class EnableComponents : MonoBehaviour {
         {
             foreach (Transform child in Skin)
             {
-                child.GetComponent<MeshRenderer>().sharedMaterial.SetFloat("_Metallic", amountVisible);
-                child.GetComponent<MeshRenderer>().sharedMaterial.SetFloat("_Glossiness", amountSmooth);
+                child.GetComponent<MeshRenderer>().sharedMaterial.SetFloat("_Metallic", amountVisibleSkin);
+                child.GetComponent<MeshRenderer>().sharedMaterial.SetFloat("_Glossiness", amountSmoothSkin);
             }
         }
         else //mesh is only one part
         {
-            GameObject.Find("Head").transform.FindChild("Model/Skin_Reduced/grp1").GetComponent<MeshRenderer>().sharedMaterial.SetFloat("_Metallic", amountVisible);
-            GameObject.Find("Head").transform.FindChild("Model/Skin_Reduced/grp1").GetComponent<MeshRenderer>().sharedMaterial.SetFloat("_Glossiness", amountSmooth);
+            GameObject.Find("Head").transform.FindChild("Model/Skin_Reduced/grp1").GetComponent<MeshRenderer>().sharedMaterial.SetFloat("_Metallic", amountVisibleSkin);
+            GameObject.Find("Head").transform.FindChild("Model/Skin_Reduced/grp1").GetComponent<MeshRenderer>().sharedMaterial.SetFloat("_Glossiness", amountSmoothSkin);
         }
         
 
@@ -479,14 +548,14 @@ public class EnableComponents : MonoBehaviour {
         {
             foreach (Transform child in Brain)
             {
-                child.GetComponent<MeshRenderer>().sharedMaterial.SetFloat("_Metallic", amountVisible);
-                child.GetComponent<MeshRenderer>().sharedMaterial.SetFloat("_Glossiness", amountSmooth);
+                child.GetComponent<MeshRenderer>().sharedMaterial.SetFloat("_Metallic", amountVisibleBrain);
+                child.GetComponent<MeshRenderer>().sharedMaterial.SetFloat("_Glossiness", amountSmoothBrain);
             }
         }
         else //mesh is only one part
         {
-            GameObject.Find("Head").transform.FindChild("Model/Brain_Reduced/grp1").GetComponent<MeshRenderer>().sharedMaterial.SetFloat("_Metallic", amountVisible);
-            GameObject.Find("Head").transform.FindChild("Model/Brain_Reduced/grp1").GetComponent<MeshRenderer>().sharedMaterial.SetFloat("_Glossiness", amountSmooth);
+            GameObject.Find("Head").transform.FindChild("Model/Brain_Reduced/grp1").GetComponent<MeshRenderer>().sharedMaterial.SetFloat("_Metallic", amountVisibleBrain);
+            GameObject.Find("Head").transform.FindChild("Model/Brain_Reduced/grp1").GetComponent<MeshRenderer>().sharedMaterial.SetFloat("_Glossiness", amountSmoothBrain);
         }
 
     }
@@ -497,7 +566,16 @@ public class EnableComponents : MonoBehaviour {
         GameObject.Find("Head").transform.FindChild("Model/SubduralHemmorhage").gameObject.SetActive(visible);
         GameObject.Find("Head").transform.FindChild("Model/BurrHole").gameObject.SetActive(visible);
         GameObject.Find("Head").transform.FindChild("Model/DrainTarget").gameObject.SetActive(visible);
+        GameObject.Find("Head").transform.FindChild("Model/BurrHoleMarker").gameObject.SetActive(false);
     }
+
+    void DetailOnOff(bool visible)
+    {
+        //view burrhole location as a smaller point
+        GameObject.Find("Head").transform.FindChild("Model/BurrHoleMarker").gameObject.SetActive(visible);
+        GameObject.Find("Head").transform.FindChild("Model/DrainTarget").gameObject.SetActive(visible);
+    }
+
     void ResetOnOff(bool visible)
     {
         GameObject.Find("Controls").transform.FindChild("Reset").gameObject.SetActive(visible);
@@ -507,6 +585,15 @@ public class EnableComponents : MonoBehaviour {
         //close help window if previously open
         GameObject.Find("Controls").transform.FindChild("Done/HelpWindow").gameObject.SetActive(false);
         GameObject.Find("Controls").transform.FindChild("Done").gameObject.SetActive(visible);
+        GameObject.Find("CommandText").transform.FindChild("DoneCommandName").gameObject.SetActive(visible);
+        DoneCommandName.text = "Head:On > Brain:Off > Detail:Off";
+
+        //if turning off, set head back to full colour
+        if (!visible)
+        {
+            HeadOnOff(true);
+        }
+        //GameObject.Find("Controls").transform.FindChild("Done").transform.GetComponent<AirTapInput>().enabled = visible;
     }
 
     //Rotate Tools
@@ -527,18 +614,13 @@ public class EnableComponents : MonoBehaviour {
     {
         //close help window if previously open
         GameObject.Find("Controls").transform.FindChild("RotateS/HelpWindow").gameObject.SetActive(false);
-        WriteLog.WriteData("test2..");
         GameObject.Find("Controls").transform.FindChild("RotateS").gameObject.SetActive(visible);
-        WriteLog.WriteData("test2..");
         //if disabling component, disable all subcomponents for next use
         if (!visible)
         {
             RotateArrowsSOnOff(visible);
-            WriteLog.WriteData("test2..");
             RotateGazeSOnOff(visible);
-            WriteLog.WriteData("test2..");
             RotateHeadSOnOff(visible);
-            WriteLog.WriteData("test2..");
         }
     }
     void RotateROnOff(bool visible)
@@ -616,6 +698,7 @@ public class EnableComponents : MonoBehaviour {
     {
         GameObject.Find("Controls").transform.FindChild("Rotate3Axis/HelpWindow").gameObject.SetActive(false);
         GameObject.Find("Controls").transform.FindChild("Rotate3Axis").gameObject.SetActive(visible);
+        
     }
 
     //Shift Tools
@@ -698,6 +781,10 @@ public class EnableComponents : MonoBehaviour {
         GameObject.Find("Controls").transform.FindChild("MoveFull").gameObject.SetActive(visible);
         GameObject.Find("Controls").transform.FindChild("MoveFull/MoveWithHead").gameObject.SetActive(visible);
         GameObject.Find("Controls").transform.FindChild("MoveFull/Depth").gameObject.SetActive(false);
+
+        GameObject.Find("CommandText").transform.FindChild("MoveHelpAndMenu").gameObject.SetActive(visible);
+        GameObject.Find("CommandText").transform.FindChild("HelpAndMenu").gameObject.SetActive(false);
+
     }
 
     void MenuOnOff(bool visible)
@@ -706,11 +793,12 @@ public class EnableComponents : MonoBehaviour {
         GameObject.Find("Menu").transform.FindChild("Buttons").gameObject.SetActive(visible);
         GameObject.Find("Menu").transform.FindChild("BackgroundSwap").gameObject.SetActive(false);
         GameObject.Find("Menu").transform.FindChild("ButtonsSwap").gameObject.SetActive(false);
-        GameObject.Find("Menu").transform.FindChild("BackgroundRotate").gameObject.SetActive(false);
-        GameObject.Find("Menu").transform.FindChild("ButtonsRotate").gameObject.SetActive(false);
+        GameObject.Find("Menu").transform.FindChild("BackgroundOther").gameObject.SetActive(false);
+        GameObject.Find("Menu").transform.FindChild("ButtonsOther").gameObject.SetActive(false);
         //enable/disable model and command text display if opening or exiting menu
         GameObject.Find("Head").transform.FindChild("Model/Skin_Reduced").gameObject.SetActive(!visible);
         GameObject.Find("CommandText").transform.FindChild("HelpAndMenu").gameObject.SetActive(!visible);
+        //GameObject.Find("Menu").transform.FindChild("Background").transform.GetComponent<AirTapInput>().enabled = visible;
     }
 
     void CopyOnOff(bool visible)
@@ -738,6 +826,33 @@ public class EnableComponents : MonoBehaviour {
         
     }
     
+    void CursorOnOff(bool visible)
+    {
+        WriteLog.WriteData("cursor");
+        GameObject cursor = GameObject.Find("InteractiveMeshCursor").gameObject;
+        if (visible)
+        { 
+            //cursor.transform.FindChild("CursorDot").GetComponent<MeshRenderer>().materials[0] = cursorFaceMat;
+            //cursor.transform.FindChild("CursorDot").GetComponent<MeshRenderer>().materials[1] = cursorEdgeMat;
+            //cursor.transform.FindChild("CursorRing").GetComponent<MeshRenderer>().materials[0] = cursorEdgeMat;
+            //cursor.transform.FindChild("CursorRing").GetComponent<MeshRenderer>().materials[1] = cursorFaceMat;
+            Material[] newMat = new Material[2];
+            newMat[0] = cursorFaceMat;
+            newMat[1] = cursorEdgeMat;
+            cursor.transform.FindChild("CursorDot").GetComponent<MeshRenderer>().materials = newMat;
+            newMat[0] = cursorEdgeMat;
+            newMat[1] = cursorFaceMat;
+            cursor.transform.FindChild("CursorRing").GetComponent<MeshRenderer>().materials = newMat;
+        }
+        else
+        {
+            Material[] newMat = new Material[2];
+            newMat[0] = cursorTransparent;
+            newMat[1] = cursorTransparent;
+            cursor.transform.FindChild("CursorDot").GetComponent<MeshRenderer>().materials = newMat;
+            cursor.transform.FindChild("CursorRing").GetComponent<MeshRenderer>().materials = newMat;
+        }
+    }
 
 
 }

@@ -10,151 +10,156 @@ using UnityEngine.Events;
 
 public class AirTapInput : MonoBehaviour//, IInputClickHandler
 {
-    public bool ToggleEnabled;
+    public bool ToggleEnabled = false;
+    [Tooltip("On a double tap, the single tap toggle will reset to Tap1")]
+    public bool ToggleResetEnabled = false;
     public UnityEvent OnTap1Events;
     [Tooltip("Toggle between Tap1 and Tap2 when Toggle option selected")]
     public UnityEvent OnTap2Events;
     public UnityEvent OnDoubleTapEvents;
-    public UnityEvent OnHoldEvents;
-    
+    public UnityEvent OnTripleTapEvents;
+
 
     private bool toggle = false;
     private float timeBetweenTaps = 0f;
-    private float holdTimer = 0f;
-    private float holdDelay = 0f;
-    private bool holdStarted = false;
-    private bool holdComplete = false;
     private bool timerEnabled = false;
     private bool tapOccured = false;
     private bool secondTapOccured = false;
-    private Material[] cursor;
+    private bool thirdTapOccured = false;
+    private bool thirdTapEnabled = false;
+    private float thirdTapDelay = 0f;
+    private float startDelay = 0f;
 
     private bool IsEnabled = false;
 
     GestureRecognizer recognizer;
 
     // Use this for initialization
-    void Start () {
-
+    void Start()
+    {
+        IsEnabled = false;
+        tapOccured = false;
+        secondTapOccured = false;
+        thirdTapOccured = false;
+        startDelay = 0f;
         //enable gesture recognizer to call AirTap on tap event
         recognizer = new GestureRecognizer();
         recognizer.TappedEvent += AirTap;
-        recognizer.HoldStartedEvent += HoldStart;
         recognizer.StartCapturingGestures();
-        IsEnabled = true;
 
-        cursor = GameObject.Find("InteractiveMeshCursor").transform.FindChild("CursorDot").GetComponent<MeshRenderer>().materials;
-
-    }
-
-    private void HoldStart(InteractionSourceKind source, Ray headRay)
-    {
-        if(IsEnabled)
-        {
-            holdTimer = 0f;
-            holdStarted = true;
-        }
     }
 
 
     private void AirTap(InteractionSourceKind source, int tapCount, Ray headRay)
     {
-        if(IsEnabled)
+
+        if (IsEnabled)
         {
             if (!timerEnabled) //first tap
             {
                 timerEnabled = true;
             }
 
-            if (!secondTapOccured && !tapOccured) //if cleared on previous tap or double tap, restart timer on current tap
+            if (!thirdTapOccured && !secondTapOccured && !tapOccured) //if cleared on previous tap or double tap, restart timer on current tap
             {
                 timeBetweenTaps = 0f;
             }
 
-            if(tapOccured) //already set true from previous tap, never cleared
+            if (tapOccured && !secondTapOccured) //single tap occurred, never cleared
             {
                 secondTapOccured = true;
+            }
+            else if (tapOccured && secondTapOccured && thirdTapEnabled) //double tap occurred, never cleared
+            {
+                thirdTapOccured = true;
             }
 
             tapOccured = true;
 
-                   
+
         }
     }
 
     private void Update()
     {
-        timeBetweenTaps += Time.deltaTime;
-        holdTimer += Time.deltaTime;
-        holdDelay += Time.deltaTime;
-        if(holdDelay > 2f)
+        if (startDelay < 1f) //delay before enabling airtap
         {
-            recognizer.HoldStartedEvent += HoldStart;
-            //recognizer.HoldCompletedEvent += HoldComplete;
+            startDelay += Time.deltaTime;
+        }
+        else
+        {
+            IsEnabled = true;
         }
 
-        if(timerEnabled)
+        if (thirdTapDelay < 1.5f) //delay before enabling third tap
         {
-            if (timeBetweenTaps < 0.8f && secondTapOccured) //double tap
+            thirdTapDelay += Time.deltaTime;
+            thirdTapEnabled = false;
+        }
+        else
+        {
+            thirdTapEnabled = true;
+        }
+
+        timeBetweenTaps += Time.deltaTime;
+
+        if (timerEnabled)
+        {
+            if (timeBetweenTaps > 0.8f && tapOccured && !secondTapOccured && !thirdTapOccured) //single tap
             {
-                OnDoubleTapEvents.Invoke();
-                tapOccured = false;
-                secondTapOccured = false;
-            }
-            else if (timeBetweenTaps > 0.8f && tapOccured) //single tap, wait for possible second tap
-            {
-                if(!toggle)
+                if (!toggle)
                 {
+                    tapOccured = false;
+                    thirdTapEnabled = false;
+                    thirdTapDelay = 0f;
                     OnTap1Events.Invoke();
                     toggle = true;
                 }
-                else if(toggle)
+                else if (toggle)
                 {
-                    if(ToggleEnabled)
+                    if (ToggleEnabled)
                     {
+                        tapOccured = false;
+                        thirdTapEnabled = false;
+                        thirdTapDelay = 0f;
                         OnTap2Events.Invoke();
                     }
                     else
                     {
+                        tapOccured = false;
+                        thirdTapEnabled = false;
+                        thirdTapDelay = 0f;
                         OnTap1Events.Invoke();
                     }
-                    
+
                     toggle = false;
                 }
+
+            }
+            else if (timeBetweenTaps > 1f && tapOccured && secondTapOccured && !thirdTapOccured) //double tap
+            {
                 tapOccured = false;
+                secondTapOccured = false;
+                thirdTapEnabled = false;
+                thirdTapDelay = 0f;
+
+                if(ToggleResetEnabled)
+                {
+                    toggle = false; //reset to Tap1 event
+                }
+                OnDoubleTapEvents.Invoke();
+            }
+            else if (timeBetweenTaps > 1.2f && tapOccured && secondTapOccured && thirdTapOccured) //triple tap
+            {
+                tapOccured = false;
+                secondTapOccured = false;
+                thirdTapOccured = false;
+                thirdTapEnabled = false;
+                thirdTapDelay = 0f;
+                OnTripleTapEvents.Invoke();
+
             }
         }
 
-        if(holdTimer > 0.8f && holdStarted)
-        {
-            //indicate the hold is complete
-            //cursor[0].color = Color.green;
-            //cursor[1].color = Color.green;
-            //if (holdTimer < 2f && holdStarted)
-            //{
-                //wait for hold complete
-                //if(holdComplete)
-                //{
-                    holdStarted = false;
-                    //holdComplete = false;
-                    holdTimer = 0f;
-                    //cursor[0].color = Color.white;
-                    //cursor[1].color = Color.white;
-                    OnHoldEvents.Invoke();
-                    //stop recognizing hold gesture for a bit
-                    holdDelay = 0f;
-                    recognizer.HoldStartedEvent -= HoldStart;
-                    //recognizer.HoldCompletedEvent -= HoldComplete;
-                //} 
-            //}
-            //else //times out, no hold cancelled detected
-            //{
-                //cursor[0].color = Color.white;
-                //cursor[1].color = Color.white;
-                //holdStarted = false;
-                //holdTimer = 0f;
-            //}
-
-        }
     }
 }

@@ -48,17 +48,20 @@ public class MoveWithHead : MonoBehaviour {
     /// </summary>
     private void OnEnable()
     {
+        WriteLog.WriteData("Command: Move");
         StartRunning();
     }
 
     // start the object following the reference object
     public void StartRunning()
     {
+
         mOffsetDirection = selectedObject.transform.position - ReferenceObject.transform.position;
         mOffsetDistance = mOffsetDirection.magnitude;
         if(StayClose)
         {
             mOffsetDistance = .9f;
+
         }
         mDirection = ReferenceObject.transform.forward.normalized;
         mNormalzedOffsetDirection = mOffsetDirection.normalized;

@@ -48,9 +48,10 @@ public class Rotate3Axis : MonoBehaviour {
         GameObject.Find("Head").transform.FindChild("AxisA/rotateArrow1").gameObject.SetActive(true);
         GameObject.Find("Head").transform.FindChild("AxisA/rotateArrow2").gameObject.SetActive(true);
         gameObject.transform.FindChild("ButtonsRotate/RotateA/Text").GetComponent<TextMesh>().fontStyle = FontStyle.BoldAndItalic;
+        gameObject.transform.FindChild("ButtonsRotate/Pause/Text").GetComponent<TextMesh>().fontStyle = FontStyle.Normal;
         rotateA = true;
         IsRunning = true;
-        WriteLog.WriteData("Command: Rotate3Axis > RotateA");
+        //WriteLog.WriteData("Command: Rotate3Axis > RotateA");
         GameObject.Find("CommandText").transform.FindChild("CommandName").GetComponent<TextMesh>().text = "Rotate3Axis > RotateA";
     }
 
@@ -63,9 +64,10 @@ public class Rotate3Axis : MonoBehaviour {
         GameObject.Find("Head").transform.FindChild("AxisS/rotateArrow1").gameObject.SetActive(true);
         GameObject.Find("Head").transform.FindChild("AxisS/rotateArrow2").gameObject.SetActive(true);
         gameObject.transform.FindChild("ButtonsRotate/RotateS/Text").GetComponent<TextMesh>().fontStyle = FontStyle.BoldAndItalic;
+        gameObject.transform.FindChild("ButtonsRotate/Pause/Text").GetComponent<TextMesh>().fontStyle = FontStyle.Normal;
         rotateS = true;
         IsRunning = true;
-        WriteLog.WriteData("Command: Rotate3Axis > RotateS");
+        //WriteLog.WriteData("Command: Rotate3Axis > RotateS");
         GameObject.Find("CommandText").transform.FindChild("CommandName").GetComponent<TextMesh>().text = "Rotate3Axis > RotateS";
     }
 
@@ -78,13 +80,14 @@ public class Rotate3Axis : MonoBehaviour {
         GameObject.Find("Head").transform.FindChild("AxisR/rotateArrow1").gameObject.SetActive(true);
         GameObject.Find("Head").transform.FindChild("AxisR/rotateArrow2").gameObject.SetActive(true);
         gameObject.transform.FindChild("ButtonsRotate/RotateR/Text").GetComponent<TextMesh>().fontStyle = FontStyle.BoldAndItalic;
+        gameObject.transform.FindChild("ButtonsRotate/Pause/Text").GetComponent<TextMesh>().fontStyle = FontStyle.Normal;
         rotateR = true;
         IsRunning = true;
-        WriteLog.WriteData("Command: Rotate3Axis > RotateR");
+        //WriteLog.WriteData("Command: Rotate3Axis > RotateR");
         GameObject.Find("CommandText").transform.FindChild("CommandName").GetComponent<TextMesh>().text = "Rotate3Axis > RotateR";
     }
 
-    void Pause()
+    public void Pause()
     {
         //turn off all rotation
         IsRunning = false;
@@ -104,6 +107,9 @@ public class Rotate3Axis : MonoBehaviour {
         gameObject.transform.FindChild("ButtonsRotate/RotateA/Text").GetComponent<TextMesh>().fontStyle = FontStyle.Normal;
         gameObject.transform.FindChild("ButtonsRotate/RotateR/Text").GetComponent<TextMesh>().fontStyle = FontStyle.Normal;
         gameObject.transform.FindChild("ButtonsRotate/RotateS/Text").GetComponent<TextMesh>().fontStyle = FontStyle.Normal;
+        gameObject.transform.FindChild("ButtonsRotate/Pause/Text").GetComponent<TextMesh>().fontStyle = FontStyle.BoldAndItalic;
+
+        //WriteLog.WriteData("Command: Rotate3Axis > Pause");
     }
 	
 	// Update is called once per frame

@@ -197,8 +197,8 @@
     <None Include="Assets\OBJImport\readme.txt" />
     <None Include="Assets\Prototyping\Shaders\UnlitTransparentTriplanar.shader" />
     <None Include="Assets\Prototyping\Shaders\UnlitTriplanar.shader" />
-    <None Include="Assets\QuickNavAssets\New Folder\RoomSurfaceShader.shader" />
-    <None Include="Assets\QuickNavAssets\New Folder\SkinSurfaceShader.shader" />
+    <None Include="Assets\QuickNavAssets\Room\RoomSurfaceShader.shader" />
+    <None Include="Assets\QuickNavAssets\Room\SkinSurfaceShader.shader" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

@@ -24,6 +24,7 @@ public class ShiftWithHead : MonoBehaviour {
     void OnEnable()
     {
         Align();
+        Pause();
         //rotate around y axis so forward arrow is facing user
         Vector3 lookPos = new Vector3(cam.transform.position.x, this.transform.position.y, cam.transform.position.z);
         this.transform.LookAt(lookPos);
@@ -33,6 +34,7 @@ public class ShiftWithHead : MonoBehaviour {
 
     public void RightLeft()
     {
+        lastDistance = Vector3.Distance(cam.transform.position, selectedObject.transform.position);
         //adjust visibility of arrows
         GameObject LRArrows = GameObject.Find("ShiftWithHead");
         LRArrows.transform.FindChild("MoveRightArrow").transform.FindChild("Box").GetComponent<MeshRenderer>().sharedMaterial.SetFloat("_Metallic", 0.5f);
@@ -49,6 +51,7 @@ public class ShiftWithHead : MonoBehaviour {
 
     public void UpDown()
     {
+        lastDistance = Vector3.Distance(cam.transform.position, selectedObject.transform.position);
         //adjust visibility of arrows
         GameObject LRArrows = GameObject.Find("ShiftWithHead");
         LRArrows.transform.FindChild("MoveRightArrow").transform.FindChild("Box").GetComponent<MeshRenderer>().sharedMaterial.SetFloat("_Metallic", 0.1f);
@@ -65,6 +68,7 @@ public class ShiftWithHead : MonoBehaviour {
 
     public void ForwardBack()
     {
+        lastDistance = Vector3.Distance(cam.transform.position, selectedObject.transform.position);
         //adjust visibility of arrows
         GameObject LRArrows = GameObject.Find("ShiftWithHead");
         LRArrows.transform.FindChild("MoveRightArrow").transform.FindChild("Box").GetComponent<MeshRenderer>().sharedMaterial.SetFloat("_Metallic", 0.1f);
@@ -109,7 +113,7 @@ public class ShiftWithHead : MonoBehaviour {
         {
             //calculate current distance and change in user's head position
             currentDistance = Vector3.Distance(cam.transform.position, selectedObject.transform.position);
-            amount = Mathf.Abs(currentDistance - lastDistance);
+            amount = Mathf.Abs(currentDistance - lastDistance) * 0.5f;
 
             if (currentDistance > lastDistance) //User moves farther away
             {
@@ -150,5 +154,10 @@ public class ShiftWithHead : MonoBehaviour {
             lastDistance = currentDistance;
         }
         
+    }
+
+    private void OnDisable()
+    {
+        Pause();
     }
 }

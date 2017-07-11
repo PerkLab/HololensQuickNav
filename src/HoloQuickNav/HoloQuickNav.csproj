@@ -390,10 +390,13 @@
     <Compile Include="Assets\QuickNavAssets\Scripts\EnableComponents.cs" />
     <Compile Include="Assets\QuickNavAssets\Scripts\EnableRegistration.cs" />
     <Compile Include="Assets\QuickNavAssets\Scripts\Initialize.cs" />
+    <Compile Include="Assets\QuickNavAssets\Scripts\InstructionVideos.cs" />
     <Compile Include="Assets\QuickNavAssets\Scripts\LeftEyeRotation.cs" />
     <Compile Include="Assets\QuickNavAssets\Scripts\LocationValues.cs" />
     <Compile Include="Assets\QuickNavAssets\Scripts\MoveWithHead.cs" />
+    <Compile Include="Assets\QuickNavAssets\Scripts\Opening.cs" />
     <Compile Include="Assets\QuickNavAssets\Scripts\PlacementOptions.cs" />
+    <Compile Include="Assets\QuickNavAssets\Scripts\PlayVideo.cs" />
     <Compile Include="Assets\QuickNavAssets\Scripts\PositionOnObject.cs" />
     <Compile Include="Assets\QuickNavAssets\Scripts\Reset.cs" />
     <Compile Include="Assets\QuickNavAssets\Scripts\Rotate3Axis.cs" />
@@ -401,12 +404,14 @@
     <Compile Include="Assets\QuickNavAssets\Scripts\RotateOnGaze.cs" />
     <Compile Include="Assets\QuickNavAssets\Scripts\RotateOnSphere.cs" />
     <Compile Include="Assets\QuickNavAssets\Scripts\RotateWithHead.cs" />
+    <Compile Include="Assets\QuickNavAssets\Scripts\SavePos.cs" />
     <Compile Include="Assets\QuickNavAssets\Scripts\ScaleObject.cs" />
     <Compile Include="Assets\QuickNavAssets\Scripts\ScaleWithHead.cs" />
     <Compile Include="Assets\QuickNavAssets\Scripts\SetTransparent.cs" />
     <Compile Include="Assets\QuickNavAssets\Scripts\ShiftDirection.cs" />
     <Compile Include="Assets\QuickNavAssets\Scripts\ShiftWithHead.cs" />
     <Compile Include="Assets\QuickNavAssets\Scripts\SwapScene.cs" />
+    <Compile Include="Assets\QuickNavAssets\Scripts\TestEnableRegistration.cs" />
     <Compile Include="Assets\QuickNavAssets\Scripts\WriteLog.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -446,8 +451,8 @@
     <None Include="Assets\OBJImport\readme.txt" />
     <None Include="Assets\Prototyping\Shaders\UnlitTransparentTriplanar.shader" />
     <None Include="Assets\Prototyping\Shaders\UnlitTriplanar.shader" />
-    <None Include="Assets\QuickNavAssets\New Folder\RoomSurfaceShader.shader" />
-    <None Include="Assets\QuickNavAssets\New Folder\SkinSurfaceShader.shader" />
+    <None Include="Assets\QuickNavAssets\Room\RoomSurfaceShader.shader" />
+    <None Include="Assets\QuickNavAssets\Room\SkinSurfaceShader.shader" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

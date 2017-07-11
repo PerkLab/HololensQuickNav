@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/QuickNavAssets/Scenes/RoomTest2.unity
+- path: Assets/QuickNavAssets/Scenes/MalePlastic.unity
   isLoaded: 1
   isActive: 1

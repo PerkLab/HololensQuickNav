@@ -11,6 +11,7 @@ public class LocationValues : MonoBehaviour {
     string[] Nose;
     string[] REye;
     string[] LEye;
+    string[] BurrHole;
 
     //use fiducial locations from Slicer to declare static variables for use throughout the entire program
     public static float NoseR;
@@ -24,6 +25,10 @@ public class LocationValues : MonoBehaviour {
     public static float LEyeR;
     public static float LEyeA;
     public static float LEyeS;
+
+    public static float BurrHoleR;
+    public static float BurrHoleA;
+    public static float BurrHoleS;
 
     void Awake()
     {
@@ -52,6 +57,10 @@ public class LocationValues : MonoBehaviour {
                 {
                     LEye = record.Split(fieldSeperator);
                 }
+                else if (count == 6) //line 6 is for the burrhole
+                {
+                    BurrHole = record.Split(fieldSeperator);
+                }
             }
             count++;
         }
@@ -68,5 +77,8 @@ public class LocationValues : MonoBehaviour {
         LEyeA = float.Parse(LEye[2]) * 0.001f;
         LEyeS = float.Parse(LEye[3]) * 0.001f;
 
+        BurrHoleR = float.Parse(BurrHole[1]) * 0.001f * -1f;
+        BurrHoleA = float.Parse(BurrHole[2]) * 0.001f;
+        BurrHoleS = float.Parse(BurrHole[3]) * 0.001f;
     }
 }

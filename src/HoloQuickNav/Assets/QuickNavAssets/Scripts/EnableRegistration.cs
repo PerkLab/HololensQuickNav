@@ -28,10 +28,12 @@ public class EnableRegistration : MonoBehaviour {
 
     public void Begin()
     {
+        
         //hide model, show markers, disable voice commands from main program
         GameObject.Find("Head").transform.FindChild("Model").gameObject.SetActive(false);
         GameObject.Find("3PointRegistration").transform.FindChild("Frame").gameObject.SetActive(true);
         GameObject.Find("InputManager").transform.FindChild("VoiceInput").gameObject.SetActive(false);
+        GameObject.Find("3PointRegistration").transform.FindChild("VoiceInput").gameObject.SetActive(true);
 
         //hide command names for model and show them for the registration
         GameObject.Find("CommandText").transform.FindChild("CommandName").gameObject.SetActive(false);
@@ -48,21 +50,34 @@ public class EnableRegistration : MonoBehaviour {
 
     public void Back()
     {
+        //centre command name text around marker
+        CommandText.ToggleObject(false);
+
         //decrease stepcount by 2 to account for stepCount++ in actual step function
-        stepCount = stepCount - 2;
-        if(stepCount < 0)
+        if(stepCount == 1)
         {
-            Done();
-        }
-        else if(stepCount == 1 || stepCount ==3)
-        {
-            //if the last step was a depth tool, go back to the move tool before it
-            Back();
+            //do nothing, on first step
         }
         else
         {
-            Step();
+            stepCount = stepCount - 2;
+            if (stepCount == 1 || stepCount == 3)
+            {
+                //if the last step was a depth tool, go back to the move tool before it
+                Back();
+            }
+            else
+            {
+                Step();
+            }
         }
+        
+        //if(stepCount < 0)
+        //{
+           // stepCount = 0;
+            //Done();
+        //}
+
         
     }
 
@@ -95,6 +110,7 @@ public class EnableRegistration : MonoBehaviour {
 
             //update text
             CommandName.text = "Nose > Move";
+            WriteLog.WriteData("Command: 3 Point Reg. > Nose");
 
         }
         else if(stepCount==1)  //move nose marker >> depth
@@ -124,6 +140,7 @@ public class EnableRegistration : MonoBehaviour {
             //move RightEye marker to a location in front of the user
             Vector3 noseMarker = GameObject.Find("3PointRegistration").transform.FindChild("Frame/SubFrame/Nose/Marker").transform.position;
             GameObject.Find("3PointRegistration").transform.FindChild("RightEye/Marker").transform.position = new Vector3(noseMarker.x, noseMarker.y, noseMarker.z);
+            
             //enable move command for RightEye
             GameObject.Find("3PointRegistration").transform.FindChild("RightEye").gameObject.SetActive(true);
             GameObject.Find("3PointRegistration").transform.FindChild("RightEye/MoveWithHead").gameObject.SetActive(true);
@@ -144,6 +161,7 @@ public class EnableRegistration : MonoBehaviour {
 
             //update text
             CommandName.text = "Right Eye > Move";
+            WriteLog.WriteData("Command: 3 Point Reg. > Right Eye");
         }
         else if(stepCount==3)  //move right eye marker >> depth
         {
@@ -170,7 +188,7 @@ public class EnableRegistration : MonoBehaviour {
             CommandName.text = "Right Eye > Depth";
         }
 
-        else if(stepCount==4) //move left eye marker
+        else if(stepCount==4) //move left eye marker >> move with head
         {
             //update position after step 3 to get proper alignment and spacing between nose and right eye markers
             Vector3 nosePosition = GameObject.Find("3PointRegistration").transform.FindChild("Frame/SubFrame/Nose/Marker").gameObject.transform.position;
@@ -186,11 +204,14 @@ public class EnableRegistration : MonoBehaviour {
             REyePosition = GameObject.Find("3PointRegistration").transform.FindChild("Frame/SubFrame/RightEye/Marker").gameObject.transform.position;
             Vector3 distance = new Vector3(REyePosition.x - markerPosition.x, REyePosition.y - markerPosition.y, REyePosition.z - markerPosition.z);
             float distanceMagnitude = Vector3.Magnitude(distance);
-            frame.transform.position = frame.transform.position + (distanceMagnitude / 2) * newDirection.normalized;
+           // frame.transform.position = frame.transform.position + (distanceMagnitude / 2) * newDirection.normalized;
+        
+
 
             //begin next step
 
             stepCount++;
+
             //disable Nose, RightEye commands, enable LeftEye command
             GameObject.Find("3PointRegistration").transform.FindChild("Nose").gameObject.SetActive(false);
             GameObject.Find("3PointRegistration").transform.FindChild("RightEye").gameObject.SetActive(false);
@@ -207,11 +228,13 @@ public class EnableRegistration : MonoBehaviour {
 
             //update text
             CommandName.text = "Left Eye";
+            WriteLog.WriteData("Command: 3 Point Reg. > Left Eye");
 
+    }
 
-        }
         else if(stepCount==5) //reached the last step, finish registration
         {
+            stepCount = 0;
             Done();
         }
 	}
@@ -245,6 +268,8 @@ public class EnableRegistration : MonoBehaviour {
 
         //turn voice commands from main program back on
         GameObject.Find("InputManager").transform.FindChild("VoiceInput").gameObject.SetActive(true);
+        GameObject.Find("3PointRegistration").transform.FindChild("VoiceInput").gameObject.SetActive(false);
+        GameObject.Find("3PointRegistration").transform.FindChild("Frame").transform.GetComponent<AirTapInput>().enabled = false;
 
         DoneEvent.Invoke();
     }
