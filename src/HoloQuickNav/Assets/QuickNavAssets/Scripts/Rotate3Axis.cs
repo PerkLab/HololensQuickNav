@@ -52,7 +52,7 @@ public class Rotate3Axis : MonoBehaviour {
         rotateA = true;
         IsRunning = true;
         //WriteLog.WriteData("Command: Rotate3Axis > RotateA");
-        GameObject.Find("CommandText").transform.FindChild("CommandName").GetComponent<TextMesh>().text = "Rotate3Axis > RotateA";
+        GameObject.Find("CommandText").transform.FindChild("CommandName").GetComponent<TextMesh>().text = "Rotate3Axis - RotateA";
     }
 
     public void RotateS()
@@ -68,7 +68,7 @@ public class Rotate3Axis : MonoBehaviour {
         rotateS = true;
         IsRunning = true;
         //WriteLog.WriteData("Command: Rotate3Axis > RotateS");
-        GameObject.Find("CommandText").transform.FindChild("CommandName").GetComponent<TextMesh>().text = "Rotate3Axis > RotateS";
+        GameObject.Find("CommandText").transform.FindChild("CommandName").GetComponent<TextMesh>().text = "Rotate3Axis - RotateS";
     }
 
     public void RotateR()
@@ -84,7 +84,7 @@ public class Rotate3Axis : MonoBehaviour {
         rotateR = true;
         IsRunning = true;
         //WriteLog.WriteData("Command: Rotate3Axis > RotateR");
-        GameObject.Find("CommandText").transform.FindChild("CommandName").GetComponent<TextMesh>().text = "Rotate3Axis > RotateR";
+        GameObject.Find("CommandText").transform.FindChild("CommandName").GetComponent<TextMesh>().text = "Rotate3Axis - RotateR";
     }
 
     public void Pause()

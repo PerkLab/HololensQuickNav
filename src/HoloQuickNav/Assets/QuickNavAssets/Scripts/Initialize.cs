@@ -11,7 +11,16 @@ public class Initialize : MonoBehaviour {
 	void OnEnable () {
 
         //align burrhole marker 
-        GameObject.Find("Head").transform.FindChild("Model/BurrHoleMarker").transform.position += new Vector3(LocationValues.BurrHoleR, LocationValues.BurrHoleA, LocationValues.BurrHoleS);
+        GameObject.Find("Head").transform.FindChild("Model/BurrHoleMarker").transform.position += new Vector3(LocationValues.targetR, LocationValues.targetA, LocationValues.targetS);
+
+        //align BB markers
+        GameObject.Find("Head").transform.FindChild("Model/Targets/1BB").transform.position += new Vector3(LocationValues.BB1R, LocationValues.BB1A, LocationValues.BB1S);
+        GameObject.Find("Head").transform.FindChild("Model/Targets/2BB").transform.position += new Vector3(LocationValues.BB2R, LocationValues.BB2A, LocationValues.BB2S);
+        GameObject.Find("Head").transform.FindChild("Model/Targets/3BB").transform.position += new Vector3(LocationValues.BB3R, LocationValues.BB3A, LocationValues.BB3S);
+        GameObject.Find("Head").transform.FindChild("Model/Targets/4BB").transform.position += new Vector3(LocationValues.BB4R, LocationValues.BB4A, LocationValues.BB4S);
+        GameObject.Find("Head").transform.FindChild("Model/Targets/5BB").transform.position += new Vector3(LocationValues.BB5R, LocationValues.BB5A, LocationValues.BB5S);
+        GameObject.Find("Head").transform.FindChild("Model/Targets/6BB").transform.position += new Vector3(LocationValues.BB6R, LocationValues.BB6A, LocationValues.BB6S);
+
         //shift 3 point registration frame and model so tip of the nose is at the origin
         GameObject.Find("Head").transform.FindChild("Model").transform.position = new Vector3(-LocationValues.NoseR, -LocationValues.NoseA + 0.1f, -LocationValues.NoseS + 1.5f);
         GameObject.Find("3PointRegistration").transform.FindChild("Frame/SubFrame").transform.position = new Vector3(-LocationValues.NoseR, -LocationValues.NoseA + 0.1f, -LocationValues.NoseS + 1.5f);

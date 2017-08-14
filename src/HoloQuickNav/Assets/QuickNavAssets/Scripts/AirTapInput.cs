@@ -34,19 +34,24 @@ public class AirTapInput : MonoBehaviour//, IInputClickHandler
 
     GestureRecognizer recognizer;
 
+    private AudioSource Click;
+
     // Use this for initialization
-    void Start()
+    void OnEnable()
     {
         IsEnabled = false;
         tapOccured = false;
         secondTapOccured = false;
         thirdTapOccured = false;
+        thirdTapEnabled = false;
         startDelay = 0f;
         //enable gesture recognizer to call AirTap on tap event
         recognizer = new GestureRecognizer();
         recognizer.TappedEvent += AirTap;
         recognizer.StartCapturingGestures();
 
+        Click = GameObject.Find("ClickAudio").GetComponent<AudioSource>();
+        //WriteLog.WriteData("initialize airtap");
     }
 
 
@@ -55,26 +60,34 @@ public class AirTapInput : MonoBehaviour//, IInputClickHandler
 
         if (IsEnabled)
         {
+            //WriteLog.WriteData("tap " + gameObject.gameObject);
+            Click.Play();
             if (!timerEnabled) //first tap
             {
+                //WriteLog.WriteData("first tap since initialization " + gameObject.gameObject);
                 timerEnabled = true;
+                timeBetweenTaps = 0f;
             }
 
             if (!thirdTapOccured && !secondTapOccured && !tapOccured) //if cleared on previous tap or double tap, restart timer on current tap
             {
                 timeBetweenTaps = 0f;
+                //WriteLog.WriteData("first tap " + gameObject.gameObject);
             }
 
             if (tapOccured && !secondTapOccured) //single tap occurred, never cleared
             {
                 secondTapOccured = true;
+                //WriteLog.WriteData("second tap " + gameObject.gameObject);
             }
             else if (tapOccured && secondTapOccured && thirdTapEnabled) //double tap occurred, never cleared
             {
                 thirdTapOccured = true;
+                //WriteLog.WriteData("third tap " + gameObject.gameObject);
             }
 
             tapOccured = true;
+            
 
 
         }
@@ -110,6 +123,9 @@ public class AirTapInput : MonoBehaviour//, IInputClickHandler
                 if (!toggle)
                 {
                     tapOccured = false;
+                    secondTapOccured = false;
+                    thirdTapOccured = false;
+
                     thirdTapEnabled = false;
                     thirdTapDelay = 0f;
                     OnTap1Events.Invoke();
@@ -120,6 +136,9 @@ public class AirTapInput : MonoBehaviour//, IInputClickHandler
                     if (ToggleEnabled)
                     {
                         tapOccured = false;
+                        secondTapOccured = false;
+                        thirdTapOccured = false;
+
                         thirdTapEnabled = false;
                         thirdTapDelay = 0f;
                         OnTap2Events.Invoke();
@@ -127,6 +146,9 @@ public class AirTapInput : MonoBehaviour//, IInputClickHandler
                     else
                     {
                         tapOccured = false;
+                        secondTapOccured = false;
+                        thirdTapOccured = false;
+
                         thirdTapEnabled = false;
                         thirdTapDelay = 0f;
                         OnTap1Events.Invoke();
@@ -140,6 +162,8 @@ public class AirTapInput : MonoBehaviour//, IInputClickHandler
             {
                 tapOccured = false;
                 secondTapOccured = false;
+                thirdTapOccured = false;
+
                 thirdTapEnabled = false;
                 thirdTapDelay = 0f;
 
@@ -161,5 +185,17 @@ public class AirTapInput : MonoBehaviour//, IInputClickHandler
             }
         }
 
+    }
+
+    private void OnDisable()
+    {
+        tapOccured = false;
+        secondTapOccured = false;
+        thirdTapOccured = false;
+
+        recognizer.TappedEvent -= AirTap;
+        recognizer.StopCapturingGestures();
+
+        //WriteLog.WriteData("tap disabled " + gameObject.gameObject);
     }
 }

@@ -211,9 +211,9 @@ namespace HoloToolkit.Unity
         private void Start()
         {
             spatialUnderstanding = SpatialUnderstanding.Instance;
-            if (gameObject.GetComponent<WorldAnchor>() == null)
+            if (gameObject.GetComponent<PlaceWorldAnchor>() == null)
             {
-                gameObject.AddComponent<WorldAnchor>();
+                gameObject.AddComponent<PlaceWorldAnchor>();
             }
         }
 

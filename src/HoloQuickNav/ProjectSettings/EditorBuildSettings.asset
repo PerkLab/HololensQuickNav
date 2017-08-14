@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/QuickNavAssets/Scenes/MalePlastic.unity
     guid: d8343f7924d508e428cfb34084b345a9
   - enabled: 1
+    path: Assets/QuickNavAssets/Scenes/FemalePlastic.unity
+    guid: b6defc0f8e5fca84aad5592235d34445
+  - enabled: 1
     path: Assets/QuickNavAssets/Scenes/Instructions.unity
     guid: b902fbc204f2b4d4ca5f7292a8c25ec4
   - enabled: 0

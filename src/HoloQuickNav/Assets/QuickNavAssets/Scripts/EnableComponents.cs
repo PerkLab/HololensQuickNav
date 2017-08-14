@@ -94,15 +94,15 @@ public class EnableComponents : MonoBehaviour {
             //display proper current states of head and brain visibility 
             if(headOnOff)
             {
-                DoneCommandName.text = "Head:On > Brain:Off > Detail:Off";
+                DoneCommandName.text = "Head:On - Brain:Off - Detail:Off";
                 //write to log
-                WriteLog.WriteData("Command: Brain (Done > Head:On > Brain:Off > Detail:Off)");
+                WriteLog.WriteData("Command: Brain (Done - Head:On - Brain:Off - Detail:Off)");
             } 
             else if(!headOnOff)
             {
-                DoneCommandName.text = "Head:Off > Brain:Off > Detail:Off";
+                DoneCommandName.text = "Head:Off - Brain:Off - Detail:Off";
                 //write to log
-                WriteLog.WriteData("Command: Brain (Done > Head:Off > Brain:Off > Detail:Off)");
+                WriteLog.WriteData("Command: Brain (Done - Head:Off - Brain:Off - Detail:Off)");
             }
         }
         else //brain off >> turn brain on, detail off
@@ -111,15 +111,15 @@ public class EnableComponents : MonoBehaviour {
             //display proper current states of head and brain visibility 
             if (headOnOff)
             {
-                DoneCommandName.text = "Head:On > Brain:On > Detail:Off";
+                DoneCommandName.text = "Head:On - Brain:On - Detail:Off";
                 //write to log
-                WriteLog.WriteData("Command: Brain (Done > Head:On > Brain:On > Detail:Off)");
+                WriteLog.WriteData("Command: Brain (Done - Head:On - Brain:On - Detail:Off)");
             }
             else if (!headOnOff)
             {
-                CommandName.text = "Head:Off > Brain:On > Detail:Off";
+                DoneCommandName.text = "Head:Off - Brain:On - Detail:Off";
                 //write to log
-                WriteLog.WriteData("Command: Brain (Done > Head:Off > Brain:On > Detail:Off)");
+                WriteLog.WriteData("Command: Brain (Done - Head:Off - Brain:On - Detail:Off)");
             }
         }
     }
@@ -133,23 +133,23 @@ public class EnableComponents : MonoBehaviour {
             //display proper current states of head and brain visibility
             if (GameObject.Find("Head").transform.FindChild("Model/Brain_Reduced").gameObject.activeSelf) //if brain on detail off
             {
-                DoneCommandName.text = "Head:Off > Brain:On > Detail:Off";
+                DoneCommandName.text = "Head:Off - Brain:On - Detail:Off";
                 //write to log
-                WriteLog.WriteData("Command: Head (Done > Head:Off > Brain:On > Detail:Off)");
+                WriteLog.WriteData("Command: Head (Done - Head:Off - Brain:On - Detail:Off)");
             }
             else //if brain off, detail may be on
             {
-                if(GameObject.Find("Head").transform.FindChild("Model/BurrHoleMarker").gameObject.activeSelf)
+                if(GameObject.Find("Head").transform.FindChild("Model/Targets").gameObject.activeSelf)
                 {
-                    DoneCommandName.text = "Head:Off > Brain:Off > Detail:On";
+                    DoneCommandName.text = "Head:Off - Brain:Off - Detail:On";
                     //write to log
-                    WriteLog.WriteData("Command: Head (Done > Head:Off > Brain:Off > Detail:On)");
+                    WriteLog.WriteData("Command: Head (Done - Head:Off - Brain:Off - Detail:On)");
                 }
                 else //brain and detail off
                 {
-                    DoneCommandName.text = "Head:Off > Brain:Off > Detail:Off";
+                    DoneCommandName.text = "Head:Off - Brain:Off - Detail:Off";
                     //write to log
-                    WriteLog.WriteData("Command: Head (Done > Head:Off > Brain:Off > Detail:Off)");
+                    WriteLog.WriteData("Command: Head (Done - Head:Off - Brain:Off - Detail:Off)");
                 }
                 
             }
@@ -160,23 +160,23 @@ public class EnableComponents : MonoBehaviour {
             //display proper current states of head and brain visibility
             if (GameObject.Find("Head").transform.FindChild("Model/Brain_Reduced").gameObject.activeSelf) //if brain on detail off
             {
-                DoneCommandName.text = "Head:On > Brain:On > Detail:Off";
+                DoneCommandName.text = "Head:On - Brain:On - Detail:Off";
                 //write to log
-                WriteLog.WriteData("Command: Head (Done > Head:On > Brain:On > Detail:Off)");
+                WriteLog.WriteData("Command: Head (Done - Head:On - Brain:On - Detail:Off)");
             }
             else //if brain off, detail may be on
             {
-                if (GameObject.Find("Head").transform.FindChild("Model/BurrHoleMarker").gameObject.activeSelf)
+                if (GameObject.Find("Head").transform.FindChild("Model/Targets").gameObject.activeSelf)
                 {
-                    DoneCommandName.text = "Head:On > Brain:Off > Detail:On";
+                    DoneCommandName.text = "Head:On - Brain:Off - Detail:On";
                     //write to log
-                    WriteLog.WriteData("Command: Head (Done > Head:On > Brain:Off > Detail:On)");
+                    WriteLog.WriteData("Command: Head (Done - Head:On - Brain:Off - Detail:On)");
                 }
                 else //brain and detail off
                 {
-                    DoneCommandName.text = "Head:On > Brain:Off > Detail:Off";
+                    DoneCommandName.text = "Head:On - Brain:Off - Detail:Off";
                     //write to log
-                    WriteLog.WriteData("Command: Head (Done > Head:On > Brain:Off > Detail:Off)");
+                    WriteLog.WriteData("Command: Head (Done - Head:On - Brain:Off - Detail:Off)");
                 }
 
             }
@@ -184,23 +184,22 @@ public class EnableComponents : MonoBehaviour {
     }
     public void Detail()
     {
-        if (GameObject.Find("Head").transform.FindChild("Model/BurrHoleMarker").gameObject.activeSelf)
+        if (GameObject.Find("Head").transform.FindChild("Model/Targets").gameObject.activeSelf)
         {
             BrainOnOff(false);
             DetailOnOff(false);
-            CommandName.text = "Done > Detail";
 
             if (headOnOff)
             {
-                DoneCommandName.text = "Head:On > Brain:Off > Detail:Off";
+                DoneCommandName.text = "Head:On - Brain:Off - Detail:Off";
                 //write to log
-                WriteLog.WriteData("Command: Detail (Done > Head:On > Brain:Off > Detail:Off)");
+                WriteLog.WriteData("Command: Detail (Done - Head:On - Brain:Off - Detail:Off)");
             }
             else if (!headOnOff)
             {
-                DoneCommandName.text = "Head:Off > Brain:Off > Detail:Off";
+                DoneCommandName.text = "Head:Off - Brain:Off - Detail:Off";
                 //write to log
-                WriteLog.WriteData("Command: Detail (Done > Head:Off > Brain:Off > Detail:Off)");
+                WriteLog.WriteData("Command: Detail (Done - Head:Off - Brain:Off - Detail:Off)");
             }
         }
         else
@@ -210,15 +209,15 @@ public class EnableComponents : MonoBehaviour {
 
             if (headOnOff)
             {
-                DoneCommandName.text = "Head:On > Brain:Off > Detail:On";
+                DoneCommandName.text = "Head:On - Brain:Off - Detail:On";
                 //write to log
-                WriteLog.WriteData("Command: Detail (Done > Head:On > Brain:Off > Detail:On)");
+                WriteLog.WriteData("Command: Detail (Done - Head:On - Brain:Off - Detail:On)");
             }
             else if (!headOnOff)
             {
-                DoneCommandName.text = "Head:Off > Brain:Off > Detail:On";
+                DoneCommandName.text = "Head:Off - Brain:Off - Detail:On";
                 //write to log
-                WriteLog.WriteData("Command: Detail (Done > Head:Off > Brain:Off > Detail:On)");
+                WriteLog.WriteData("Command: Detail (Done - Head:Off - Brain:Off - Detail:On)");
             }
         }
     }
@@ -240,16 +239,16 @@ public class EnableComponents : MonoBehaviour {
         if(option == 0)
         {
             ScaleWithHeadOnOff(true);
-            CommandName.text = "Scale > Head";
+            CommandName.text = "Scale - Head";
             //write to log
-            WriteLog.WriteData("Command: Scale > Head");
+            WriteLog.WriteData("Command: Scale - Head");
         }
         else
         {
             ScaleArrowsOnOff(true);
-            CommandName.text = "Scale > Gaze";
+            CommandName.text = "Scale - Gaze";
             //write to log
-            WriteLog.WriteData("Command: Scale > Gaze");
+            WriteLog.WriteData("Command: Scale - Gaze");
         }
     }
 
@@ -262,23 +261,23 @@ public class EnableComponents : MonoBehaviour {
         if (option == 0)
         {
             RotateGazeAOnOff(true);
-            CommandName.text = "Rotate A > Gaze";
+            CommandName.text = "Rotate A - Gaze";
             //write to log
-            WriteLog.WriteData("Command: Rotate A > Gaze");
+            WriteLog.WriteData("Command: Rotate A - Gaze");
         }
         else if (option ==1)
         {
             RotateArrowsAOnOff(true);
-            CommandName.text = "Rotate A > Tap";
+            CommandName.text = "Rotate A - Tap";
             //write to log
-            WriteLog.WriteData("Command: Rotate A > Tap");
+            WriteLog.WriteData("Command: Rotate A - Tap");
         }
         else
         {
             RotateHeadAOnOff(true);
-            CommandName.text = "Rotate A > Head";
+            CommandName.text = "Rotate A - Head";
             //write to log
-            WriteLog.WriteData("Command: Rotate A > Head");
+            WriteLog.WriteData("Command: Rotate A - Head");
         }
     }
     public void RotateS(int option)
@@ -290,23 +289,23 @@ public class EnableComponents : MonoBehaviour {
         if (option == 0)
         {
             RotateGazeSOnOff(true);
-            CommandName.text = "Rotate S > Gaze";
+            CommandName.text = "Rotate S - Gaze";
             //write to log
-            WriteLog.WriteData("Command: Rotate S > Gaze");
+            WriteLog.WriteData("Command: Rotate S - Gaze");
         }
         else if (option == 1)
         {
             RotateArrowsSOnOff(true);
-            CommandName.text = "Rotate S > Tap";
+            CommandName.text = "Rotate S - Tap";
             //write to log
-            WriteLog.WriteData("Command: Rotate S > Tap");
+            WriteLog.WriteData("Command: Rotate S - Tap");
         }
         else
         {
             RotateHeadSOnOff(true);
-            CommandName.text = "Rotate S > Head";
+            CommandName.text = "Rotate S - Head";
             //write to log
-            WriteLog.WriteData("Command: Rotate S > Head");
+            WriteLog.WriteData("Command: Rotate S - Head");
         }
     }
     public void RotateR(int option)
@@ -318,23 +317,23 @@ public class EnableComponents : MonoBehaviour {
         if (option == 0)
         {
             RotateGazeROnOff(true);
-            CommandName.text = "Rotate R > Gaze";
+            CommandName.text = "Rotate R - Gaze";
             //write to log
-            WriteLog.WriteData("Command: Rotate R > Gaze");
+            WriteLog.WriteData("Command: Rotate R - Gaze");
         }
         else if (option == 1)
         {
             RotateArrowsROnOff(true);
-            CommandName.text = "Rotate R > Tap";
+            CommandName.text = "Rotate R - Tap";
             //write to log
-            WriteLog.WriteData("Command: Rotate R > Tap");
+            WriteLog.WriteData("Command: Rotate R - Tap");
         }
         else
         {
             RotateHeadROnOff(true);
-            CommandName.text = "Rotate R > Head";
+            CommandName.text = "Rotate R - Head";
             //write to log
-            WriteLog.WriteData("Command: Rotate R > Head");
+            WriteLog.WriteData("Command: Rotate R - Head");
         }
     }
     public void Rotate3Axis()
@@ -371,7 +370,7 @@ public class EnableComponents : MonoBehaviour {
         //declare the sphere on to call delay function in Update() to enable the script
         SphereOn = true;
         //display initial command as pause, until user starts tool with voice command
-        CommandName.text = "Rotate Free > Pause";
+        CommandName.text = "Rotate Free - Pause";
         //write to log
         WriteLog.WriteData("Command: Rotate Free");
     }
@@ -423,16 +422,6 @@ public class EnableComponents : MonoBehaviour {
         WriteLog.WriteData("Command: Depth");
     }
 
-    public void Copy()
-    {
-        SetAllInactive();
-        CopyOnOff(true);
-        //display current command
-        CommandName.text = "Copy";
-        //write to log
-        WriteLog.WriteData("Command: Copy");
-    }
-
     public void Menu()
     {
         SetAllInactive();
@@ -475,7 +464,6 @@ public class EnableComponents : MonoBehaviour {
         //disable RotateFree script until enabled by voice command
         (GameObject.Find("Controls").transform.FindChild("Sphere").GetComponent("Interactive") as MonoBehaviour).enabled = false;
 
-
         //shift tools
         ShiftWithHeadOnOff(false);
 
@@ -485,10 +473,7 @@ public class EnableComponents : MonoBehaviour {
         MoveWithHeadOnOff(false);
         MoveOnOff(false);
         DepthOnOff(false);
-        CopyOnOff(false);
 
-        
-        
         HeadOnOff(true);
         BrainOnOff(false);
         DoneOnOff(false);
@@ -514,6 +499,7 @@ public class EnableComponents : MonoBehaviour {
         float amountSmoothBrain = 0f;
         //declare state of headOnOff
         headOnOff = visible;
+        GameObject.Find("Head").transform.FindChild("Model/Skin_Reduced").gameObject.SetActive(true);
 
         if (visible)
         {
@@ -561,19 +547,22 @@ public class EnableComponents : MonoBehaviour {
     }
     void BrainOnOff(bool visible)
     {
-        //toggle visiblity of brain, hemmatoma, and target locations
+        //toggle visiblity of brain, hemmatoma
+        GameObject.Find("Head").transform.FindChild("Model/Skin_Reduced").gameObject.SetActive(true);
         GameObject.Find("Head").transform.FindChild("Model/Brain_Reduced").gameObject.SetActive(visible);
         GameObject.Find("Head").transform.FindChild("Model/SubduralHemmorhage").gameObject.SetActive(visible);
-        GameObject.Find("Head").transform.FindChild("Model/BurrHole").gameObject.SetActive(visible);
-        GameObject.Find("Head").transform.FindChild("Model/DrainTarget").gameObject.SetActive(visible);
-        GameObject.Find("Head").transform.FindChild("Model/BurrHoleMarker").gameObject.SetActive(false);
+        GameObject.Find("Head").transform.FindChild("Model/BurrHoleMarker").gameObject.SetActive(visible);
+        //GameObject.Find("Head").transform.FindChild("Model/Targets").gameObject.SetActive(visible);
+
     }
 
     void DetailOnOff(bool visible)
     {
         //view burrhole location as a smaller point
         GameObject.Find("Head").transform.FindChild("Model/BurrHoleMarker").gameObject.SetActive(visible);
-        GameObject.Find("Head").transform.FindChild("Model/DrainTarget").gameObject.SetActive(visible);
+        //GameObject.Find("Head").transform.FindChild("Model/Targets").gameObject.SetActive(visible);
+        GameObject.Find("Head").transform.FindChild("Model/Skin_Reduced").gameObject.SetActive(!visible);
+        headOnOff = !visible;
     }
 
     void ResetOnOff(bool visible)
@@ -582,18 +571,19 @@ public class EnableComponents : MonoBehaviour {
     }
     void DoneOnOff(bool visible)
     {
+
         //close help window if previously open
         GameObject.Find("Controls").transform.FindChild("Done/HelpWindow").gameObject.SetActive(false);
         GameObject.Find("Controls").transform.FindChild("Done").gameObject.SetActive(visible);
         GameObject.Find("CommandText").transform.FindChild("DoneCommandName").gameObject.SetActive(visible);
-        DoneCommandName.text = "Head:On > Brain:Off > Detail:Off";
+        DoneCommandName.text = "Head:On - Brain:Off - Detail:Off";
 
         //if turning off, set head back to full colour
         if (!visible)
         {
             HeadOnOff(true);
         }
-        //GameObject.Find("Controls").transform.FindChild("Done").transform.GetComponent<AirTapInput>().enabled = visible;
+        GameObject.Find("Controls").transform.FindChild("Done").transform.GetComponent<AirTapInput>().enabled = visible;
     }
 
     //Rotate Tools
@@ -698,7 +688,10 @@ public class EnableComponents : MonoBehaviour {
     {
         GameObject.Find("Controls").transform.FindChild("Rotate3Axis/HelpWindow").gameObject.SetActive(false);
         GameObject.Find("Controls").transform.FindChild("Rotate3Axis").gameObject.SetActive(visible);
-        
+        GameObject.Find("Controls").transform.FindChild("Rotate3Axis").transform.GetComponent<AirTapInput>().enabled = visible;
+        GameObject.Find("CommandText").transform.FindChild("PauseHelpAndMenu").gameObject.SetActive(visible);
+        GameObject.Find("CommandText").transform.FindChild("HelpAndMenu").gameObject.SetActive(false);
+
     }
 
     //Shift Tools
@@ -707,6 +700,9 @@ public class EnableComponents : MonoBehaviour {
         //close help window if previously open
         GameObject.Find("Controls").transform.FindChild("ShiftWithHead/HelpWindow").gameObject.SetActive(false);
         GameObject.Find("Controls").transform.FindChild("ShiftWithHead").gameObject.SetActive(visible);
+        GameObject.Find("Controls").transform.FindChild("ShiftWithHead").transform.GetComponent<AirTapInput>().enabled = visible;
+        GameObject.Find("CommandText").transform.FindChild("PauseHelpAndMenu").gameObject.SetActive(visible);
+        GameObject.Find("CommandText").transform.FindChild("HelpAndMenu").gameObject.SetActive(false);
     }
 
     //Scale Tools
@@ -769,6 +765,7 @@ public class EnableComponents : MonoBehaviour {
         //close help window if previously open
         GameObject.Find("Controls").transform.FindChild("MoveWithHead/HelpWindow").gameObject.SetActive(false);
         GameObject.Find("Controls").transform.FindChild("MoveWithHead").gameObject.SetActive(visible);
+
     }
     void DepthOnOff(bool visible)
     {
@@ -784,6 +781,7 @@ public class EnableComponents : MonoBehaviour {
 
         GameObject.Find("CommandText").transform.FindChild("MoveHelpAndMenu").gameObject.SetActive(visible);
         GameObject.Find("CommandText").transform.FindChild("HelpAndMenu").gameObject.SetActive(false);
+        GameObject.Find("Controls").transform.FindChild("MoveFull").transform.GetComponent<AirTapInput>().enabled = visible;
 
     }
 
@@ -801,10 +799,6 @@ public class EnableComponents : MonoBehaviour {
         //GameObject.Find("Menu").transform.FindChild("Background").transform.GetComponent<AirTapInput>().enabled = visible;
     }
 
-    void CopyOnOff(bool visible)
-    {
-        GameObject.Find("Controls").transform.FindChild("CopyRotation").gameObject.SetActive(visible);
-    }
 
     void GroundTruthOnOff(bool visible)
     {
@@ -826,16 +820,11 @@ public class EnableComponents : MonoBehaviour {
         
     }
     
-    void CursorOnOff(bool visible)
+    public void CursorOnOff(bool visible)
     {
-        WriteLog.WriteData("cursor");
         GameObject cursor = GameObject.Find("InteractiveMeshCursor").gameObject;
         if (visible)
         { 
-            //cursor.transform.FindChild("CursorDot").GetComponent<MeshRenderer>().materials[0] = cursorFaceMat;
-            //cursor.transform.FindChild("CursorDot").GetComponent<MeshRenderer>().materials[1] = cursorEdgeMat;
-            //cursor.transform.FindChild("CursorRing").GetComponent<MeshRenderer>().materials[0] = cursorEdgeMat;
-            //cursor.transform.FindChild("CursorRing").GetComponent<MeshRenderer>().materials[1] = cursorFaceMat;
             Material[] newMat = new Material[2];
             newMat[0] = cursorFaceMat;
             newMat[1] = cursorEdgeMat;

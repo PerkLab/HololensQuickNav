@@ -352,8 +352,6 @@
     <Compile Include="Assets\InteractiveElements\Scripts\Widgets\ScaleThemeWidget.cs" />
     <Compile Include="Assets\InteractiveElements\Scripts\Widgets\TextMeshColorThemeWidget.cs" />
     <Compile Include="Assets\InteractiveElements\Scripts\Widgets\TextureThemeWidget.cs" />
-    <Compile Include="Assets\OBJImport\OBJLoader.cs" />
-    <Compile Include="Assets\OBJImport\TextureLoader.cs" />
     <Compile Include="Assets\Prototyping\Scripts\ColorTransition.cs" />
     <Compile Include="Assets\Prototyping\Scripts\CycleArray.cs" />
     <Compile Include="Assets\Prototyping\Scripts\CycleColors.cs" />
@@ -395,6 +393,7 @@
     <Compile Include="Assets\QuickNavAssets\Scripts\LocationValues.cs" />
     <Compile Include="Assets\QuickNavAssets\Scripts\MoveWithHead.cs" />
     <Compile Include="Assets\QuickNavAssets\Scripts\Opening.cs" />
+    <Compile Include="Assets\QuickNavAssets\Scripts\PlaceWorldAnchor.cs" />
     <Compile Include="Assets\QuickNavAssets\Scripts\PlacementOptions.cs" />
     <Compile Include="Assets\QuickNavAssets\Scripts\PlayVideo.cs" />
     <Compile Include="Assets\QuickNavAssets\Scripts\PositionOnObject.cs" />
@@ -448,7 +447,6 @@
     <None Include="Assets\HoloToolkit\Utilities\Shaders\VertexLitConfigurableTransparent.shader" />
     <None Include="Assets\HoloToolkit\Utilities\Shaders\WindowOcclusion.shader" />
     <None Include="Assets\HoloToolkit\Utilities\Shaders\macro.cginc" />
-    <None Include="Assets\OBJImport\readme.txt" />
     <None Include="Assets\Prototyping\Shaders\UnlitTransparentTriplanar.shader" />
     <None Include="Assets\Prototyping\Shaders\UnlitTriplanar.shader" />
     <None Include="Assets\QuickNavAssets\Room\RoomSurfaceShader.shader" />

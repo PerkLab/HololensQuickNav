@@ -8,14 +8,31 @@ public class WriteLog : MonoBehaviour {
 
     static StreamWriter sw;
     static private string lastString;
+    static public int ID;
 
     // Use this for initialization
     void Awake () {
 
+        
+
         DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(GameObject.Find("ClickAudio").gameObject);
+
+        if(!PlayerPrefs.HasKey("ID")) //doesn't exist
+        {
+            ID = 1;
+        }
+        else
+        {
+            ID = PlayerPrefs.GetInt("ID");
+            ID++; //increase user ID 
+        }
+        PlayerPrefs.SetInt("ID", ID);
+        PlayerPrefs.Save();
 
         //copy over any existing text file
-        sw = File.CreateText(Application.persistentDataPath + "/QuickNavLogData.txt");
+        sw = File.AppendText(Application.persistentDataPath + "/QuickNavLogData.txt");
+        //sw = File.CreateText(Application.persistentDataPath + "/QuickNavLogData.txt");
         sw.AutoFlush = true;
         sw.WriteLine("QuickNav Log Data");
         sw.Write("Time of Test: ");
@@ -30,8 +47,8 @@ public class WriteLog : MonoBehaviour {
         {
             string minutes = Mathf.Floor(Time.timeSinceLevelLoad / 60f).ToString("00");
             string seconds = (Time.timeSinceLevelLoad % 60f).ToString("00");
-            sw.Write("Time Elapsed: " + minutes + ":" + seconds);
-            sw.WriteLine("   " + Data);
+            sw.Write(ID.ToString() +","+ minutes + ":" + seconds);
+            sw.WriteLine("," + Data);
         }
         else
         {
@@ -67,6 +84,14 @@ public class WriteLog : MonoBehaviour {
         sw.WriteLine("Y: " + directionToBurrHole.y);
         sw.WriteLine("Z: " + directionToBurrHole.z);
         sw.WriteLine("-----------------------------");
+    }
+
+    public void ResetID()
+    {
+
+        PlayerPrefs.SetInt("ID", 1);
+        ID = PlayerPrefs.GetInt("ID");
+        PlayerPrefs.Save();
     }
 
 }

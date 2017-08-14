@@ -23,12 +23,11 @@ public class EnableRegistration : MonoBehaviour {
     {
         //assign text mesh
         CommandName = GameObject.Find("RegistrationText").transform.FindChild("CommandName").GetComponent<TextMesh>();
-
     }
 
     public void Begin()
     {
-        
+
         //hide model, show markers, disable voice commands from main program
         GameObject.Find("Head").transform.FindChild("Model").gameObject.SetActive(false);
         GameObject.Find("3PointRegistration").transform.FindChild("Frame").gameObject.SetActive(true);
@@ -38,7 +37,7 @@ public class EnableRegistration : MonoBehaviour {
         //hide command names for model and show them for the registration
         GameObject.Find("CommandText").transform.FindChild("CommandName").gameObject.SetActive(false);
         GameObject.Find("CommandText").transform.FindChild("HelpAndMenu").gameObject.SetActive(false);
-        //text.GetComponent<TextMesh>().text = "";
+        
         GameObject.Find("RegistrationText").transform.FindChild("CommandName").gameObject.SetActive(true);
         GameObject.Find("RegistrationText").transform.FindChild("AirTapCommands").gameObject.SetActive(true);
 
@@ -53,30 +52,23 @@ public class EnableRegistration : MonoBehaviour {
         //centre command name text around marker
         CommandText.ToggleObject(false);
 
-        //decrease stepcount by 2 to account for stepCount++ in actual step function
-        if(stepCount == 1)
+        
+        if(stepCount == 0)
         {
             //do nothing, on first step
         }
         else
         {
-            stepCount = stepCount - 2;
+            //decrease stepcount by 2 to account for stepCount++ in actual step function
+            stepCount -= 2;
             if (stepCount == 1 || stepCount == 3)
             {
                 //if the last step was a depth tool, go back to the move tool before it
-                Back();
+                stepCount -= 1;
             }
-            else
-            {
                 Step();
-            }
+
         }
-        
-        //if(stepCount < 0)
-        //{
-           // stepCount = 0;
-            //Done();
-        //}
 
         
     }
@@ -108,9 +100,13 @@ public class EnableRegistration : MonoBehaviour {
             GameObject.Find("3PointRegistration").transform.FindChild("Frame/SubFrame/LeftEye").gameObject.SetActive(false);
             GameObject.Find("3PointRegistration").transform.FindChild("Frame/SubFrame/Axis").gameObject.SetActive(false);
 
+            //change materials of markers
+            GameObject.Find("3PointRegistration").transform.FindChild("Frame/SubFrame/Nose/Marker").gameObject.GetComponent<MeshRenderer>().material = freeMat;
+            GameObject.Find("3PointRegistration").transform.FindChild("Frame/SubFrame/RightEye/Marker").gameObject.GetComponent<MeshRenderer>().material = freeMat;
+
             //update text
-            CommandName.text = "Nose > Move";
-            WriteLog.WriteData("Command: 3 Point Reg. > Nose");
+            CommandName.text = "Nose - Move";
+            WriteLog.WriteData("Command: 3 Point Reg. - Nose");
 
         }
         else if(stepCount==1)  //move nose marker >> depth
@@ -129,10 +125,14 @@ public class EnableRegistration : MonoBehaviour {
             GameObject.Find("3PointRegistration").transform.FindChild("Frame/SubFrame/Nose").gameObject.SetActive(true);
             GameObject.Find("3PointRegistration").transform.FindChild("Frame/SubFrame/RightEye").gameObject.SetActive(false);
             GameObject.Find("3PointRegistration").transform.FindChild("Frame/SubFrame/LeftEye").gameObject.SetActive(false);
-            GameObject.Find("3PointRegistration").transform.FindChild("Frame/SubFrame/Axis").gameObject.SetActive(false); 
+            GameObject.Find("3PointRegistration").transform.FindChild("Frame/SubFrame/Axis").gameObject.SetActive(false);
+
+            //change materials of markers
+            GameObject.Find("3PointRegistration").transform.FindChild("Frame/SubFrame/Nose/Marker").gameObject.GetComponent<MeshRenderer>().material = freeMat;
+            GameObject.Find("3PointRegistration").transform.FindChild("Frame/SubFrame/RightEye/Marker").gameObject.GetComponent<MeshRenderer>().material = freeMat;
 
             //update text
-            CommandName.text = "Nose > Depth";
+            CommandName.text = "Nose - Depth";
         }
         else if(stepCount==2) //move right eye marker >> move with head
         {
@@ -159,9 +159,13 @@ public class EnableRegistration : MonoBehaviour {
             //centre command name text around marker
             CommandText.ToggleObject(true);
 
+            //change materials of markers
+            GameObject.Find("3PointRegistration").transform.FindChild("Frame/SubFrame/Nose/Marker").gameObject.GetComponent<MeshRenderer>().material = lockedMat;
+            GameObject.Find("3PointRegistration").transform.FindChild("Frame/SubFrame/RightEye/Marker").gameObject.GetComponent<MeshRenderer>().material = freeMat;
+
             //update text
-            CommandName.text = "Right Eye > Move";
-            WriteLog.WriteData("Command: 3 Point Reg. > Right Eye");
+            CommandName.text = "Right Eye - Move";
+            WriteLog.WriteData("Command: 3 Point Reg. - Right Eye");
         }
         else if(stepCount==3)  //move right eye marker >> depth
         {
@@ -181,11 +185,12 @@ public class EnableRegistration : MonoBehaviour {
             GameObject.Find("3PointRegistration").transform.FindChild("Frame/SubFrame/LeftEye").gameObject.SetActive(false);
             GameObject.Find("3PointRegistration").transform.FindChild("Frame/SubFrame/Axis").gameObject.SetActive(false);
 
-            //change material of nose marker to show it locked in place 
-            // GameObject.Find("3PointRegistration").transform.FindChild("Frame/SubFrame/Nose/Marker").gameObject.GetComponent<Renderer>().material = lockedMat;
+            //change materials of markers
+            GameObject.Find("3PointRegistration").transform.FindChild("Frame/SubFrame/Nose/Marker").gameObject.GetComponent<MeshRenderer>().material = lockedMat;
+            GameObject.Find("3PointRegistration").transform.FindChild("Frame/SubFrame/RightEye/Marker").gameObject.GetComponent<MeshRenderer>().material = freeMat;
 
             //update text
-            CommandName.text = "Right Eye > Depth";
+            CommandName.text = "Right Eye - Depth";
         }
 
         else if(stepCount==4) //move left eye marker >> move with head
@@ -200,11 +205,12 @@ public class EnableRegistration : MonoBehaviour {
             Quaternion q = Quaternion.FromToRotation(oldDirection, newDirection);
             GameObject frame = GameObject.Find("3PointRegistration").transform.FindChild("Frame").gameObject;
             frame.transform.rotation = q * frame.transform.rotation;
+
             //shift frame to center between the two markers chosen by the user
-            REyePosition = GameObject.Find("3PointRegistration").transform.FindChild("Frame/SubFrame/RightEye/Marker").gameObject.transform.position;
-            Vector3 distance = new Vector3(REyePosition.x - markerPosition.x, REyePosition.y - markerPosition.y, REyePosition.z - markerPosition.z);
-            float distanceMagnitude = Vector3.Magnitude(distance);
-           // frame.transform.position = frame.transform.position + (distanceMagnitude / 2) * newDirection.normalized;
+            //REyePosition = GameObject.Find("3PointRegistration").transform.FindChild("Frame/SubFrame/RightEye/Marker").gameObject.transform.position;
+            //Vector3 distance = new Vector3(REyePosition.x - markerPosition.x, REyePosition.y - markerPosition.y, REyePosition.z - markerPosition.z);
+            //float distanceMagnitude = Vector3.Magnitude(distance);
+            //frame.transform.position = frame.transform.position + (distanceMagnitude / 2) * newDirection.normalized;
         
 
 
@@ -226,9 +232,13 @@ public class EnableRegistration : MonoBehaviour {
             //centre command name text around nose marker
             CommandText.ToggleObject(false);
 
+            //change materials of markers
+            GameObject.Find("3PointRegistration").transform.FindChild("Frame/SubFrame/Nose/Marker").gameObject.GetComponent<MeshRenderer>().material = lockedMat;
+            GameObject.Find("3PointRegistration").transform.FindChild("Frame/SubFrame/RightEye/Marker").gameObject.GetComponent<MeshRenderer>().material = lockedMat;
+
             //update text
             CommandName.text = "Left Eye";
-            WriteLog.WriteData("Command: 3 Point Reg. > Left Eye");
+            WriteLog.WriteData("Command: 3 Point Reg. - Left Eye");
 
     }
 
@@ -251,8 +261,8 @@ public class EnableRegistration : MonoBehaviour {
         GameObject.Find("3PointRegistration").transform.FindChild("Frame").gameObject.SetActive(false);
 
         //set material of locked markers back to free
-        //GameObject.Find("3PointRegistration").transform.FindChild("Frame/SubFrame/Nose/Marker").gameObject.GetComponent<Renderer>().material = freeMat;
-        //GameObject.Find("3PointRegistration").transform.FindChild("Frame/SubFrame/RightEye/Marker").gameObject.GetComponent<Renderer>().material = freeMat;
+        GameObject.Find("3PointRegistration").transform.FindChild("Frame/SubFrame/Nose/Marker").gameObject.GetComponent<MeshRenderer>().material = freeMat;
+        GameObject.Find("3PointRegistration").transform.FindChild("Frame/SubFrame/RightEye/Marker").gameObject.GetComponent<MeshRenderer>().material = freeMat;
 
         //align model of head with the markers
         GameObject.Find("Head").transform.FindChild("Model").gameObject.SetActive(true);
@@ -269,6 +279,7 @@ public class EnableRegistration : MonoBehaviour {
         //turn voice commands from main program back on
         GameObject.Find("InputManager").transform.FindChild("VoiceInput").gameObject.SetActive(true);
         GameObject.Find("3PointRegistration").transform.FindChild("VoiceInput").gameObject.SetActive(false);
+        GameObject.Find("3PointRegistration").transform.FindChild("HelpWindow").gameObject.SetActive(false);
         GameObject.Find("3PointRegistration").transform.FindChild("Frame").transform.GetComponent<AirTapInput>().enabled = false;
 
         DoneEvent.Invoke();
