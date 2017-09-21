@@ -12,7 +12,7 @@ public class ShiftWithHead : MonoBehaviour {
     //variables for tracking user's head movement
     private float currentDistance;
     private float lastDistance;
-    private float amount;
+    private float shiftAmount;
 
     //options for selecting axis of movement
     private bool rightLeft = false;
@@ -36,12 +36,9 @@ public class ShiftWithHead : MonoBehaviour {
     {
         lastDistance = Vector3.Distance(cam.transform.position, selectedObject.transform.position);
         //adjust visibility of arrows
-        GameObject LRArrows = GameObject.Find("ShiftWithHead");
-        LRArrows.transform.FindChild("MoveRightArrow").transform.FindChild("Box").GetComponent<MeshRenderer>().sharedMaterial.SetFloat("_Metallic", 0.5f);
-        GameObject UDArrows = GameObject.Find("ShiftWithHead");
-        UDArrows.transform.FindChild("MoveUpArrow").transform.FindChild("Box").GetComponent<MeshRenderer>().sharedMaterial.SetFloat("_Metallic", 0.1f);
-        GameObject FBArrows = GameObject.Find("ShiftWithHead");
-        FBArrows.transform.FindChild("MoveForwardArrow").transform.FindChild("Box").GetComponent<MeshRenderer>().sharedMaterial.SetFloat("_Metallic", 0.1f);
+        GameObject.Find("ShiftWithHead").transform.FindChild("MoveRightArrow").gameObject.SetActive(true);
+        GameObject.Find("ShiftWithHead").transform.FindChild("MoveUpArrow").gameObject.SetActive(false);
+        GameObject.Find("ShiftWithHead").transform.FindChild("MoveForwardArrow").gameObject.SetActive(false);
         //select direction of movement
         rightLeft = true;
         upDown = false;
@@ -53,12 +50,9 @@ public class ShiftWithHead : MonoBehaviour {
     {
         lastDistance = Vector3.Distance(cam.transform.position, selectedObject.transform.position);
         //adjust visibility of arrows
-        GameObject LRArrows = GameObject.Find("ShiftWithHead");
-        LRArrows.transform.FindChild("MoveRightArrow").transform.FindChild("Box").GetComponent<MeshRenderer>().sharedMaterial.SetFloat("_Metallic", 0.1f);
-        GameObject UDArrows = GameObject.Find("ShiftWithHead");
-        UDArrows.transform.FindChild("MoveUpArrow").transform.FindChild("Box").GetComponent<MeshRenderer>().sharedMaterial.SetFloat("_Metallic", 0.5f);
-        GameObject FBArrows = GameObject.Find("ShiftWithHead");
-        FBArrows.transform.FindChild("MoveForwardArrow").transform.FindChild("Box").GetComponent<MeshRenderer>().sharedMaterial.SetFloat("_Metallic", 0.1f);
+        GameObject.Find("ShiftWithHead").transform.FindChild("MoveRightArrow").gameObject.SetActive(false);
+        GameObject.Find("ShiftWithHead").transform.FindChild("MoveUpArrow").gameObject.SetActive(true);
+        GameObject.Find("ShiftWithHead").transform.FindChild("MoveForwardArrow").gameObject.SetActive(false);
         //select direction of movement
         rightLeft = false;
         upDown = true;
@@ -70,12 +64,10 @@ public class ShiftWithHead : MonoBehaviour {
     {
         lastDistance = Vector3.Distance(cam.transform.position, selectedObject.transform.position);
         //adjust visibility of arrows
-        GameObject LRArrows = GameObject.Find("ShiftWithHead");
-        LRArrows.transform.FindChild("MoveRightArrow").transform.FindChild("Box").GetComponent<MeshRenderer>().sharedMaterial.SetFloat("_Metallic", 0.1f);
-        GameObject UDArrows = GameObject.Find("ShiftWithHead");
-        UDArrows.transform.FindChild("MoveUpArrow").transform.FindChild("Box").GetComponent<MeshRenderer>().sharedMaterial.SetFloat("_Metallic", 0.1f);
-        GameObject FBArrows = GameObject.Find("ShiftWithHead");
-        FBArrows.transform.FindChild("MoveForwardArrow").transform.FindChild("Box").GetComponent<MeshRenderer>().sharedMaterial.SetFloat("_Metallic", 0.5f);
+        GameObject.Find("ShiftWithHead").transform.FindChild("MoveRightArrow").gameObject.SetActive(false);
+        GameObject.Find("ShiftWithHead").transform.FindChild("MoveUpArrow").gameObject.SetActive(false);
+        GameObject.Find("ShiftWithHead").transform.FindChild("MoveForwardArrow").gameObject.SetActive(true);
+        
         //select direction of movement
         rightLeft = false;
         upDown = false;
@@ -92,12 +84,9 @@ public class ShiftWithHead : MonoBehaviour {
         forwardBack = false;
 
         //make all arrows fully visible
-        GameObject LRArrows = GameObject.Find("ShiftWithHead");
-        LRArrows.transform.FindChild("MoveRightArrow").transform.FindChild("Box").GetComponent<MeshRenderer>().sharedMaterial.SetFloat("_Metallic", 0.5f);
-        GameObject UDArrows = GameObject.Find("ShiftWithHead");
-        UDArrows.transform.FindChild("MoveUpArrow").transform.FindChild("Box").GetComponent<MeshRenderer>().sharedMaterial.SetFloat("_Metallic", 0.5f);
-        GameObject FBArrows = GameObject.Find("ShiftWithHead");
-        FBArrows.transform.FindChild("MoveForwardArrow").transform.FindChild("Box").GetComponent<MeshRenderer>().sharedMaterial.SetFloat("_Metallic", 0.5f);
+        GameObject.Find("ShiftWithHead").transform.FindChild("MoveRightArrow").gameObject.SetActive(true);
+        GameObject.Find("ShiftWithHead").transform.FindChild("MoveUpArrow").gameObject.SetActive(true);
+        GameObject.Find("ShiftWithHead").transform.FindChild("MoveForwardArrow").gameObject.SetActive(true);
 
     }
 
@@ -113,22 +102,24 @@ public class ShiftWithHead : MonoBehaviour {
         {
             //calculate current distance and change in user's head position
             currentDistance = Vector3.Distance(cam.transform.position, selectedObject.transform.position);
-            amount = Mathf.Abs(currentDistance - lastDistance) * 0.5f;
+            shiftAmount = Mathf.Abs(currentDistance - lastDistance) * 0.5f;
 
             if (currentDistance > lastDistance) //User moves farther away
             {
                 if (rightLeft) //move right
                 {
+                    //calculate direction of movement from forward direction of arrows
+                    //will change depending on where user is standing when command is called
                     Vector3 direction = Quaternion.Euler(0, 90, 0) * gameObject.transform.forward.normalized;
-                    selectedObject.transform.position += direction * amount;
+                    selectedObject.transform.position += direction * shiftAmount;
                 }
                 else if (upDown) //move up
-                { selectedObject.transform.position += new Vector3(0.0f, amount, 0.0f); }
+                { selectedObject.transform.position += new Vector3(0.0f, shiftAmount, 0.0f); }
 
                 else if (forwardBack) //move forward
                 {
                     Vector3 direction = gameObject.transform.forward.normalized;
-                    selectedObject.transform.position += direction * amount * 0.5f;
+                    selectedObject.transform.position += direction * shiftAmount * 0.5f;
                 }
             }
             else if (currentDistance < lastDistance) //user moves closer
@@ -136,15 +127,15 @@ public class ShiftWithHead : MonoBehaviour {
                 if (rightLeft) //move left
                 {
                     Vector3 direction = Quaternion.Euler(0, -90, 0) * gameObject.transform.forward.normalized;
-                    selectedObject.transform.position += direction * amount;
+                    selectedObject.transform.position += direction * shiftAmount;
                 }
                 else if (upDown) //move down
-                { selectedObject.transform.position -= new Vector3(0.0f, amount, 0.0f); }
+                { selectedObject.transform.position -= new Vector3(0.0f, shiftAmount, 0.0f); }
 
                 else if (forwardBack) //move back
                 {
                     Vector3 direction = Quaternion.Euler(0, 180, 0) * gameObject.transform.forward.normalized;
-                    selectedObject.transform.position += direction * amount * 0.5f;
+                    selectedObject.transform.position += direction * shiftAmount * 0.5f;
                 }
             }
             else { } //do nothing if the user hasn't moved their head
