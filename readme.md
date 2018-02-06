@@ -2,7 +2,7 @@
 
 Large scene files and images can be found at on the perkdata server: p:\data\PerkTutor\HololensQuickNav.
 
-## Installation Requirements and Notes (*From Microsoft*)
+## Installation Requirements and Notes (*[From Microsoft](https://developer.microsoft.com/en-us/windows/mixed-reality/install_the_tools#installation_checklist_for_hololens)*)
 
 ### Visual Studio 2017
 * Select the Universal Windows Platform development workload
@@ -12,7 +12,7 @@ Large scene files and images can be found at on the perkdata server: p:\data\Per
 
 ### HoloLens Emulator and Holographic Templates (build 10.0.14393.1358)	
 * The emulator allows you to run apps on Windows Holographic in a virtual machine without a physical HoloLens. It includes a virtual HoloLens image that runs the latest version of the Windows Holographic OS. If you have already installed a previous build of the emulator, this build will install side-by-side. This package also includes holographic DirectX project templates for Visual Studio. If desired, you can select to install only the templates without the emulator.
-* Your system must support Hyper-V for the Emulator installation to succeed. Please reference the System Requirements section below for the details.
+* Your system must support Hyper-V for the Emulator installation to succeed (To enable go to Control Panel > Programs > Programs and Features > Turn Windows features on or off > Ensure Hyper-V is checked).
 
 ### Unity 5.6 or version > Unity 2017.1	
 * The Unity engine is an easy way to get started building a holographic app. 
