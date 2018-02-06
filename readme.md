@@ -14,10 +14,11 @@ Large scene files and images can be found at on the perkdata server: p:\data\Per
 * The emulator allows you to run apps on Windows Holographic in a virtual machine without a physical HoloLens. It includes a virtual HoloLens image that runs the latest version of the Windows Holographic OS. If you have already installed a previous build of the emulator, this build will install side-by-side. This package also includes holographic DirectX project templates for Visual Studio. If desired, you can select to install only the templates without the emulator.
 * Your system must support Hyper-V for the Emulator installation to succeed. Please reference the System Requirements section below for the details.
 
-### Unity 5.6 or Unity 2017.1	
+### Unity 5.6 or version > Unity 2017.1	
 * The Unity engine is an easy way to get started building a holographic app. 
 * Make sure to select the Windows Store .NET Scripting Backend (you may install the docs as well).
 
-### Vuforia	Last known release: 6.1 issued November 16th, 2016
+### Vuforia	Last known release: 6.1 issued November 16th, 2016 (*Not req'd for new projects*)
 * Vuforia enables you to create holographic apps that can recognize specific things in the environment and attach experiences to them.
 * You can get a free development license at developer.vuforia.com.
+* **Only required for legacy project migration, now included with version > Unity 2017.2**
