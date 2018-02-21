@@ -45,7 +45,7 @@ MonoBehaviour:
   m_MinSize: {x: 683, y: 492}
   m_MaxSize: {x: 14004, y: 14042}
   vertical: 0
-  controlID: 95
+  controlID: 9
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -210,7 +210,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 492}
   m_MaxSize: {x: 10002, y: 14042}
   vertical: 1
-  controlID: 96
+  controlID: 10
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -234,7 +234,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 221}
   m_MaxSize: {x: 8006, y: 4021}
   vertical: 0
-  controlID: 23
+  controlID: 11
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -362,13 +362,13 @@ MonoBehaviour:
   m_LastFolders:
   - Assets/QuickNavAssets/Scenes
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: C:\D\HoloLensQuickNav\src\HoloQuickNav
+  m_LastProjectPath: C:\D\HololensQuickNav-github\src\HoloQuickNav
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 6a2c0000
-    m_LastClickedID: 11370
-    m_ExpandedIDs: 000000000e28000070280000d62800005a290000d42a0000982b0000182c00008a2c0000a22c00008c2d0000043d0000ffffff7f
+    m_SelectedIDs: 662c0000
+    m_LastClickedID: 11366
+    m_ExpandedIDs: 000000000a280000d228000056290000b62a0000d02a0000142c0000862c00009e2c0000a02c0000fe2c0000882d000088380000ffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -396,7 +396,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000000e28000070280000d62800005a290000d42a0000982b0000182c00008a2c0000a22c00008c2d0000043d0000
+    m_ExpandedIDs: 000000000a280000d228000056290000b62a0000d02a0000862c00009e2c0000a02c0000fe2c0000882d000088380000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -533,7 +533,7 @@ MonoBehaviour:
       m_ClientGUIView: {fileID: 4}
     m_SearchString: 
   m_ExpandedScenes:
-  - MalePlastic
+  - FemalePlastic
   m_CurrenRootInstanceID: 0
   m_Locked: 0
   m_CurrentSortingName: TransformSorting
@@ -564,7 +564,7 @@ MonoBehaviour:
     width: 906
     height: 549
   m_SceneLighting: 1
-  lastFramingTime: 50.92689532833283
+  lastFramingTime: 66.06192180121693
   m_2DMode: 0
   m_isRotationLocked: 0
   m_AudioPlay: 0
@@ -582,25 +582,25 @@ MonoBehaviour:
     showImageEffects: 1
   grid:
     xGrid:
-      m_Target: 1
+      m_Target: 0
       speed: 2
-      m_Value: 1
+      m_Value: 0
     yGrid:
       m_Target: 0
       speed: 2
       m_Value: 0
     zGrid:
-      m_Target: 0
+      m_Target: 1
       speed: 2
-      m_Value: 0
+      m_Value: 1
   m_Rotation:
-    m_Target: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+    m_Target: {x: 0, y: 0, z: 0, w: 1}
     speed: 2
-    m_Value: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+    m_Value: {x: -0, y: 0, z: -0, w: -1}
   m_Size:
-    m_Target: 0.32431117
+    m_Target: 0.3516967
     speed: 2
-    m_Value: 0.32431117
+    m_Value: 0.3516967
   m_Ortho:
     m_Target: 1
     speed: 2

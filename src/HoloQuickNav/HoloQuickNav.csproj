@@ -385,6 +385,7 @@
     <Compile Include="Assets\QuickNavAssets\Scripts\CommandText.cs" />
     <Compile Include="Assets\QuickNavAssets\Scripts\CopyRotation.cs" />
     <Compile Include="Assets\QuickNavAssets\Scripts\DepthWithHead.cs" />
+    <Compile Include="Assets\QuickNavAssets\Scripts\DisplayLayers.cs" />
     <Compile Include="Assets\QuickNavAssets\Scripts\EnableComponents.cs" />
     <Compile Include="Assets\QuickNavAssets\Scripts\EnableRegistration.cs" />
     <Compile Include="Assets\QuickNavAssets\Scripts\Initialize.cs" />

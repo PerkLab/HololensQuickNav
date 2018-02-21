@@ -27,10 +27,6 @@ public class Rotate3Axis : MonoBehaviour {
         //position around model
         gameObject.transform.position = new Vector3(selectedObject.transform.position.x, selectedObject.transform.position.y, selectedObject.transform.position.z);
 
-        GameObject.Find("Head").transform.FindChild("AxisA").gameObject.SetActive(true);
-        GameObject.Find("Head").transform.FindChild("AxisS").gameObject.SetActive(true);
-        GameObject.Find("Head").transform.FindChild("AxisR").gameObject.SetActive(true);
-
         TextA = GameObject.Find("Head").transform.FindChild("AxisA/TextA").gameObject;
         TextS = GameObject.Find("Head").transform.FindChild("AxisS/TextS").gameObject;
         TextR = GameObject.Find("Head").transform.FindChild("AxisR/TextR").gameObject;

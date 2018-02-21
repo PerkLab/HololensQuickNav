@@ -37,8 +37,11 @@ public class ShiftWithHead : MonoBehaviour {
         lastDistance = Vector3.Distance(cam.transform.position, selectedObject.transform.position);
         //adjust visibility of arrows
         GameObject.Find("ShiftWithHead").transform.FindChild("MoveRightArrow").gameObject.SetActive(true);
+        GameObject.Find("ShiftWithHead").transform.FindChild("MoveLeftArrow").gameObject.SetActive(true);
         GameObject.Find("ShiftWithHead").transform.FindChild("MoveUpArrow").gameObject.SetActive(false);
+        GameObject.Find("ShiftWithHead").transform.FindChild("MoveDownArrow").gameObject.SetActive(false);
         GameObject.Find("ShiftWithHead").transform.FindChild("MoveForwardArrow").gameObject.SetActive(false);
+        GameObject.Find("ShiftWithHead").transform.FindChild("MoveBackArrow").gameObject.SetActive(false);
         //select direction of movement
         rightLeft = true;
         upDown = false;
@@ -51,8 +54,11 @@ public class ShiftWithHead : MonoBehaviour {
         lastDistance = Vector3.Distance(cam.transform.position, selectedObject.transform.position);
         //adjust visibility of arrows
         GameObject.Find("ShiftWithHead").transform.FindChild("MoveRightArrow").gameObject.SetActive(false);
+        GameObject.Find("ShiftWithHead").transform.FindChild("MoveLeftArrow").gameObject.SetActive(false);
         GameObject.Find("ShiftWithHead").transform.FindChild("MoveUpArrow").gameObject.SetActive(true);
+        GameObject.Find("ShiftWithHead").transform.FindChild("MoveDownArrow").gameObject.SetActive(true);
         GameObject.Find("ShiftWithHead").transform.FindChild("MoveForwardArrow").gameObject.SetActive(false);
+        GameObject.Find("ShiftWithHead").transform.FindChild("MoveBackArrow").gameObject.SetActive(false);
         //select direction of movement
         rightLeft = false;
         upDown = true;
@@ -65,9 +71,12 @@ public class ShiftWithHead : MonoBehaviour {
         lastDistance = Vector3.Distance(cam.transform.position, selectedObject.transform.position);
         //adjust visibility of arrows
         GameObject.Find("ShiftWithHead").transform.FindChild("MoveRightArrow").gameObject.SetActive(false);
+        GameObject.Find("ShiftWithHead").transform.FindChild("MoveLeftArrow").gameObject.SetActive(false);
         GameObject.Find("ShiftWithHead").transform.FindChild("MoveUpArrow").gameObject.SetActive(false);
+        GameObject.Find("ShiftWithHead").transform.FindChild("MoveDownArrow").gameObject.SetActive(false);
         GameObject.Find("ShiftWithHead").transform.FindChild("MoveForwardArrow").gameObject.SetActive(true);
-        
+        GameObject.Find("ShiftWithHead").transform.FindChild("MoveBackArrow").gameObject.SetActive(true);
+
         //select direction of movement
         rightLeft = false;
         upDown = false;
@@ -85,8 +94,11 @@ public class ShiftWithHead : MonoBehaviour {
 
         //make all arrows fully visible
         GameObject.Find("ShiftWithHead").transform.FindChild("MoveRightArrow").gameObject.SetActive(true);
+        GameObject.Find("ShiftWithHead").transform.FindChild("MoveLeftArrow").gameObject.SetActive(true);
         GameObject.Find("ShiftWithHead").transform.FindChild("MoveUpArrow").gameObject.SetActive(true);
+        GameObject.Find("ShiftWithHead").transform.FindChild("MoveDownArrow").gameObject.SetActive(true);
         GameObject.Find("ShiftWithHead").transform.FindChild("MoveForwardArrow").gameObject.SetActive(true);
+        GameObject.Find("ShiftWithHead").transform.FindChild("MoveBackArrow").gameObject.SetActive(true);
 
     }
 
