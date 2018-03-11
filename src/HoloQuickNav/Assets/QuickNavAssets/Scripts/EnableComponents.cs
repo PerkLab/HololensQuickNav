@@ -112,6 +112,16 @@ public class EnableComponents : MonoBehaviour {
         GameObject.Find("3PointRegistration").transform.FindChild("Frame").transform.GetComponent<AirTapInput>().enabled = true;
     }
 
+    public void PointRegistration()
+    {
+        //write to log
+        WriteLog.WriteData("Command: PointReg");
+
+        SetAllInactive();
+        PointRegOnOff(true);
+        CursorOnOff(false);
+        GameObject.Find("Model").transform.GetChild(0).gameObject.SetActive(false);
+    }
 
     //
     //turn all tools off before switching to a new tool
@@ -127,6 +137,9 @@ public class EnableComponents : MonoBehaviour {
 
         //move tools
         MoveOnOff(false);
+
+        //point registration tool
+        PointRegOnOff(false);
 
         //turn off all layers execpt skin (layer 0)
         foreach(Transform child in GameObject.Find("Model").transform.FindChild("Layers").transform)
@@ -198,6 +211,13 @@ public class EnableComponents : MonoBehaviour {
         GameObject.Find("CommandText").transform.FindChild("HelpAndMenu").gameObject.SetActive(false);
         GameObject.Find("Controls").transform.FindChild("MoveFull").transform.GetComponent<AirTapInput>().enabled = visible;
 
+    }
+
+    //Point Registration Tool
+    void PointRegOnOff(bool visible)
+    {
+        GameObject.Find("Controls").transform.FindChild("PointRegistration").gameObject.SetActive(visible);
+        GameObject.Find("Controls").transform.FindChild("PointRegistration").transform.GetComponent<AirTapInput>().enabled = visible;
     }
 
     void MenuOnOff(bool visible)

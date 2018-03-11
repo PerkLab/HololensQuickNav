@@ -27,9 +27,9 @@ public class Rotate3Axis : MonoBehaviour {
         //position around model
         gameObject.transform.position = new Vector3(selectedObject.transform.position.x, selectedObject.transform.position.y, selectedObject.transform.position.z);
 
-        TextA = GameObject.Find("Head").transform.FindChild("AxisA/TextA").gameObject;
-        TextS = GameObject.Find("Head").transform.FindChild("AxisS/TextS").gameObject;
-        TextR = GameObject.Find("Head").transform.FindChild("AxisR/TextR").gameObject;
+        TextA = GameObject.Find("Model").transform.FindChild("AxisA/TextA").gameObject;
+        TextS = GameObject.Find("Model").transform.FindChild("AxisS/TextS").gameObject;
+        TextR = GameObject.Find("Model").transform.FindChild("AxisR/TextR").gameObject;
 
         Pause();
 
@@ -41,8 +41,8 @@ public class Rotate3Axis : MonoBehaviour {
         Pause();
 
         lastDistance = Vector3.Distance(cam.transform.position, selectedObject.transform.position);
-        GameObject.Find("Head").transform.FindChild("AxisA/rotateArrow1").gameObject.SetActive(true);
-        GameObject.Find("Head").transform.FindChild("AxisA/rotateArrow2").gameObject.SetActive(true);
+        GameObject.Find("Model").transform.FindChild("AxisA/rotateArrow1").gameObject.SetActive(true);
+        GameObject.Find("Model").transform.FindChild("AxisA/rotateArrow2").gameObject.SetActive(true);
         gameObject.transform.FindChild("ButtonsRotate/RotateA/Text").GetComponent<TextMesh>().fontStyle = FontStyle.BoldAndItalic;
         gameObject.transform.FindChild("ButtonsRotate/Pause/Text").GetComponent<TextMesh>().fontStyle = FontStyle.Normal;
         rotateA = true;
@@ -57,8 +57,8 @@ public class Rotate3Axis : MonoBehaviour {
         Pause();
 
         lastDistance = Vector3.Distance(cam.transform.position, selectedObject.transform.position);
-        GameObject.Find("Head").transform.FindChild("AxisS/rotateArrow1").gameObject.SetActive(true);
-        GameObject.Find("Head").transform.FindChild("AxisS/rotateArrow2").gameObject.SetActive(true);
+        GameObject.Find("Model").transform.FindChild("AxisS/rotateArrow1").gameObject.SetActive(true);
+        GameObject.Find("Model").transform.FindChild("AxisS/rotateArrow2").gameObject.SetActive(true);
         gameObject.transform.FindChild("ButtonsRotate/RotateS/Text").GetComponent<TextMesh>().fontStyle = FontStyle.BoldAndItalic;
         gameObject.transform.FindChild("ButtonsRotate/Pause/Text").GetComponent<TextMesh>().fontStyle = FontStyle.Normal;
         rotateS = true;
@@ -73,8 +73,8 @@ public class Rotate3Axis : MonoBehaviour {
         Pause();
 
         lastDistance = Vector3.Distance(cam.transform.position, selectedObject.transform.position);
-        GameObject.Find("Head").transform.FindChild("AxisR/rotateArrow1").gameObject.SetActive(true);
-        GameObject.Find("Head").transform.FindChild("AxisR/rotateArrow2").gameObject.SetActive(true);
+        GameObject.Find("Model").transform.FindChild("AxisR/rotateArrow1").gameObject.SetActive(true);
+        GameObject.Find("Model").transform.FindChild("AxisR/rotateArrow2").gameObject.SetActive(true);
         gameObject.transform.FindChild("ButtonsRotate/RotateR/Text").GetComponent<TextMesh>().fontStyle = FontStyle.BoldAndItalic;
         gameObject.transform.FindChild("ButtonsRotate/Pause/Text").GetComponent<TextMesh>().fontStyle = FontStyle.Normal;
         rotateR = true;
@@ -92,12 +92,12 @@ public class Rotate3Axis : MonoBehaviour {
         rotateR = false;
 
         //clear all arrows
-        GameObject.Find("Head").transform.FindChild("AxisA/rotateArrow1").gameObject.SetActive(false);
-        GameObject.Find("Head").transform.FindChild("AxisA/rotateArrow2").gameObject.SetActive(false);
-        GameObject.Find("Head").transform.FindChild("AxisS/rotateArrow1").gameObject.SetActive(false);
-        GameObject.Find("Head").transform.FindChild("AxisS/rotateArrow2").gameObject.SetActive(false);
-        GameObject.Find("Head").transform.FindChild("AxisR/rotateArrow1").gameObject.SetActive(false);
-        GameObject.Find("Head").transform.FindChild("AxisR/rotateArrow2").gameObject.SetActive(false);
+        GameObject.Find("Model").transform.FindChild("AxisA/rotateArrow1").gameObject.SetActive(false);
+        GameObject.Find("Model").transform.FindChild("AxisA/rotateArrow2").gameObject.SetActive(false);
+        GameObject.Find("Model").transform.FindChild("AxisS/rotateArrow1").gameObject.SetActive(false);
+        GameObject.Find("Model").transform.FindChild("AxisS/rotateArrow2").gameObject.SetActive(false);
+        GameObject.Find("Model").transform.FindChild("AxisR/rotateArrow1").gameObject.SetActive(false);
+        GameObject.Find("Model").transform.FindChild("AxisR/rotateArrow2").gameObject.SetActive(false);
 
         //clear buttons
         gameObject.transform.FindChild("ButtonsRotate/RotateA/Text").GetComponent<TextMesh>().fontStyle = FontStyle.Normal;
