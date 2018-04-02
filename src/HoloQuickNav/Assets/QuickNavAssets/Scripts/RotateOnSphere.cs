@@ -55,7 +55,7 @@ public class RotateOnSphere : MonoBehaviour {
             IsRunning = true;
         }
         //update command text for current command
-        GameObject.Find("CommandText").transform.FindChild("CommandName").GetComponent<TextMesh>().text = "Rotate Free > Start";
+        GameObject.Find("CommandText").transform.Find("CommandName").GetComponent<TextMesh>().text = "Rotate Free > Start";
     }
 
     public void PauseRotation() //user calls 'Pause' voice command
@@ -63,7 +63,7 @@ public class RotateOnSphere : MonoBehaviour {
         //stop rotation
         IsRunning = false;
         //update command text for current command
-        GameObject.Find("CommandText").transform.FindChild("CommandName").GetComponent<TextMesh>().text = "Rotate Free > Pause";
+        GameObject.Find("CommandText").transform.Find("CommandName").GetComponent<TextMesh>().text = "Rotate Free > Pause";
     }
     
 

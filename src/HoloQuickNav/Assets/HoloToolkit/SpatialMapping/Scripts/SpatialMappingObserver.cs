@@ -4,7 +4,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.VR.WSA;
+
 
 namespace HoloToolkit.Unity.SpatialMapping
 {
@@ -86,12 +86,12 @@ namespace HoloToolkit.Unity.SpatialMapping
         /// <summary>
         /// Our Surface Observer object for generating/updating Spatial Mapping data.
         /// </summary>
-        private SurfaceObserver observer;
+        private UnityEngine.XR.WSA.SurfaceObserver observer;
 
         /// <summary>
         /// A queue of surfaces that need their meshes created (or updated).
         /// </summary>
-        private readonly Queue<SurfaceId> surfaceWorkQueue = new Queue<SurfaceId>();
+        private readonly Queue<UnityEngine.XR.WSA.SurfaceId> surfaceWorkQueue = new Queue<UnityEngine.XR.WSA.SurfaceId>();
 
         /// <summary>
         /// To prevent too many meshes from being generated at the same time, we will
@@ -194,12 +194,12 @@ namespace HoloToolkit.Unity.SpatialMapping
                 {
                     // We're using a simple first-in-first-out rule for requesting meshes, but a more sophisticated algorithm could prioritize
                     // the queue based on distance to the user or some other metric.
-                    SurfaceId surfaceID = surfaceWorkQueue.Dequeue();
+                    UnityEngine.XR.WSA.SurfaceId surfaceID = surfaceWorkQueue.Dequeue();
 
                     string surfaceName = ("Surface-" + surfaceID.handle);
 
                     SurfaceObject newSurface;
-                    WorldAnchor worldAnchor;
+                    UnityEngine.XR.WSA.WorldAnchor worldAnchor;
 
                     if (spareSurfaceObject == null)
                     {
@@ -211,7 +211,7 @@ namespace HoloToolkit.Unity.SpatialMapping
                             drawVisualMeshesOverride: false
                             );
 
-                        worldAnchor = newSurface.Object.AddComponent<WorldAnchor>();
+                        worldAnchor = newSurface.Object.AddComponent<UnityEngine.XR.WSA.WorldAnchor>();
                     }
                     else
                     {
@@ -228,11 +228,11 @@ namespace HoloToolkit.Unity.SpatialMapping
                         newSurface.ID = surfaceID.handle;
                         newSurface.Renderer.enabled = false;
 
-                        worldAnchor = newSurface.Object.GetComponent<WorldAnchor>();
+                        worldAnchor = newSurface.Object.GetComponent<UnityEngine.XR.WSA.WorldAnchor>();
                         Debug.Assert(worldAnchor != null);
                     }
 
-                    var surfaceData = new SurfaceData(
+                    var surfaceData = new UnityEngine.XR.WSA.SurfaceData(
                         surfaceID,
                         newSurface.Filter,
                         worldAnchor,
@@ -268,7 +268,7 @@ namespace HoloToolkit.Unity.SpatialMapping
         {
             if (observer == null)
             {
-                observer = new SurfaceObserver();
+                observer = new UnityEngine.XR.WSA.SurfaceObserver();
                 SwitchObservedVolume();
             }
 
@@ -377,7 +377,7 @@ namespace HoloToolkit.Unity.SpatialMapping
         /// <param name="cookedData">Struct containing output data.</param>
         /// <param name="outputWritten">Set to true if output has been written.</param>
         /// <param name="elapsedCookTimeSeconds">Seconds between mesh cook request and propagation of this event.</param>
-        private void SurfaceObserver_OnDataReady(SurfaceData cookedData, bool outputWritten, float elapsedCookTimeSeconds)
+        private void SurfaceObserver_OnDataReady(UnityEngine.XR.WSA.SurfaceData cookedData, bool outputWritten, float elapsedCookTimeSeconds)
         {
             if (outstandingMeshRequest == null)
             {
@@ -440,7 +440,7 @@ namespace HoloToolkit.Unity.SpatialMapping
         /// <param name="changeType">The type of change that occurred on the surface.</param>
         /// <param name="bounds">The bounds of the surface.</param>
         /// <param name="updateTime">The date and time at which the change occurred.</param>
-        private void SurfaceObserver_OnSurfaceChanged(SurfaceId id, SurfaceChange changeType, Bounds bounds, DateTime updateTime)
+        private void SurfaceObserver_OnSurfaceChanged(UnityEngine.XR.WSA.SurfaceId id, UnityEngine.XR.WSA.SurfaceChange changeType, Bounds bounds, DateTime updateTime)
         {
             // Verify that the client of the Surface Observer is expecting updates.
             if (ObserverState != ObserverStates.Running)
@@ -450,12 +450,12 @@ namespace HoloToolkit.Unity.SpatialMapping
 
             switch (changeType)
             {
-                case SurfaceChange.Added:
-                case SurfaceChange.Updated:
+                case UnityEngine.XR.WSA.SurfaceChange.Added:
+                case UnityEngine.XR.WSA.SurfaceChange.Updated:
                     surfaceWorkQueue.Enqueue(id);
                     break;
 
-                case SurfaceChange.Removed:
+                case UnityEngine.XR.WSA.SurfaceChange.Removed:
                     SurfaceObject? removedSurface = RemoveSurfaceIfFound(id.handle, destroyGameObject: false);
                     if (removedSurface != null)
                     {
@@ -494,7 +494,7 @@ namespace HoloToolkit.Unity.SpatialMapping
             }
         }
 
-        private bool IsMatchingSurface(SurfaceObject surfaceObject, SurfaceData surfaceData)
+        private bool IsMatchingSurface(SurfaceObject surfaceObject, UnityEngine.XR.WSA.SurfaceData surfaceData)
         {
             return (surfaceObject.ID == surfaceData.id.handle)
                 && (surfaceObject.Filter == surfaceData.outputMesh)

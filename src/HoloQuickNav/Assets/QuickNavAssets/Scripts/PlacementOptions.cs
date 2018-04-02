@@ -11,9 +11,9 @@ public class PlacementOptions : MonoBehaviour {
 	
 	void OnEnable () {
         //align models of options with actual model
-        gameObject.transform.position = new Vector3(selectedObject.transform.FindChild("Model").transform.position.x, 
-                                                    selectedObject.transform.FindChild("Model").transform.position.y, 
-                                                    selectedObject.transform.FindChild("Model").transform.position.z);
+        gameObject.transform.position = new Vector3(selectedObject.transform.Find("Model").transform.position.x, 
+                                                    selectedObject.transform.Find("Model").transform.position.y, 
+                                                    selectedObject.transform.Find("Model").transform.position.z);
         //turn models to face user
         gameObject.transform.LookAt(cam.transform);
     }
@@ -26,21 +26,21 @@ public class PlacementOptions : MonoBehaviour {
     //when an option is selected, update model's rotation to match the model selected
     public void Option1()
     {
-        selectedObject.transform.rotation = gameObject.transform.FindChild("Placement1").transform.rotation;
+        selectedObject.transform.rotation = gameObject.transform.Find("Placement1").transform.rotation;
     }
 
     public void Option2()
     {
-        selectedObject.transform.rotation = gameObject.transform.FindChild("Placement2").transform.rotation;
+        selectedObject.transform.rotation = gameObject.transform.Find("Placement2").transform.rotation;
     }
 
     public void Option3()
     {
-        selectedObject.transform.rotation = gameObject.transform.FindChild("Placement3").transform.rotation;
+        selectedObject.transform.rotation = gameObject.transform.Find("Placement3").transform.rotation;
     }
 
     public void Option4()
     {
-        selectedObject.transform.rotation = gameObject.transform.FindChild("Placement4").transform.rotation;
+        selectedObject.transform.rotation = gameObject.transform.Find("Placement4").transform.rotation;
     }
 }

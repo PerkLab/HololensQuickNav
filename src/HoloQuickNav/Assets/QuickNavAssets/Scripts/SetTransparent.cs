@@ -20,7 +20,7 @@ public class SetTransparent : MonoBehaviour {
         Renderers = new MeshRenderer[0]; //empty array initially 
         
         //assign mesh renderers from objects
-        GameObject Skin = GameObject.Find("Head").transform.FindChild("Model/Skin_Reduced/grp1").gameObject;
+        GameObject Skin = GameObject.Find("Head").transform.Find("Model/Skin_Reduced/grp1").gameObject;
         if (Skin.transform.childCount > 0) //mesh has multiple sections
         {
             Renderers = Skin.transform.GetComponentsInChildren<MeshRenderer>();

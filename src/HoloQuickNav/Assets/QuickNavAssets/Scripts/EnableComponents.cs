@@ -19,7 +19,7 @@ public class EnableComponents : MonoBehaviour {
         WriteLog.WriteData("Program Started");
 
         //assign text mesh to global variable for use when calling commands
-        CommandName = GameObject.Find("CommandText").transform.FindChild("CommandName").GetComponent<TextMesh>();
+        CommandName = GameObject.Find("CommandText").transform.Find("CommandName").GetComponent<TextMesh>();
         
         SetAllInactive();
         Home(); //start in "home" state before selecting a tool
@@ -68,11 +68,11 @@ public class EnableComponents : MonoBehaviour {
         ShiftWithHeadOnOff(true);
         //turn on visiblity of all arrows
         GameObject LRArrows = GameObject.Find("ShiftWithHead");
-        LRArrows.transform.FindChild("MoveRightArrow").transform.FindChild("Box").GetComponent<MeshRenderer>().sharedMaterial.SetFloat("_Metallic", 0.5f);
+        LRArrows.transform.Find("MoveRightArrow").transform.Find("Box").GetComponent<MeshRenderer>().sharedMaterial.SetFloat("_Metallic", 0.5f);
         GameObject UDArrows = GameObject.Find("ShiftWithHead");
-        UDArrows.transform.FindChild("MoveUpArrow").transform.FindChild("Box").GetComponent<MeshRenderer>().sharedMaterial.SetFloat("_Metallic", 0.5f);
+        UDArrows.transform.Find("MoveUpArrow").transform.Find("Box").GetComponent<MeshRenderer>().sharedMaterial.SetFloat("_Metallic", 0.5f);
         GameObject FBArrows = GameObject.Find("ShiftWithHead");
-        FBArrows.transform.FindChild("MoveForwardArrow").transform.FindChild("Box").GetComponent<MeshRenderer>().sharedMaterial.SetFloat("_Metallic", 0.5f);
+        FBArrows.transform.Find("MoveForwardArrow").transform.Find("Box").GetComponent<MeshRenderer>().sharedMaterial.SetFloat("_Metallic", 0.5f);
 
         //display current command
         CommandName.text = "Shift";
@@ -96,7 +96,7 @@ public class EnableComponents : MonoBehaviour {
         SetAllInactive();
         MenuOnOff(true);
         //hide the model entirely, disable skin (layer 0)
-        GameObject.Find("Model").transform.FindChild("Layers").transform.GetChild(0).gameObject.SetActive(false);
+        GameObject.Find("Model").transform.Find("Layers").transform.GetChild(0).gameObject.SetActive(false);
         //clear current command text
         CommandName.text = "";
         //write to log
@@ -109,7 +109,7 @@ public class EnableComponents : MonoBehaviour {
         CursorOnOff(false);
         //write to log
         WriteLog.WriteData("Command: 3 Pt Registration");
-        GameObject.Find("3PointRegistration").transform.FindChild("Frame").transform.GetComponent<AirTapInput>().enabled = true;
+        GameObject.Find("3PointRegistration").transform.Find("Frame").transform.GetComponent<AirTapInput>().enabled = true;
     }
 
     public void PointRegistration()
@@ -142,7 +142,7 @@ public class EnableComponents : MonoBehaviour {
         PointRegOnOff(false);
 
         //turn off all layers execpt skin (layer 0)
-        foreach(Transform child in GameObject.Find("Model").transform.FindChild("Layers").transform)
+        foreach(Transform child in GameObject.Find("Model").transform.Find("Layers").transform)
         {
             child.gameObject.SetActive(false);
         }
@@ -163,73 +163,73 @@ public class EnableComponents : MonoBehaviour {
 
     void ResetOnOff(bool visible)
     {
-        GameObject.Find("Controls").transform.FindChild("Reset").gameObject.SetActive(visible);
+        GameObject.Find("Controls").transform.Find("Reset").gameObject.SetActive(visible);
     }
     void HomeOnOff(bool visible)
     {
 
         //close help window if previously open
-        GameObject.Find("Controls").transform.FindChild("Home/HelpWindow").gameObject.SetActive(false);
-        GameObject.Find("Controls").transform.FindChild("Home").gameObject.SetActive(visible);
+        GameObject.Find("Controls").transform.Find("Home/HelpWindow").gameObject.SetActive(false);
+        GameObject.Find("Controls").transform.Find("Home").gameObject.SetActive(visible);
         
-        GameObject.Find("Controls").transform.FindChild("Home").transform.GetComponent<AirTapInput>().enabled = visible;
+        GameObject.Find("Controls").transform.Find("Home").transform.GetComponent<AirTapInput>().enabled = visible;
     }
 
     //Rotate Tool
     void Rotate3AxisOnOff(bool visible)
     {
-        GameObject.Find("Controls").transform.FindChild("Rotate3Axis/HelpWindow").gameObject.SetActive(false);
-        GameObject.Find("Controls").transform.FindChild("Rotate3Axis").gameObject.SetActive(visible);
-        GameObject.Find("Controls").transform.FindChild("Rotate3Axis").transform.GetComponent<AirTapInput>().enabled = visible;
-        GameObject.Find("CommandText").transform.FindChild("PauseHelpAndMenu").gameObject.SetActive(visible);
-        GameObject.Find("CommandText").transform.FindChild("HelpAndMenu").gameObject.SetActive(false);
+        GameObject.Find("Controls").transform.Find("Rotate3Axis/HelpWindow").gameObject.SetActive(false);
+        GameObject.Find("Controls").transform.Find("Rotate3Axis").gameObject.SetActive(visible);
+        GameObject.Find("Controls").transform.Find("Rotate3Axis").transform.GetComponent<AirTapInput>().enabled = visible;
+        GameObject.Find("CommandText").transform.Find("PauseHelpAndMenu").gameObject.SetActive(visible);
+        GameObject.Find("CommandText").transform.Find("HelpAndMenu").gameObject.SetActive(false);
 
-        GameObject.Find("Model").transform.FindChild("AxisA").gameObject.SetActive(visible);
-        GameObject.Find("Model").transform.FindChild("AxisS").gameObject.SetActive(visible);
-        GameObject.Find("Model").transform.FindChild("AxisR").gameObject.SetActive(visible);
+        GameObject.Find("Model").transform.Find("AxisA").gameObject.SetActive(visible);
+        GameObject.Find("Model").transform.Find("AxisS").gameObject.SetActive(visible);
+        GameObject.Find("Model").transform.Find("AxisR").gameObject.SetActive(visible);
     }
 
     //Shift Tool
     void ShiftWithHeadOnOff(bool visible)
     {
         //close help window if previously open
-        GameObject.Find("Controls").transform.FindChild("ShiftWithHead/HelpWindow").gameObject.SetActive(false);
-        GameObject.Find("Controls").transform.FindChild("ShiftWithHead").gameObject.SetActive(visible);
-        GameObject.Find("Controls").transform.FindChild("ShiftWithHead").transform.GetComponent<AirTapInput>().enabled = visible;
-        GameObject.Find("CommandText").transform.FindChild("PauseHelpAndMenu").gameObject.SetActive(visible);
-        GameObject.Find("CommandText").transform.FindChild("HelpAndMenu").gameObject.SetActive(false);
+        GameObject.Find("Controls").transform.Find("ShiftWithHead/HelpWindow").gameObject.SetActive(false);
+        GameObject.Find("Controls").transform.Find("ShiftWithHead").gameObject.SetActive(visible);
+        GameObject.Find("Controls").transform.Find("ShiftWithHead").transform.GetComponent<AirTapInput>().enabled = visible;
+        GameObject.Find("CommandText").transform.Find("PauseHelpAndMenu").gameObject.SetActive(visible);
+        GameObject.Find("CommandText").transform.Find("HelpAndMenu").gameObject.SetActive(false);
     }
 
     //Move Tool
     void MoveOnOff(bool visible)
     {
-        GameObject.Find("Controls").transform.FindChild("MoveFull").gameObject.SetActive(visible);
-        GameObject.Find("Controls").transform.FindChild("MoveFull/MoveWithHead").gameObject.SetActive(visible);
-        GameObject.Find("Controls").transform.FindChild("MoveFull/Depth").gameObject.SetActive(false);
+        GameObject.Find("Controls").transform.Find("MoveFull").gameObject.SetActive(visible);
+        GameObject.Find("Controls").transform.Find("MoveFull/MoveWithHead").gameObject.SetActive(visible);
+        GameObject.Find("Controls").transform.Find("MoveFull/Depth").gameObject.SetActive(false);
 
-        GameObject.Find("CommandText").transform.FindChild("MoveHelpAndMenu").gameObject.SetActive(visible);
-        GameObject.Find("CommandText").transform.FindChild("HelpAndMenu").gameObject.SetActive(false);
-        GameObject.Find("Controls").transform.FindChild("MoveFull").transform.GetComponent<AirTapInput>().enabled = visible;
+        GameObject.Find("CommandText").transform.Find("MoveHelpAndMenu").gameObject.SetActive(visible);
+        GameObject.Find("CommandText").transform.Find("HelpAndMenu").gameObject.SetActive(false);
+        GameObject.Find("Controls").transform.Find("MoveFull").transform.GetComponent<AirTapInput>().enabled = visible;
 
     }
 
     //Point Registration Tool
     void PointRegOnOff(bool visible)
     {
-        GameObject.Find("Controls").transform.FindChild("PointRegistration").gameObject.SetActive(visible);
-        GameObject.Find("Controls").transform.FindChild("PointRegistration").transform.GetComponent<AirTapInput>().enabled = visible;
+        GameObject.Find("Controls").transform.Find("PointRegistration").gameObject.SetActive(visible);
+        GameObject.Find("Controls").transform.Find("PointRegistration").transform.GetComponent<AirTapInput>().enabled = visible;
     }
 
     void MenuOnOff(bool visible)
     {
-        GameObject.Find("Menu").transform.FindChild("Background").gameObject.SetActive(visible);
-        GameObject.Find("Menu").transform.FindChild("Buttons").gameObject.SetActive(visible);
-        GameObject.Find("Menu").transform.FindChild("BackgroundSwap").gameObject.SetActive(false);
-        GameObject.Find("Menu").transform.FindChild("ButtonsSwap").gameObject.SetActive(false);
+        GameObject.Find("Menu").transform.Find("Background").gameObject.SetActive(visible);
+        GameObject.Find("Menu").transform.Find("Buttons").gameObject.SetActive(visible);
+        GameObject.Find("Menu").transform.Find("BackgroundSwap").gameObject.SetActive(false);
+        GameObject.Find("Menu").transform.Find("ButtonsSwap").gameObject.SetActive(false);
 
         //enable/disable skin (layer 0) and command text display if opening or exiting menu
-        GameObject.Find("Model").transform.FindChild("Layers").transform.GetChild(0).gameObject.SetActive(!visible);
-        GameObject.Find("CommandText").transform.FindChild("HelpAndMenu").gameObject.SetActive(!visible);
+        GameObject.Find("Model").transform.Find("Layers").transform.GetChild(0).gameObject.SetActive(!visible);
+        GameObject.Find("CommandText").transform.Find("HelpAndMenu").gameObject.SetActive(!visible);
         //GameObject.Find("Menu").transform.FindChild("Background").transform.GetComponent<AirTapInput>().enabled = visible;
     }
 
@@ -242,18 +242,18 @@ public class EnableComponents : MonoBehaviour {
             Material[] newMat = new Material[2];
             newMat[0] = cursorFaceMat;
             newMat[1] = cursorEdgeMat;
-            cursor.transform.FindChild("CursorDot").GetComponent<MeshRenderer>().materials = newMat;
+            cursor.transform.Find("CursorDot").GetComponent<MeshRenderer>().materials = newMat;
             newMat[0] = cursorEdgeMat;
             newMat[1] = cursorFaceMat;
-            cursor.transform.FindChild("CursorRing").GetComponent<MeshRenderer>().materials = newMat;
+            cursor.transform.Find("CursorRing").GetComponent<MeshRenderer>().materials = newMat;
         }
         else
         {
             Material[] newMat = new Material[2];
             newMat[0] = cursorTransparent;
             newMat[1] = cursorTransparent;
-            cursor.transform.FindChild("CursorDot").GetComponent<MeshRenderer>().materials = newMat;
-            cursor.transform.FindChild("CursorRing").GetComponent<MeshRenderer>().materials = newMat;
+            cursor.transform.Find("CursorDot").GetComponent<MeshRenderer>().materials = newMat;
+            cursor.transform.Find("CursorRing").GetComponent<MeshRenderer>().materials = newMat;
         }
     }
 

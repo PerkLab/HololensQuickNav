@@ -1,0 +1,1 @@
+C:\D\HololensQuickNav-github\src\HoloQuickNav2\UWP\HoloQuickNav2\HoloQuickNav2.csproj;arm

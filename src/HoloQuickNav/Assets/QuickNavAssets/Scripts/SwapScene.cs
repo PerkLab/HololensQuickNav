@@ -98,12 +98,12 @@ public class SwapScene : MonoBehaviour {
         //clear everything from current scene when instructions are opened
         //start from 'done' command
 
-        GameObject.Find("Head").transform.FindChild("Model").gameObject.SetActive(visible);
-        GameObject.Find("Controls").transform.FindChild("Done").gameObject.SetActive(visible);
-        GameObject.Find("CommandText").transform.FindChild("CommandName").gameObject.SetActive(visible);
-        GameObject.Find("CommandText").transform.FindChild("DoneCommandName").gameObject.SetActive(visible);
-        GameObject.Find("CommandText").transform.FindChild("HelpAndMenu").gameObject.SetActive(visible);
-        GameObject.Find("InputManager").transform.FindChild("VoiceInput").gameObject.SetActive(visible);
+        GameObject.Find("Head").transform.Find("Model").gameObject.SetActive(visible);
+        GameObject.Find("Controls").transform.Find("Done").gameObject.SetActive(visible);
+        GameObject.Find("CommandText").transform.Find("CommandName").gameObject.SetActive(visible);
+        GameObject.Find("CommandText").transform.Find("DoneCommandName").gameObject.SetActive(visible);
+        GameObject.Find("CommandText").transform.Find("HelpAndMenu").gameObject.SetActive(visible);
+        GameObject.Find("InputManager").transform.Find("VoiceInput").gameObject.SetActive(visible);
 
         WriteLog.WriteData("done");
 
@@ -119,11 +119,11 @@ public class SwapScene : MonoBehaviour {
         //clear everything from current scene when instructions are opened
         //start from 'shift' command
 
-        GameObject.Find("Head").transform.FindChild("Model").gameObject.SetActive(visible);
-        GameObject.Find("Controls").transform.FindChild("ShiftWithHead").gameObject.SetActive(visible);
-        GameObject.Find("CommandText").transform.FindChild("CommandName").gameObject.SetActive(visible);
-        GameObject.Find("CommandText").transform.FindChild("PauseHelpAndMenu").gameObject.SetActive(visible);
-        GameObject.Find("InputManager").transform.FindChild("VoiceInput").gameObject.SetActive(visible);
+        GameObject.Find("Head").transform.Find("Model").gameObject.SetActive(visible);
+        GameObject.Find("Controls").transform.Find("ShiftWithHead").gameObject.SetActive(visible);
+        GameObject.Find("CommandText").transform.Find("CommandName").gameObject.SetActive(visible);
+        GameObject.Find("CommandText").transform.Find("PauseHelpAndMenu").gameObject.SetActive(visible);
+        GameObject.Find("InputManager").transform.Find("VoiceInput").gameObject.SetActive(visible);
     }
 
     void RotateOnOff(bool visible)
@@ -131,14 +131,14 @@ public class SwapScene : MonoBehaviour {
         //clear everything from current scene when instructions are opened
         //start from 'rotate' command
 
-        GameObject.Find("Head").transform.FindChild("Model").gameObject.SetActive(visible);
-        GameObject.Find("Head").transform.FindChild("AxisA").gameObject.SetActive(visible);
-        GameObject.Find("Head").transform.FindChild("AxisR").gameObject.SetActive(visible);
-        GameObject.Find("Head").transform.FindChild("AxisS").gameObject.SetActive(visible);
-        GameObject.Find("Controls").transform.FindChild("Rotate3Axis").gameObject.SetActive(visible);
-        GameObject.Find("CommandText").transform.FindChild("CommandName").gameObject.SetActive(visible);
-        GameObject.Find("CommandText").transform.FindChild("PauseHelpAndMenu").gameObject.SetActive(visible);
-        GameObject.Find("InputManager").transform.FindChild("VoiceInput").gameObject.SetActive(visible);
+        GameObject.Find("Head").transform.Find("Model").gameObject.SetActive(visible);
+        GameObject.Find("Head").transform.Find("AxisA").gameObject.SetActive(visible);
+        GameObject.Find("Head").transform.Find("AxisR").gameObject.SetActive(visible);
+        GameObject.Find("Head").transform.Find("AxisS").gameObject.SetActive(visible);
+        GameObject.Find("Controls").transform.Find("Rotate3Axis").gameObject.SetActive(visible);
+        GameObject.Find("CommandText").transform.Find("CommandName").gameObject.SetActive(visible);
+        GameObject.Find("CommandText").transform.Find("PauseHelpAndMenu").gameObject.SetActive(visible);
+        GameObject.Find("InputManager").transform.Find("VoiceInput").gameObject.SetActive(visible);
     }
 
     void MoveOnOff(bool visible)
@@ -146,11 +146,11 @@ public class SwapScene : MonoBehaviour {
         //clear everything from current scene when instructions are opened
         //start from 'move' command
 
-        GameObject.Find("Head").transform.FindChild("Model").gameObject.SetActive(visible);
-        GameObject.Find("Controls").transform.FindChild("MoveFull").gameObject.SetActive(visible);
-        GameObject.Find("CommandText").transform.FindChild("CommandName").gameObject.SetActive(visible);
-        GameObject.Find("CommandText").transform.FindChild("MoveHelpAndMenu").gameObject.SetActive(visible);
-        GameObject.Find("InputManager").transform.FindChild("VoiceInput").gameObject.SetActive(visible);
+        GameObject.Find("Head").transform.Find("Model").gameObject.SetActive(visible);
+        GameObject.Find("Controls").transform.Find("MoveFull").gameObject.SetActive(visible);
+        GameObject.Find("CommandText").transform.Find("CommandName").gameObject.SetActive(visible);
+        GameObject.Find("CommandText").transform.Find("MoveHelpAndMenu").gameObject.SetActive(visible);
+        GameObject.Find("InputManager").transform.Find("VoiceInput").gameObject.SetActive(visible);
     }
 
     void ThreePointOnOff(bool visible)

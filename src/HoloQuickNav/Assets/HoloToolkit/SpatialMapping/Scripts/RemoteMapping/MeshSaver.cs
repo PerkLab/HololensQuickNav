@@ -18,6 +18,7 @@ namespace HoloToolkit.Unity.SpatialMapping
     /// </summary>
     public static class MeshSaver
     {
+
         /// <summary>
         /// The extension given to mesh files.
         /// </summary>

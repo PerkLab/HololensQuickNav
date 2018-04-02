@@ -45,7 +45,7 @@ public class RotateWithHead : MonoBehaviour {
     public void Align()
     {
         //position arrows aroud selected object and face user
-        gameObject.transform.position = new Vector3(selectedObject.transform.position.x, selectedObject.transform.FindChild("Model").transform.position.y, selectedObject.transform.position.z);
+        gameObject.transform.position = new Vector3(selectedObject.transform.position.x, selectedObject.transform.Find("Model").transform.position.y, selectedObject.transform.position.z);
         gameObject.transform.LookAt(ReferenceObject.transform);
         //update vector from users head to centre of model
         //allows user to move around the object without effecting rotation inadvertently 

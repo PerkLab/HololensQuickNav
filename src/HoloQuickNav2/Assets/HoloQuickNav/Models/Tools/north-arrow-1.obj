@@ -1,0 +1,27 @@
+# wavefront obj file written by the visualization toolkit
+
+mtllib C:/Users/emily/Desktop/north-arrow-1.mtl
+
+v 1907.26 288.004 0
+v 1907.26 272.247 0
+v 1901.57 267 0
+v 1912.95 267 0
+v 1907.26 272.247 2.31
+v 1907.26 288.004 2.31
+v 1901.57 267 2.31
+v 1912.95 267 2.31
+
+g grp1
+usemtl mtl1
+f 1 2 3 
+f 2 1 4 
+f 5 6 7 
+f 6 5 8 
+f 8 2 4 
+f 2 8 5 
+f 5 3 2 
+f 3 5 7 
+f 1 8 4 
+f 8 1 6 
+f 6 3 7 
+f 3 6 1 

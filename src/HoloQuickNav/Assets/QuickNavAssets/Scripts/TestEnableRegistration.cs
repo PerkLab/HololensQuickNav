@@ -23,24 +23,24 @@ public class TestEnableRegistration : MonoBehaviour
     private void Start()
     {
         //assign text mesh
-        CommandName = GameObject.Find("RegistrationText").transform.FindChild("CommandName").GetComponent<TextMesh>();
+        CommandName = GameObject.Find("RegistrationText").transform.Find("CommandName").GetComponent<TextMesh>();
 
     }
 
     public void Begin()
     {
         //hide model, show markers, disable voice commands from main program
-        GameObject.Find("Head").transform.FindChild("Model").gameObject.SetActive(false);
-        GameObject.Find("3PointRegistration").transform.FindChild("Frame").gameObject.SetActive(true);
-        GameObject.Find("InputManager").transform.FindChild("VoiceInput").gameObject.SetActive(false);
-        GameObject.Find("3PointRegistration").transform.FindChild("VoiceInput").gameObject.SetActive(true);
+        GameObject.Find("Head").transform.Find("Model").gameObject.SetActive(false);
+        GameObject.Find("3PointRegistration").transform.Find("Frame").gameObject.SetActive(true);
+        GameObject.Find("InputManager").transform.Find("VoiceInput").gameObject.SetActive(false);
+        GameObject.Find("3PointRegistration").transform.Find("VoiceInput").gameObject.SetActive(true);
 
         //hide command names for model and show them for the registration
-        GameObject.Find("CommandText").transform.FindChild("CommandName").gameObject.SetActive(false);
-        GameObject.Find("CommandText").transform.FindChild("HelpAndMenu").gameObject.SetActive(false);
+        GameObject.Find("CommandText").transform.Find("CommandName").gameObject.SetActive(false);
+        GameObject.Find("CommandText").transform.Find("HelpAndMenu").gameObject.SetActive(false);
         //text.GetComponent<TextMesh>().text = "";
-        GameObject.Find("RegistrationText").transform.FindChild("CommandName").gameObject.SetActive(true);
-        GameObject.Find("RegistrationText").transform.FindChild("AirTapCommands").gameObject.SetActive(true);
+        GameObject.Find("RegistrationText").transform.Find("CommandName").gameObject.SetActive(true);
+        GameObject.Find("RegistrationText").transform.Find("AirTapCommands").gameObject.SetActive(true);
 
         //initialize at step 0 and call first step
         stepCount = 0;
@@ -76,29 +76,29 @@ public class TestEnableRegistration : MonoBehaviour
     {
 
         //hide model and show markers
-        GameObject.Find("Head").transform.FindChild("Model").gameObject.SetActive(false);
-        GameObject.Find("3PointRegistration").transform.FindChild("Frame").gameObject.SetActive(true);
+        GameObject.Find("Head").transform.Find("Model").gameObject.SetActive(false);
+        GameObject.Find("3PointRegistration").transform.Find("Frame").gameObject.SetActive(true);
 
         if (stepCount == 0) //move nose marker >> move with head
         {
             stepCount++;
             //move marker infront of user
-            Vector3 cursorPos = GameObject.Find("InteractiveMeshCursor").transform.FindChild("CursorRing").transform.position;
-            GameObject.Find("3PointRegistration").transform.FindChild("Frame").transform.position = new Vector3(cursorPos.x, cursorPos.y, cursorPos.z);
+            Vector3 cursorPos = GameObject.Find("InteractiveMeshCursor").transform.Find("CursorRing").transform.position;
+            GameObject.Find("3PointRegistration").transform.Find("Frame").transform.position = new Vector3(cursorPos.x, cursorPos.y, cursorPos.z);
             //enable Nose movement, start with MoveWithHead
-            GameObject.Find("3PointRegistration").transform.FindChild("Nose").gameObject.SetActive(true);
-            GameObject.Find("3PointRegistration").transform.FindChild("Nose/MoveWithHead").gameObject.SetActive(true);
-            GameObject.Find("3PointRegistration").transform.FindChild("Nose/Depth").gameObject.SetActive(false);
+            GameObject.Find("3PointRegistration").transform.Find("Nose").gameObject.SetActive(true);
+            GameObject.Find("3PointRegistration").transform.Find("Nose/MoveWithHead").gameObject.SetActive(true);
+            GameObject.Find("3PointRegistration").transform.Find("Nose/Depth").gameObject.SetActive(false);
 
             //disable other commands
-            GameObject.Find("3PointRegistration").transform.FindChild("RightEye").gameObject.SetActive(false);
-            GameObject.Find("3PointRegistration").transform.FindChild("LeftEye").gameObject.SetActive(false);
+            GameObject.Find("3PointRegistration").transform.Find("RightEye").gameObject.SetActive(false);
+            GameObject.Find("3PointRegistration").transform.Find("LeftEye").gameObject.SetActive(false);
 
             //hide all markers except the nose
-            GameObject.Find("3PointRegistration").transform.FindChild("Frame/SubFrame/Nose").gameObject.SetActive(true);
-            GameObject.Find("3PointRegistration").transform.FindChild("Frame/SubFrame/RightEye").gameObject.SetActive(false);
-            GameObject.Find("3PointRegistration").transform.FindChild("Frame/SubFrame/LeftEye").gameObject.SetActive(false);
-            GameObject.Find("3PointRegistration").transform.FindChild("Frame/SubFrame/Axis").gameObject.SetActive(false);
+            GameObject.Find("3PointRegistration").transform.Find("Frame/SubFrame/Nose").gameObject.SetActive(true);
+            GameObject.Find("3PointRegistration").transform.Find("Frame/SubFrame/RightEye").gameObject.SetActive(false);
+            GameObject.Find("3PointRegistration").transform.Find("Frame/SubFrame/LeftEye").gameObject.SetActive(false);
+            GameObject.Find("3PointRegistration").transform.Find("Frame/SubFrame/Axis").gameObject.SetActive(false);
 
             //update text
             CommandName.text = "Nose > Move";
@@ -109,19 +109,19 @@ public class TestEnableRegistration : MonoBehaviour
         {
             stepCount++;
             //disable MoveWithHead, enable Depth
-            GameObject.Find("3PointRegistration").transform.FindChild("Nose").gameObject.SetActive(true);
-            GameObject.Find("3PointRegistration").transform.FindChild("Nose/MoveWithHead").gameObject.SetActive(false);
-            GameObject.Find("3PointRegistration").transform.FindChild("Nose/Depth").gameObject.SetActive(true);
+            GameObject.Find("3PointRegistration").transform.Find("Nose").gameObject.SetActive(true);
+            GameObject.Find("3PointRegistration").transform.Find("Nose/MoveWithHead").gameObject.SetActive(false);
+            GameObject.Find("3PointRegistration").transform.Find("Nose/Depth").gameObject.SetActive(true);
 
             //disable other commands
-            GameObject.Find("3PointRegistration").transform.FindChild("RightEye").gameObject.SetActive(false);
-            GameObject.Find("3PointRegistration").transform.FindChild("LeftEye").gameObject.SetActive(false);
+            GameObject.Find("3PointRegistration").transform.Find("RightEye").gameObject.SetActive(false);
+            GameObject.Find("3PointRegistration").transform.Find("LeftEye").gameObject.SetActive(false);
 
             //hide all markers except the nose
-            GameObject.Find("3PointRegistration").transform.FindChild("Frame/SubFrame/Nose").gameObject.SetActive(true);
-            GameObject.Find("3PointRegistration").transform.FindChild("Frame/SubFrame/RightEye").gameObject.SetActive(false);
-            GameObject.Find("3PointRegistration").transform.FindChild("Frame/SubFrame/LeftEye").gameObject.SetActive(false);
-            GameObject.Find("3PointRegistration").transform.FindChild("Frame/SubFrame/Axis").gameObject.SetActive(false);
+            GameObject.Find("3PointRegistration").transform.Find("Frame/SubFrame/Nose").gameObject.SetActive(true);
+            GameObject.Find("3PointRegistration").transform.Find("Frame/SubFrame/RightEye").gameObject.SetActive(false);
+            GameObject.Find("3PointRegistration").transform.Find("Frame/SubFrame/LeftEye").gameObject.SetActive(false);
+            GameObject.Find("3PointRegistration").transform.Find("Frame/SubFrame/Axis").gameObject.SetActive(false);
 
             //update text
             CommandName.text = "Nose > Depth";
@@ -130,23 +130,23 @@ public class TestEnableRegistration : MonoBehaviour
         {
             stepCount++;
             //move RightEye marker to a location in front of the user
-            Vector3 noseMarker = GameObject.Find("3PointRegistration").transform.FindChild("Frame/SubFrame/Nose/Marker").transform.position;
-            GameObject.Find("3PointRegistration").transform.FindChild("RightEye/Marker").transform.position = new Vector3(noseMarker.x, noseMarker.y, noseMarker.z);
+            Vector3 noseMarker = GameObject.Find("3PointRegistration").transform.Find("Frame/SubFrame/Nose/Marker").transform.position;
+            GameObject.Find("3PointRegistration").transform.Find("RightEye/Marker").transform.position = new Vector3(noseMarker.x, noseMarker.y, noseMarker.z);
 
             //enable move command for RightEye
-            GameObject.Find("3PointRegistration").transform.FindChild("RightEye").gameObject.SetActive(true);
-            GameObject.Find("3PointRegistration").transform.FindChild("RightEye/MoveWithHead").gameObject.SetActive(true);
-            GameObject.Find("3PointRegistration").transform.FindChild("RightEye/Depth").gameObject.SetActive(false);
+            GameObject.Find("3PointRegistration").transform.Find("RightEye").gameObject.SetActive(true);
+            GameObject.Find("3PointRegistration").transform.Find("RightEye/MoveWithHead").gameObject.SetActive(true);
+            GameObject.Find("3PointRegistration").transform.Find("RightEye/Depth").gameObject.SetActive(false);
 
             //disable Nose, LeftEye commands
-            GameObject.Find("3PointRegistration").transform.FindChild("Nose").gameObject.SetActive(false);
-            GameObject.Find("3PointRegistration").transform.FindChild("LeftEye").gameObject.SetActive(false);
+            GameObject.Find("3PointRegistration").transform.Find("Nose").gameObject.SetActive(false);
+            GameObject.Find("3PointRegistration").transform.Find("LeftEye").gameObject.SetActive(false);
 
             //hide all markers except the nose, leave right eye hidden for now
-            GameObject.Find("3PointRegistration").transform.FindChild("Frame/SubFrame/Nose").gameObject.SetActive(true);
-            GameObject.Find("3PointRegistration").transform.FindChild("Frame/SubFrame/RightEye").gameObject.SetActive(false);
-            GameObject.Find("3PointRegistration").transform.FindChild("Frame/SubFrame/LeftEye").gameObject.SetActive(false);
-            GameObject.Find("3PointRegistration").transform.FindChild("Frame/SubFrame/Axis").gameObject.SetActive(false);
+            GameObject.Find("3PointRegistration").transform.Find("Frame/SubFrame/Nose").gameObject.SetActive(true);
+            GameObject.Find("3PointRegistration").transform.Find("Frame/SubFrame/RightEye").gameObject.SetActive(false);
+            GameObject.Find("3PointRegistration").transform.Find("Frame/SubFrame/LeftEye").gameObject.SetActive(false);
+            GameObject.Find("3PointRegistration").transform.Find("Frame/SubFrame/Axis").gameObject.SetActive(false);
 
             //centre command name text around marker
             CommandText.ToggleObject(true);
@@ -159,19 +159,19 @@ public class TestEnableRegistration : MonoBehaviour
         {
             stepCount++;
             //enable depth command for RightEye
-            GameObject.Find("3PointRegistration").transform.FindChild("RightEye").gameObject.SetActive(true);
-            GameObject.Find("3PointRegistration").transform.FindChild("RightEye/MoveWithHead").gameObject.SetActive(false);
-            GameObject.Find("3PointRegistration").transform.FindChild("RightEye/Depth").gameObject.SetActive(true);
+            GameObject.Find("3PointRegistration").transform.Find("RightEye").gameObject.SetActive(true);
+            GameObject.Find("3PointRegistration").transform.Find("RightEye/MoveWithHead").gameObject.SetActive(false);
+            GameObject.Find("3PointRegistration").transform.Find("RightEye/Depth").gameObject.SetActive(true);
 
             //disable Nose, LeftEye commands
-            GameObject.Find("3PointRegistration").transform.FindChild("Nose").gameObject.SetActive(false);
-            GameObject.Find("3PointRegistration").transform.FindChild("LeftEye").gameObject.SetActive(false);
+            GameObject.Find("3PointRegistration").transform.Find("Nose").gameObject.SetActive(false);
+            GameObject.Find("3PointRegistration").transform.Find("LeftEye").gameObject.SetActive(false);
 
             //hide all markers except the nose, leave right eye hidden for now
-            GameObject.Find("3PointRegistration").transform.FindChild("Frame/SubFrame/Nose").gameObject.SetActive(true);
-            GameObject.Find("3PointRegistration").transform.FindChild("Frame/SubFrame/RightEye").gameObject.SetActive(false);
-            GameObject.Find("3PointRegistration").transform.FindChild("Frame/SubFrame/LeftEye").gameObject.SetActive(false);
-            GameObject.Find("3PointRegistration").transform.FindChild("Frame/SubFrame/Axis").gameObject.SetActive(false);
+            GameObject.Find("3PointRegistration").transform.Find("Frame/SubFrame/Nose").gameObject.SetActive(true);
+            GameObject.Find("3PointRegistration").transform.Find("Frame/SubFrame/RightEye").gameObject.SetActive(false);
+            GameObject.Find("3PointRegistration").transform.Find("Frame/SubFrame/LeftEye").gameObject.SetActive(false);
+            GameObject.Find("3PointRegistration").transform.Find("Frame/SubFrame/Axis").gameObject.SetActive(false);
 
             //change material of nose marker to show it locked in place 
             // GameObject.Find("3PointRegistration").transform.FindChild("Frame/SubFrame/Nose/Marker").gameObject.GetComponent<Renderer>().material = lockedMat;
@@ -183,17 +183,17 @@ public class TestEnableRegistration : MonoBehaviour
         else if (stepCount == 4) //move left eye marker >> move with head
         {
             //update position after step 3 to get proper alignment and spacing between nose and right eye markers
-            Vector3 nosePosition = GameObject.Find("3PointRegistration").transform.FindChild("Frame/SubFrame/Nose/Marker").gameObject.transform.position;
-            Vector3 REyePosition = GameObject.Find("3PointRegistration").transform.FindChild("Frame/SubFrame/RightEye/Marker").gameObject.transform.position;
-            Vector3 markerPosition = GameObject.Find("3PointRegistration").transform.FindChild("RightEye/Marker").gameObject.transform.position;
+            Vector3 nosePosition = GameObject.Find("3PointRegistration").transform.Find("Frame/SubFrame/Nose/Marker").gameObject.transform.position;
+            Vector3 REyePosition = GameObject.Find("3PointRegistration").transform.Find("Frame/SubFrame/RightEye/Marker").gameObject.transform.position;
+            Vector3 markerPosition = GameObject.Find("3PointRegistration").transform.Find("RightEye/Marker").gameObject.transform.position;
             Vector3 oldDirection = new Vector3(REyePosition.x - nosePosition.x, REyePosition.y - nosePosition.y, REyePosition.z - nosePosition.z);
             Vector3 newDirection = new Vector3(markerPosition.x - nosePosition.x, markerPosition.y - nosePosition.y, markerPosition.z - nosePosition.z);
             //rotate frame to new position
             Quaternion q = Quaternion.FromToRotation(oldDirection, newDirection);
-            GameObject frame = GameObject.Find("3PointRegistration").transform.FindChild("Frame").gameObject;
+            GameObject frame = GameObject.Find("3PointRegistration").transform.Find("Frame").gameObject;
             frame.transform.rotation = q * frame.transform.rotation;
             //shift frame to center between the two markers chosen by the user
-            REyePosition = GameObject.Find("3PointRegistration").transform.FindChild("Frame/SubFrame/RightEye/Marker").gameObject.transform.position;
+            REyePosition = GameObject.Find("3PointRegistration").transform.Find("Frame/SubFrame/RightEye/Marker").gameObject.transform.position;
             Vector3 distance = new Vector3(REyePosition.x - markerPosition.x, REyePosition.y - markerPosition.y, REyePosition.z - markerPosition.z);
             float distanceMagnitude = Vector3.Magnitude(distance);
             frame.transform.position = frame.transform.position + (distanceMagnitude / 2) * newDirection.normalized;
@@ -204,21 +204,21 @@ public class TestEnableRegistration : MonoBehaviour
 
             stepCount++;
 
-            Vector3 REyeMarker = GameObject.Find("3PointRegistration").transform.FindChild("Frame/SubFrame/RightEye/Marker").transform.position;
-            GameObject.Find("3PointRegistration").transform.FindChild("LeftEye/Marker").transform.position = new Vector3(REyeMarker.x, REyeMarker.y, REyeMarker.z);
+            Vector3 REyeMarker = GameObject.Find("3PointRegistration").transform.Find("Frame/SubFrame/RightEye/Marker").transform.position;
+            GameObject.Find("3PointRegistration").transform.Find("LeftEye/Marker").transform.position = new Vector3(REyeMarker.x, REyeMarker.y, REyeMarker.z);
 
             //disable Nose, RightEye commands, enable LeftEye  move command
-            GameObject.Find("3PointRegistration").transform.FindChild("Nose").gameObject.SetActive(false);
-            GameObject.Find("3PointRegistration").transform.FindChild("RightEye").gameObject.SetActive(false);
-            GameObject.Find("3PointRegistration").transform.FindChild("LeftEye").gameObject.SetActive(true);
-            GameObject.Find("3PointRegistration").transform.FindChild("LeftEye/MoveWithHead").gameObject.SetActive(true);
-            GameObject.Find("3PointRegistration").transform.FindChild("LeftEye/Depth").gameObject.SetActive(false);
+            GameObject.Find("3PointRegistration").transform.Find("Nose").gameObject.SetActive(false);
+            GameObject.Find("3PointRegistration").transform.Find("RightEye").gameObject.SetActive(false);
+            GameObject.Find("3PointRegistration").transform.Find("LeftEye").gameObject.SetActive(true);
+            GameObject.Find("3PointRegistration").transform.Find("LeftEye/MoveWithHead").gameObject.SetActive(true);
+            GameObject.Find("3PointRegistration").transform.Find("LeftEye/Depth").gameObject.SetActive(false);
 
             //show markers
-            GameObject.Find("3PointRegistration").transform.FindChild("Frame/SubFrame/Nose").gameObject.SetActive(true);
-            GameObject.Find("3PointRegistration").transform.FindChild("Frame/SubFrame/RightEye").gameObject.SetActive(true);
-            GameObject.Find("3PointRegistration").transform.FindChild("Frame/SubFrame/LeftEye").gameObject.SetActive(false);
-            GameObject.Find("3PointRegistration").transform.FindChild("Frame/SubFrame/Axis").gameObject.SetActive(false);  /////take this out later??
+            GameObject.Find("3PointRegistration").transform.Find("Frame/SubFrame/Nose").gameObject.SetActive(true);
+            GameObject.Find("3PointRegistration").transform.Find("Frame/SubFrame/RightEye").gameObject.SetActive(true);
+            GameObject.Find("3PointRegistration").transform.Find("Frame/SubFrame/LeftEye").gameObject.SetActive(false);
+            GameObject.Find("3PointRegistration").transform.Find("Frame/SubFrame/Axis").gameObject.SetActive(false);  /////take this out later??
 
             //centre command name text around nose marker
             CommandText.ToggleObject(false);
@@ -232,17 +232,17 @@ public class TestEnableRegistration : MonoBehaviour
         {
             stepCount++;
             //disable Nose, RightEye commands, enable LeftEye  move command
-            GameObject.Find("3PointRegistration").transform.FindChild("Nose").gameObject.SetActive(false);
-            GameObject.Find("3PointRegistration").transform.FindChild("RightEye").gameObject.SetActive(false);
-            GameObject.Find("3PointRegistration").transform.FindChild("LeftEye").gameObject.SetActive(true);
-            GameObject.Find("3PointRegistration").transform.FindChild("LeftEye/MoveWithHead").gameObject.SetActive(false);
-            GameObject.Find("3PointRegistration").transform.FindChild("LeftEye/Depth").gameObject.SetActive(true);
+            GameObject.Find("3PointRegistration").transform.Find("Nose").gameObject.SetActive(false);
+            GameObject.Find("3PointRegistration").transform.Find("RightEye").gameObject.SetActive(false);
+            GameObject.Find("3PointRegistration").transform.Find("LeftEye").gameObject.SetActive(true);
+            GameObject.Find("3PointRegistration").transform.Find("LeftEye/MoveWithHead").gameObject.SetActive(false);
+            GameObject.Find("3PointRegistration").transform.Find("LeftEye/Depth").gameObject.SetActive(true);
 
             //show all markers
-            GameObject.Find("3PointRegistration").transform.FindChild("Frame/SubFrame/Nose").gameObject.SetActive(true);
-            GameObject.Find("3PointRegistration").transform.FindChild("Frame/SubFrame/RightEye").gameObject.SetActive(true);
-            GameObject.Find("3PointRegistration").transform.FindChild("Frame/SubFrame/LeftEye").gameObject.SetActive(false);
-            GameObject.Find("3PointRegistration").transform.FindChild("Frame/SubFrame/Axis").gameObject.SetActive(false);  /////take this out later??
+            GameObject.Find("3PointRegistration").transform.Find("Frame/SubFrame/Nose").gameObject.SetActive(true);
+            GameObject.Find("3PointRegistration").transform.Find("Frame/SubFrame/RightEye").gameObject.SetActive(true);
+            GameObject.Find("3PointRegistration").transform.Find("Frame/SubFrame/LeftEye").gameObject.SetActive(false);
+            GameObject.Find("3PointRegistration").transform.Find("Frame/SubFrame/Axis").gameObject.SetActive(false);  /////take this out later??
 
 
             //update text
@@ -257,10 +257,10 @@ public class TestEnableRegistration : MonoBehaviour
             //find minimum perpendicular distance from vector between nose and right eye, and marker at left eye
             //X == A + ((P - A).D)D where X is the point on the AD vector and P is the point in space
             //Desired perpendicular: P - X
-            Vector3 nosePosition = GameObject.Find("3PointRegistration").transform.FindChild("Frame/SubFrame/Nose/Marker").gameObject.transform.position;
-            Vector3 REyePosition = GameObject.Find("3PointRegistration").transform.FindChild("Frame/SubFrame/RightEye/Marker").gameObject.transform.position;
-            Vector3 LEyePosition = GameObject.Find("3PointRegistration").transform.FindChild("Frame/SubFrame/LeftEye/Marker").gameObject.transform.position;
-            Vector3 LEyeMarker = GameObject.Find("3PointRegistration").transform.FindChild("LeftEye/Marker").gameObject.transform.position;
+            Vector3 nosePosition = GameObject.Find("3PointRegistration").transform.Find("Frame/SubFrame/Nose/Marker").gameObject.transform.position;
+            Vector3 REyePosition = GameObject.Find("3PointRegistration").transform.Find("Frame/SubFrame/RightEye/Marker").gameObject.transform.position;
+            Vector3 LEyePosition = GameObject.Find("3PointRegistration").transform.Find("Frame/SubFrame/LeftEye/Marker").gameObject.transform.position;
+            Vector3 LEyeMarker = GameObject.Find("3PointRegistration").transform.Find("LeftEye/Marker").gameObject.transform.position;
 
             Vector3 oldDirection = LEyePosition - (nosePosition + Vector3.Dot((LEyePosition - nosePosition), (REyePosition - nosePosition)) * (REyePosition - nosePosition));
             Vector3 newDirection = LEyeMarker - (nosePosition + Vector3.Dot((LEyeMarker - nosePosition), (REyePosition - nosePosition)) * (REyePosition - nosePosition));
@@ -268,7 +268,7 @@ public class TestEnableRegistration : MonoBehaviour
             //rotate frame to new direction
             float angle = Vector3.Angle(oldDirection, newDirection);
             Vector3 axis = nosePosition - REyePosition;
-            GameObject frame = GameObject.Find("3PointRegistration").transform.FindChild("Frame").gameObject;
+            GameObject frame = GameObject.Find("3PointRegistration").transform.Find("Frame").gameObject;
             frame.transform.RotateAround(nosePosition, axis, angle);
 
             //shift frame halfway towards left marker
@@ -285,30 +285,30 @@ public class TestEnableRegistration : MonoBehaviour
         stepCount = 0;
 
         //hide markers and all registration tools
-        GameObject.Find("3PointRegistration").transform.FindChild("Nose").gameObject.SetActive(false);
-        GameObject.Find("3PointRegistration").transform.FindChild("RightEye").gameObject.SetActive(false);
-        GameObject.Find("3PointRegistration").transform.FindChild("LeftEye").gameObject.SetActive(false);
-        GameObject.Find("3PointRegistration").transform.FindChild("Frame").gameObject.SetActive(false);
+        GameObject.Find("3PointRegistration").transform.Find("Nose").gameObject.SetActive(false);
+        GameObject.Find("3PointRegistration").transform.Find("RightEye").gameObject.SetActive(false);
+        GameObject.Find("3PointRegistration").transform.Find("LeftEye").gameObject.SetActive(false);
+        GameObject.Find("3PointRegistration").transform.Find("Frame").gameObject.SetActive(false);
 
         //set material of locked markers back to free
         //GameObject.Find("3PointRegistration").transform.FindChild("Frame/SubFrame/Nose/Marker").gameObject.GetComponent<Renderer>().material = freeMat;
         //GameObject.Find("3PointRegistration").transform.FindChild("Frame/SubFrame/RightEye/Marker").gameObject.GetComponent<Renderer>().material = freeMat;
 
         //align model of head with the markers
-        GameObject.Find("Head").transform.FindChild("Model").gameObject.SetActive(true);
-        GameObject Frame = GameObject.Find("3PointRegistration").transform.FindChild("Frame").gameObject;
+        GameObject.Find("Head").transform.Find("Model").gameObject.SetActive(true);
+        GameObject Frame = GameObject.Find("3PointRegistration").transform.Find("Frame").gameObject;
         GameObject.Find("Head").transform.position = new Vector3(Frame.transform.position.x, Frame.transform.position.y, Frame.transform.position.z);
         GameObject.Find("Head").transform.rotation = Frame.transform.rotation;
 
         //set the appropriate text as visible
-        GameObject.Find("CommandText").transform.FindChild("CommandName").gameObject.SetActive(true);
-        GameObject.Find("CommandText").transform.FindChild("HelpAndMenu").GetComponent<TextMesh>().gameObject.SetActive(true);
-        GameObject.Find("RegistrationText").transform.FindChild("CommandName").gameObject.SetActive(false);
-        GameObject.Find("RegistrationText").transform.FindChild("AirTapCommands").gameObject.SetActive(false);
+        GameObject.Find("CommandText").transform.Find("CommandName").gameObject.SetActive(true);
+        GameObject.Find("CommandText").transform.Find("HelpAndMenu").GetComponent<TextMesh>().gameObject.SetActive(true);
+        GameObject.Find("RegistrationText").transform.Find("CommandName").gameObject.SetActive(false);
+        GameObject.Find("RegistrationText").transform.Find("AirTapCommands").gameObject.SetActive(false);
 
         //turn voice commands from main program back on
-        GameObject.Find("InputManager").transform.FindChild("VoiceInput").gameObject.SetActive(true);
-        GameObject.Find("3PointRegistration").transform.FindChild("VoiceInput").gameObject.SetActive(false);
+        GameObject.Find("InputManager").transform.Find("VoiceInput").gameObject.SetActive(true);
+        GameObject.Find("3PointRegistration").transform.Find("VoiceInput").gameObject.SetActive(false);
 
         DoneEvent.Invoke();
     }

@@ -24,7 +24,7 @@ public class RotateOnGaze : MonoBehaviour
     public void Align()
     {
         // position the arrows around the selected object and face the user
-        gameObject.transform.position = new Vector3(selectedObject.transform.position.x, selectedObject.transform.FindChild("Model").transform.position.y, selectedObject.transform.position.z);
+        gameObject.transform.position = new Vector3(selectedObject.transform.position.x, selectedObject.transform.Find("Model").transform.position.y, selectedObject.transform.position.z);
         gameObject.transform.LookAt(cam.transform);
     }
 

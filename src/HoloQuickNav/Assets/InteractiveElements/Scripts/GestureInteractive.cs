@@ -5,7 +5,7 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.Events;
 using HoloToolkit.Unity;
-using UnityEngine.VR.WSA.Input;
+using UnityEngine.XR.WSA.Input;
 using UnityEngine.Windows.Speech;
 using HoloToolkit.Unity.InputModule;
 using HoloToolkit.Examples.Prototyping;

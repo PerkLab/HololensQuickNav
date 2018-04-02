@@ -2,7 +2,7 @@
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
 using UnityEngine;
-using UnityEngine.VR.WSA.Input;
+
 
 namespace HoloToolkit.Unity.InputModule
 {
@@ -54,12 +54,19 @@ namespace HoloToolkit.Unity.InputModule
 
             // Register for hand and finger events to know where your hand
             // is being tracked and what state it is in.
-            InteractionManager.SourceLost += InteractionManager_SourceLost;
-            InteractionManager.SourceUpdated += InteractionManager_SourceUpdated;
-            InteractionManager.SourceReleased += InteractionManager_SourceReleased;
+            /*
+             * 
+             * 
+             * obsolete methods used, must update for use in Unity 2017
+             * 
+             * 
+            UnityEngine.XR.WSA.Input.InteractionManager.SourceLost += InteractionManager_SourceLost;
+            UnityEngine.XR.WSA.Input.InteractionManager.SourceUpdated += InteractionManager_SourceUpdated;
+            UnityEngine.XR.WSA.Input.InteractionManager.SourceReleased += InteractionManager_SourceReleased;
+            */
         }
 
-        private void ShowHandGuidanceIndicator(InteractionSourceState hand)
+        private void ShowHandGuidanceIndicator(UnityEngine.XR.WSA.Input.InteractionSourceState hand)
         {
             if (!currentlyTrackedHand.HasValue)
             {
@@ -79,7 +86,7 @@ namespace HoloToolkit.Unity.InputModule
             }
         }
 
-        private void HideHandGuidanceIndicator(InteractionSourceState hand)
+        private void HideHandGuidanceIndicator(UnityEngine.XR.WSA.Input.InteractionSourceState hand)
         {
             if (!currentlyTrackedHand.HasValue)
             {
@@ -92,7 +99,7 @@ namespace HoloToolkit.Unity.InputModule
             }
         }
 
-        private void GetIndicatorPositionAndRotation(InteractionSourceState hand, out Vector3 position, out Quaternion rotation)
+        private void GetIndicatorPositionAndRotation(UnityEngine.XR.WSA.Input.InteractionSourceState hand, out Vector3 position, out Quaternion rotation)
         {
             // Update the distance from IndicatorParent based on the user's hand's distance from the center of the view.
             // Bound this distance by this maxDistanceFromCenter field, in meters.
@@ -104,10 +111,10 @@ namespace HoloToolkit.Unity.InputModule
             rotation = Quaternion.LookRotation(Camera.main.transform.forward, hand.properties.sourceLossMitigationDirection);
         }
 
-        private void InteractionManager_SourceUpdated(InteractionSourceState hand)
+        private void InteractionManager_SourceUpdated(UnityEngine.XR.WSA.Input.InteractionSourceState hand)
         {
             // Only display hand indicators when we are in a holding state, since hands going out of view will affect any active gestures.
-            if (!hand.pressed)
+            if (!hand.selectPressed)
             {
                 return;
             }
@@ -134,19 +141,19 @@ namespace HoloToolkit.Unity.InputModule
             }
         }
 
-        private void InteractionManager_SourceReleased(InteractionSourceState hand)
+        private void InteractionManager_SourceReleased(UnityEngine.XR.WSA.Input.InteractionSourceState hand)
         {
             // Stop displaying the guidance indicator when the user releases their finger from the pressed state.
             RemoveTrackedHand(hand);
         }
 
-        private void InteractionManager_SourceLost(InteractionSourceState hand)
+        private void InteractionManager_SourceLost(UnityEngine.XR.WSA.Input.InteractionSourceState hand)
         {
             // Stop displaying the guidance indicator when the user's hand leaves the view.
             RemoveTrackedHand(hand);
         }
 
-        private void RemoveTrackedHand(InteractionSourceState hand)
+        private void RemoveTrackedHand(UnityEngine.XR.WSA.Input.InteractionSourceState hand)
         {
             // Only remove a hand if we are currently tracking a hand, and the hand to remove matches this tracked hand.
             if (currentlyTrackedHand.HasValue && currentlyTrackedHand.Value == hand.source.id)
@@ -159,10 +166,15 @@ namespace HoloToolkit.Unity.InputModule
 
         protected override void OnDestroy()
         {
-            InteractionManager.SourceLost -= InteractionManager_SourceLost;
-            InteractionManager.SourceUpdated -= InteractionManager_SourceUpdated;
-            InteractionManager.SourceReleased -= InteractionManager_SourceReleased;
-
+            /*
+             * 
+             * obsolete methods used, must update for use in Unity 2017
+             * 
+             * 
+            UnityEngine.XR.WSA.Input.InteractionManager.InteractionSourceLost -= InteractionManager_SourceLost;
+            UnityEngine.XR.WSA.Input.InteractionManager.SourceUpdated -= InteractionManager_SourceUpdated;
+            UnityEngine.XR.WSA.Input.InteractionManager.SourceReleased -= InteractionManager_SourceReleased;
+            */
             base.OnDestroy();
         }
     }

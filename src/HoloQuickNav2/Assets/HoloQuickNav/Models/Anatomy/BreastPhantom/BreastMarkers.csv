@@ -1,0 +1,4 @@
+# Markups fiducial file version = 4.7
+# CoordinateSystem = 0
+# columns = id,x,y,z,ow,ox,oy,oz,vis,sel,lock,label,desc,associatedNodeID
+vtkMRMLMarkupsFiducialNode_1,9.9972,41.8357,42.9398,0,0,0,1,1,1,0,BreastMarkers-1,,

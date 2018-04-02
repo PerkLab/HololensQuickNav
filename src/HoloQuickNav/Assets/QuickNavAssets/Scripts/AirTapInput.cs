@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.VR.WSA.Input;
+
 using UnityEngine.Events;
 //using HoloToolkit.Unity;
 //using UnityEngine.Windows.Speech;
@@ -32,7 +32,7 @@ public class AirTapInput : MonoBehaviour//, IInputClickHandler
 
     private bool IsEnabled = false;
 
-    GestureRecognizer recognizer;
+    UnityEngine.XR.WSA.Input.GestureRecognizer recognizer;
 
     private AudioSource Click;
 
@@ -46,7 +46,7 @@ public class AirTapInput : MonoBehaviour//, IInputClickHandler
         thirdTapEnabled = false;
         startDelay = 0f;
         //enable gesture recognizer to call AirTap on tap event
-        recognizer = new GestureRecognizer();
+        recognizer = new UnityEngine.XR.WSA.Input.GestureRecognizer();
         recognizer.TappedEvent += AirTap;
         recognizer.StartCapturingGestures();
 
@@ -55,7 +55,7 @@ public class AirTapInput : MonoBehaviour//, IInputClickHandler
     }
 
 
-    private void AirTap(InteractionSourceKind source, int tapCount, Ray headRay)
+    private void AirTap(UnityEngine.XR.WSA.Input.InteractionSourceKind source, int tapCount, Ray headRay)
     {
 
         if (IsEnabled)

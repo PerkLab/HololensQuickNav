@@ -18,7 +18,7 @@ public class Opening : MonoBehaviour {
     // Use this for initialization
     void Awake () {
 
-        GameObject.Find("Cursor").transform.FindChild("InteractiveMeshCursor").gameObject.SetActive(false);
+        GameObject.Find("Cursor").transform.Find("InteractiveMeshCursor").gameObject.SetActive(false);
         //GameObject.Find("InteractiveMeshCursor").transform.FindChild("CurosrRing").gameObject.SetActive(false);
         timer = 0f;
         Logo = true;
@@ -30,12 +30,12 @@ public class Opening : MonoBehaviour {
         //make menu visible, hide logo
         GameObject.Find("Logo").SetActive(false);
 
-        GameObject.Find("Cursor").transform.FindChild("InteractiveMeshCursor").gameObject.SetActive(true);
+        GameObject.Find("Cursor").transform.Find("InteractiveMeshCursor").gameObject.SetActive(true);
         //GameObject.Find("InteractiveMeshCursor").transform.FindChild("CurosrRing").gameObject.SetActive(true);
-        GameObject.Find("Menu").transform.FindChild("Buttons").gameObject.SetActive(true);
-        GameObject.Find("Menu").transform.FindChild("Background").gameObject.SetActive(true);
-        GameObject.Find("Menu").transform.FindChild("Buttons").transform.position = cam.transform.position + cam.transform.forward * 1.5f;
-        GameObject.Find("Menu").transform.FindChild("Background").transform.position = cam.transform.position + cam.transform.forward * 1.5f;
+        GameObject.Find("Menu").transform.Find("Buttons").gameObject.SetActive(true);
+        GameObject.Find("Menu").transform.Find("Background").gameObject.SetActive(true);
+        GameObject.Find("Menu").transform.Find("Buttons").transform.position = cam.transform.position + cam.transform.forward * 1.5f;
+        GameObject.Find("Menu").transform.Find("Background").transform.position = cam.transform.position + cam.transform.forward * 1.5f;
         //GameObject.Find("Menu").transform.LookAt(cam.transform.position);
 
     }
