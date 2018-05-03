@@ -1,6 +1,6 @@
 ## Workflow
 
-## Med Student / Resident / Neurosurgeon Training
+### Med Student / Resident / Neurosurgeon Training
 
 * Med Students rotate every few weeks - get their numbers and ask for 10 minutes to go through software and get their consent (before any cases with them assisting) (Zac/Sarah)
 * Residents rotate every month - same as above (Zac/Sarah)
