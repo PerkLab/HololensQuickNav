@@ -8,6 +8,7 @@
 
 ### Patient Recruitment & HoloLens Prep
 
+* Bring laptop and USB stick to get images if patient consents (Zac/Sarah)
 * Day prior to knowing we are available, check KGH OR schedule for patients (Zac/Sarah)
 * If there are any scheduled, call them, get verbal consent after talking to them about the study (Zac/Sarah)
 * Get images on USB (Still need to talk to Ron about details of this), anonymize, segment (Zac/Sarah)
@@ -16,7 +17,7 @@
 ### Pre & Intra-Op
 
 * Meet patient before procedure to get written consent (Zac/Sarah)
-* Enter OR and follow procedures, get scrubbed in, etc (Nurses, etc will give run through on this first few times through) (Zac/Sarah)
+* Enter OR and follow procedures - Nurses, etc. will give run through on this first few times through (Zac/Sarah)
 * Create approximate registration with HoloLens to hand off to trainee (Zac/Sarah)
 * Have Med Student identify entry point and trajectory conventionally, scan with Camera (Zac/Sarah)
 * Have Med Student identify entry point and trajectory with HoloLens, scan with Camera (Zac/Sarah)
