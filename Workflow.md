@@ -17,7 +17,7 @@
 ### Pre & Intra-Op
 
 * Meet patient before procedure to get written consent (Zac/Sarah)
-* Enter OR and follow procedures - Nurses, etc. will give run through on this first few times through (Zac/Sarah)
+* Enter OR (with scrubs and surgical cap/mask) and follow procedures - Nurses, etc. will give run through on this first few times through (Zac/Sarah)
 * Create approximate registration with HoloLens to hand off to trainee (Zac/Sarah)
 * Have Med Student identify entry point and trajectory conventionally, scan with Camera (Zac/Sarah)
 * Have Med Student identify entry point and trajectory with HoloLens, scan with Camera (Zac/Sarah)
