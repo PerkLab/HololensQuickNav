@@ -34,7 +34,9 @@ public class Opening : MonoBehaviour {
         GameObject.Find("Menu").transform.Find("Background").gameObject.SetActive(true);
         GameObject.Find("Menu").transform.Find("Buttons").transform.position = cam.transform.position + cam.transform.forward * 1.5f;
         GameObject.Find("Menu").transform.Find("Background").transform.position = cam.transform.position + cam.transform.forward * 1.5f;
-        
+
+
+
 
     }
 	
@@ -58,15 +60,4 @@ public class Opening : MonoBehaviour {
         
 	}
 
-    void CreateTextFile()
-    {
-        //copy over any existing text file
-        sw = File.CreateText(Application.persistentDataPath + "/QuickNavLogData.txt");
-        sw.AutoFlush = true;
-        sw.WriteLine("QuickNav Log Data");
-        sw.Write("Time of Test: ");
-        sw.WriteLine(DateTime.Now);
-        sw.WriteLine("-----------------------------");
-
-    }
 }

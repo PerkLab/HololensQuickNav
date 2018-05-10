@@ -22,9 +22,7 @@ public class EnableComponents : MonoBehaviour {
         CommandName = GameObject.Find("CommandText").transform.Find("CommandName").GetComponent<TextMesh>();
         
         SetAllInactive();
-        WriteLog.WriteData("test");
         Home(); //start in "home" state before selecting a tool
-        WriteLog.WriteData("testStart");
     }
     
     //
@@ -68,7 +66,7 @@ public class EnableComponents : MonoBehaviour {
         SetAllInactive();
         RotateWithXboxOnOff(true);
         WriteLog.WriteData("Command: Rotate-Xbox");
-        CommandName.text = "Rotate - Xbox";
+        CommandName.text = "Rotate";
     }
 
     public void ShiftWithHead()
@@ -89,7 +87,7 @@ public class EnableComponents : MonoBehaviour {
         ShiftWithXboxOnOff(true);
 
         //display current command
-        CommandName.text = "Shift - Xbox";
+        CommandName.text = "Shift";
 
         //write to log
         WriteLog.WriteData("Command: Shift-Xbox");
@@ -143,37 +141,29 @@ public class EnableComponents : MonoBehaviour {
     //
     public void SetAllInactive()
     {
-        WriteLog.WriteData("test2");
-
+        
         //rotate tools
         Rotate3AxisOnOff(false);
         RotateWithXboxOnOff(false);
 
-        WriteLog.WriteData("test3");
         //shift tools
         ShiftWithHeadOnOff(false);
         ShiftWithXboxOnOff(false);
-        WriteLog.WriteData("test4");
         //move tools
         MoveOnOff(false);
-        WriteLog.WriteData("test5");
         //point registration tool
         PointRegOnOff(false);
-        WriteLog.WriteData("test6");
         //turn off all layers execpt skin (layer 0)
         foreach (Transform child in GameObject.Find("Model").transform.Find("Layers").transform)
         {
             child.gameObject.SetActive(false);
         }
         GameObject.Find("Model").transform.GetChild(0).gameObject.SetActive(true);
-        WriteLog.WriteData("test7");
         HomeOnOff(false);
         CursorOnOff(true);
-        WriteLog.WriteData("test8");
         //visibility of menu
         MenuOnOff(false);
         ResetOnOff(false);
-        WriteLog.WriteData("test9");
 
     }
 
@@ -202,8 +192,8 @@ public class EnableComponents : MonoBehaviour {
         GameObject.Find("Controls").transform.Find("Rotate3Axis/HelpWindow").gameObject.SetActive(false);
         GameObject.Find("Controls").transform.Find("Rotate3Axis").gameObject.SetActive(visible);
         GameObject.Find("Controls").transform.Find("Rotate3Axis").transform.GetComponent<AirTapInput>().enabled = visible;
-        GameObject.Find("CommandText").transform.Find("PauseHelpAndMenu").gameObject.SetActive(visible);
-        GameObject.Find("CommandText").transform.Find("HelpAndMenu").gameObject.SetActive(false);
+        //GameObject.Find("CommandText").transform.Find("PauseHelpAndMenu").gameObject.SetActive(visible);
+        //GameObject.Find("CommandText").transform.Find("HelpAndMenu").gameObject.SetActive(false);
 
         GameObject.Find("Model").transform.Find("AxisA").gameObject.SetActive(visible);
         GameObject.Find("Model").transform.Find("AxisS").gameObject.SetActive(visible);
@@ -215,8 +205,8 @@ public class EnableComponents : MonoBehaviour {
         GameObject.Find("Controls").transform.Find("RotateWithXbox/HelpWindow").gameObject.SetActive(false);
         GameObject.Find("Controls").transform.Find("RotateWithXbox").gameObject.SetActive(visible);
         GameObject.Find("Controls").transform.Find("RotateWithXbox").transform.GetComponent<AirTapInput>().enabled = visible;
-        GameObject.Find("CommandText").transform.Find("PauseHelpAndMenu").gameObject.SetActive(visible);
-        GameObject.Find("CommandText").transform.Find("HelpAndMenu").gameObject.SetActive(false);
+        //GameObject.Find("CommandText").transform.Find("PauseHelpAndMenu").gameObject.SetActive(visible);
+        //GameObject.Find("CommandText").transform.Find("HelpAndMenu").gameObject.SetActive(false);
 
         GameObject.Find("Model").transform.Find("AxisA").gameObject.SetActive(visible);
         GameObject.Find("Model").transform.Find("AxisS").gameObject.SetActive(visible);
@@ -230,8 +220,8 @@ public class EnableComponents : MonoBehaviour {
         GameObject.Find("Controls").transform.Find("ShiftWithHead/HelpWindow").gameObject.SetActive(false);
         GameObject.Find("Controls").transform.Find("ShiftWithHead").gameObject.SetActive(visible);
         GameObject.Find("Controls").transform.Find("ShiftWithHead").transform.GetComponent<AirTapInput>().enabled = visible;
-        GameObject.Find("CommandText").transform.Find("PauseHelpAndMenu").gameObject.SetActive(visible);
-        GameObject.Find("CommandText").transform.Find("HelpAndMenu").gameObject.SetActive(false);
+        //GameObject.Find("CommandText").transform.Find("PauseHelpAndMenu").gameObject.SetActive(visible);
+        //GameObject.Find("CommandText").transform.Find("HelpAndMenu").gameObject.SetActive(false);
     }
 
     //Xbox Shift Tool
@@ -241,8 +231,8 @@ public class EnableComponents : MonoBehaviour {
         GameObject.Find("Controls").transform.Find("ShiftWithXbox/HelpWindow").gameObject.SetActive(false);
         GameObject.Find("Controls").transform.Find("ShiftWithXbox").gameObject.SetActive(visible);
         GameObject.Find("Controls").transform.Find("ShiftWithXbox").transform.GetComponent<AirTapInput>().enabled = visible;
-        GameObject.Find("CommandText").transform.Find("PauseHelpAndMenu").gameObject.SetActive(visible);
-        GameObject.Find("CommandText").transform.Find("HelpAndMenu").gameObject.SetActive(false);
+        //GameObject.Find("CommandText").transform.Find("PauseHelpAndMenu").gameObject.SetActive(visible);
+        //GameObject.Find("CommandText").transform.Find("HelpAndMenu").gameObject.SetActive(false);
 
     }
 

@@ -43,6 +43,10 @@ public class Initialize : MonoBehaviour {
                 target.position += new Vector3(LocationValues.targets[i].x, LocationValues.targets[i].y, LocationValues.targets[i].z);
             }
         }
+        else
+        {
+            GameObject.Find("Model").transform.Find("Layers/Targets/Target").gameObject.SetActive(false); 
+        }
        
     } 
 

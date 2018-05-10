@@ -1,18 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.WSA;
+using UnityEngine.XR.WSA.Persistence;
 
 
 
 public class PlaceWorldAnchor : MonoBehaviour {
 
-    UnityEngine.XR.WSA.WorldAnchor anchor;
-    UnityEngine.XR.WSA.Persistence.WorldAnchorStore store;
+    WorldAnchor anchor;
+    WorldAnchorStore store;
     private bool StoreReady = false;
+    public GameObject selectedObject;
 
 	// Use this for initialization
 	void Start () {
-        UnityEngine.XR.WSA.Persistence.WorldAnchorStore.GetAsync(AnchorStoreLoaded);
+        WorldAnchorStore.GetAsync(AnchorStoreLoaded);
     }
 
     private void OnEnable()
@@ -35,14 +38,14 @@ public class PlaceWorldAnchor : MonoBehaviour {
     {
         this.store = store;
         LoadAnchors();
-        StoreReady = true; //for future OnEnable calls when opening "done"
+        StoreReady = true; //for future OnEnable calls when opening "home"
         SaveAnchor();
     }
 
     private void LoadAnchors()
     {
         //load world anchor and check if loaded
-        bool retTrue = this.store.Load("Head", GameObject.Find("Head").gameObject);
+        bool retTrue = this.store.Load("model", selectedObject);
         if (!retTrue)
         {
             // Until the gameObjectIWantAnchored has an anchor saved at least once it will not be in the AnchorStore
@@ -53,11 +56,11 @@ public class PlaceWorldAnchor : MonoBehaviour {
     {
         bool retTrue;
         //create anchor for head
-        anchor = GameObject.Find("Head").AddComponent<UnityEngine.XR.WSA.WorldAnchor>();
+        anchor = GameObject.Find("model").AddComponent<UnityEngine.XR.WSA.WorldAnchor>();
         // Remove any previous worldanchor saved with the same name so we can save new one
-        this.store.Delete("Head");
+        this.store.Delete("model");
         //save anchor and check if saved
-        retTrue = this.store.Save("Head", anchor);
+        retTrue = this.store.Save("model", anchor);
         if (!retTrue)
         {
             Debug.Log("Anchor save failed.");
@@ -66,7 +69,7 @@ public class PlaceWorldAnchor : MonoBehaviour {
 
     private void ClearAnchor()
     {
-        anchor = GameObject.Find("Head").GetComponent<UnityEngine.XR.WSA.WorldAnchor>();
+        anchor = selectedObject.GetComponent<UnityEngine.XR.WSA.WorldAnchor>();
         if (anchor)
         {
             // remove any world anchor component from the game object so that it can be moved

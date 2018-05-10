@@ -1,1 +1,0 @@
-C:\D\HololensQuickNav-github\src\HoloQuickNav2\App\HoloQuickNav2\HoloQuickNav2.csproj;x86
