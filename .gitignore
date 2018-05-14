@@ -2,7 +2,6 @@
 *.bin
 *.lock
 *.ide
-*.meta
 *.log
 /src/HoloQuickNav2/.vs
 /src/HoloQuickNav2/Library/metadata
