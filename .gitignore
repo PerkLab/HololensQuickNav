@@ -1,0 +1,15 @@
+/src/HoloQuickNav2/.vs
+*.info
+*.bin
+*.lock
+*.ide
+/src/HoloQuickNav2/Library/metadata
+/src/HoloQuickNav2/Library/ScriptAssemblies/Assembly-CSharp.dll
+/src/HoloQuickNav2/Library/ScriptAssemblies/Assembly-CSharp.dll.mdb
+/src/HoloQuickNav2/Library/ScriptAssemblies/Assembly-CSharp-Editor.dll
+/src/HoloQuickNav2/Library/ScriptAssemblies/Assembly-CSharp-Editor.dll.mdb
+/src/HoloQuickNav2/Library/ScriptAssemblies/BuiltinAssemblies.stamp
+/src/HoloQuickNav2/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll
+/src/HoloQuickNav2/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll.mdb
+/src/HoloQuickNav2/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll
+/src/HoloQuickNav2/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll.mdb
