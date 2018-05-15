@@ -15,8 +15,8 @@
   * If no recent imaging exists, return to look for it at a date closer to the procedure 
 * Bring laptop and USB stick to OR planning centre to export images if patient consents (Zac/Sarah)
 * Export anonymized images on USB, check them on the laptop, and update spreadsheet with anonymized patient ID (Zac/Sarah)
-* Segment skin surface, brain and relevant lesion in 3D slicer (Zac/Sarah)
-* Load segmentation and patient head surface into Unity as head and lesion models, build software and deploy to HoloLens (Zac)
+* Segment [CT](https://github.com/PerkLab/HololensQuickNav/blob/master/PatientDataSetup.md#ct-image-segmentation-and-export) or [MR](https://github.com/PerkLab/HololensQuickNav/blob/master/PatientDataSetup.md#mr-image-segmentation-and-export) skin surface, brain and relevant lesion in 3D slicer (Zac/Sarah)
+* [Load segmentation and patient head surface into Unity as head and lesion models, build software and deploy to HoloLens](https://github.com/PerkLab/HololensQuickNav/blob/master/PatientDataSetup.md#setting-up-and-deploying-from-unity) (Zac)
 
 ### Pre & Intra-Op
 
