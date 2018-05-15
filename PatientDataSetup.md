@@ -19,7 +19,7 @@
 
 ## CT Image Segmentation and Export
 
-
+TBD When we have CT images to confirm workflow.
 
 ## Setting up and deploying from Unity
 
