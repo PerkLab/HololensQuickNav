@@ -10,7 +10,7 @@
 
 * Speak to Cheryl weekly or biweekly to identify any upcoming cranial cases (Zac/Sarah)
 * Look up patient phone number in chart and call from KGH to gain verbal consent after talking to them about the study (Zac/Sarah)
-* Search for patient images in PACS or regional viewer:
+* Search for patient images in PACS or Xero regional viewer:
   * If only on regional viewer email PACSXRayRequest@kgh.kari.net with CR#, name, imaging type, date and location
   * If no recent imaging exists, return to look for it at a date closer to the procedure 
 * Bring laptop and USB stick to OR planning centre to export images if patient consents (Zac/Sarah)
