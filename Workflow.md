@@ -8,10 +8,14 @@
 
 ### Patient Recruitment & HoloLens Prep
 
-* Bring laptop and USB stick to get images if patient consents (Zac/Sarah)
-* Day prior to knowing we are available, check KGH OR schedule for patients (Zac/Sarah)
-* If there are any scheduled, call them, get verbal consent after talking to them about the study (Zac/Sarah)
-* Get images on USB (Still need to talk to Ron about details of this), anonymize, segment (Zac/Sarah)
+* Speak to Cheryl weekly or biweekly to identify any upcoming cranial cases (Zac/Sarah)
+* Look up patient phone number in chart and call from KGH to gain verbal consent after talking to them about the study (Zac/Sarah)
+* Search for patient images in PACS or regional viewer:
+  * If only on regional viewer email PACSXRayRequest@kgh.kari.net with CR#, name, imaging type, date and location
+  * If no recent imaging exists, return to look for it at a date closer to the procedure 
+* Bring laptop and USB stick to OR planning centre to export images if patient consents (Zac/Sarah)
+* Export anonymized images on USB, check them on the laptop, and update spreadsheet with anonymized patient ID (Zac/Sarah)
+* Segment skin surface, brain and relevant lesion in 3D slicer (Zac/Sarah)
 * Load segmentation and patient head surface into Unity as head and lesion models, build software and deploy to HoloLens (Zac)
 
 ### Pre & Intra-Op
