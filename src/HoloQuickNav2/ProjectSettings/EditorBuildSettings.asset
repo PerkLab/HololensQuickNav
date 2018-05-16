@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/HoloQuickNav/Scenes/OpeningScene.unity
-    guid: 73f1606aa3fb96b469345d1e74c49324
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/HoloQuickNav/Scenes/Opening.unity
     guid: 78db6ddb582a13a44afbce606ef07ab5
@@ -18,5 +18,9 @@ EditorBuildSettings:
     path: Assets/HoloQuickNav/Scenes/BreastNav.unity
     guid: ddbe781d2ccf74445a846bcb67f32d0d
   - enabled: 0
-    path: Assets/HoloQuickNav/Scenes/StabilityTest.unity
-    guid: 911b57a5054920c4b9039ffff445b502
+    path: Assets/HoloQuickNav/Scenes/PatientManager.unity
+    guid: 30e27470cf224aa4cae10876678d1187
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  m_configObjects: {}

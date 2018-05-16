@@ -48,11 +48,11 @@ public class ShiftWithXbox : MonoBehaviour
             axisOfMovement = Vector3.Normalize(selectedObject.transform.position - this.transform.Find("AxisPoints/R").transform.position);
             if (Mathf.Abs(shiftAmountR) > shiftSpeedThreshold)
             {
-                selectedObject.transform.position -= shiftAmountR * Mathf.Abs(shiftAmountR) * axisOfMovement * shiftSpeed;
+                selectedObject.transform.position += shiftAmountR * Mathf.Abs(shiftAmountR) * axisOfMovement * shiftSpeed;
             }
             else
             {
-                selectedObject.transform.position -= shiftAmountR * Mathf.Abs(shiftAmountR) * axisOfMovement * shiftSpeedFine;
+                selectedObject.transform.position += shiftAmountR * Mathf.Abs(shiftAmountR) * axisOfMovement * shiftSpeedFine;
             }
 
         }
@@ -79,11 +79,11 @@ public class ShiftWithXbox : MonoBehaviour
             axisOfMovement = Vector3.Normalize(selectedObject.transform.position - this.transform.Find("AxisPoints/S").transform.position);
             if (Mathf.Abs(shiftAmountS) > shiftSpeedThreshold)
             {
-                selectedObject.transform.position -= shiftAmountS * Mathf.Abs(shiftAmountS) * axisOfMovement * shiftSpeed;
+                selectedObject.transform.position += shiftAmountS * Mathf.Abs(shiftAmountS) * axisOfMovement * shiftSpeed;
             }
             else
             {
-                selectedObject.transform.position -= shiftAmountS * Mathf.Abs(shiftAmountS) * axisOfMovement * shiftSpeedFine;
+                selectedObject.transform.position += shiftAmountS * Mathf.Abs(shiftAmountS) * axisOfMovement * shiftSpeedFine;
             }
 
         }

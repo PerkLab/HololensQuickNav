@@ -54,11 +54,11 @@ public class RotateWithXbox : MonoBehaviour
             //rotate along X axis
             if (Mathf.Abs(rotateAmountR) > rotateSpeedThreshold)
             {
-                selectedObject.transform.Rotate(rotateAmountR * Mathf.Abs(rotateAmountR) * rotateSpeed, 0f, 0f);
+                selectedObject.transform.Rotate(-rotateAmountR * Mathf.Abs(rotateAmountR) * rotateSpeed, 0f, 0f);
             }
             else
             {
-                selectedObject.transform.Rotate(rotateAmountR * Mathf.Abs(rotateAmountR) * rotateSpeedFine, 0f, 0f);
+                selectedObject.transform.Rotate(-rotateAmountR * Mathf.Abs(rotateAmountR) * rotateSpeedFine, 0f, 0f);
             }
 
 
@@ -81,11 +81,11 @@ public class RotateWithXbox : MonoBehaviour
             //rotate along Z axis 
             if (Mathf.Abs(rotateAmountS) > rotateSpeedThreshold)
             {
-                selectedObject.transform.Rotate(0f, 0f, rotateAmountS * Mathf.Abs(rotateAmountS) * rotateSpeed);
+                selectedObject.transform.Rotate(0f, 0f, -rotateAmountS * Mathf.Abs(rotateAmountS) * rotateSpeed);
             }
             else
             {
-                selectedObject.transform.Rotate(0f, 0f, rotateAmountS * Mathf.Abs(rotateAmountS) * rotateSpeedFine);
+                selectedObject.transform.Rotate(0f, 0f, -rotateAmountS * Mathf.Abs(rotateAmountS) * rotateSpeedFine);
             }
 
         }
