@@ -206,7 +206,7 @@ public class OBJLoader
 
         foreach (string ln in File.ReadAllLines(fn))
         {
-            WriteLog.WriteData("Loader test1-1");
+            
             if (ln.Length > 0 && ln[0] != '#')
             {
                 string l = ln.Trim().Replace("  "," ");
@@ -345,11 +345,11 @@ public class OBJLoader
                         }
                     }
                 }
-                WriteLog.WriteData("Loader test1-2");
+                
             }
         }
 
-        WriteLog.WriteData("Loader test2");
+        
 
         if (objectNames.Count == 0)
             objectNames.Add("default");

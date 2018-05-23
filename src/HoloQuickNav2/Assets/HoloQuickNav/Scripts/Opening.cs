@@ -3,12 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Opening : MonoBehaviour {
 
     public GameObject cam;
-
-    private bool Logo;
     private float timer;
     private bool IsRunning;
 
@@ -17,27 +16,13 @@ public class Opening : MonoBehaviour {
 
     // Use this for initialization
     void Awake () {
-
-        GameObject.Find("Cursor").transform.Find("InteractiveMeshCursor").gameObject.SetActive(false);
         timer = 0f;
-        Logo = true;
         IsRunning = true;
 	}
 
     void Swap()
     {
-        //make menu visible, hide logo
-        GameObject.Find("Logo").SetActive(false);
-
-        GameObject.Find("Cursor").transform.Find("InteractiveMeshCursor").gameObject.SetActive(true);
-        GameObject.Find("Menu").transform.Find("Buttons").gameObject.SetActive(true);
-        GameObject.Find("Menu").transform.Find("Background").gameObject.SetActive(true);
-        GameObject.Find("Menu").transform.Find("Buttons").transform.position = cam.transform.position + cam.transform.forward * 1.5f;
-        GameObject.Find("Menu").transform.Find("Background").transform.position = cam.transform.position + cam.transform.forward * 1.5f;
-
-
-
-
+        SceneManager.LoadSceneAsync("MainMenu");
     }
 	
 	// Update is called once per frame

@@ -17,6 +17,7 @@ public class XboxButtonInput : MonoBehaviour {
     public UnityEvent DPadUp;
     public UnityEvent DPadRight;
     public UnityEvent DPadLeft;
+    public UnityEvent Menu;
 
     //public UnityEvent RightTrigger;
     //public UnityEvent LeftTrigger;
@@ -47,17 +48,17 @@ public class XboxButtonInput : MonoBehaviour {
             RightShoulder.Invoke();
         else if (controllerInput.GetButtonDown(ControllerButton.LeftShoulder))
             LeftShoulder.Invoke();
-
         else if (controllerInput.GetButtonDown(ControllerButton.DPadDown))
             DPadDown.Invoke();
-
         else if (controllerInput.GetButtonDown(ControllerButton.DPadUp))
             DPadUp.Invoke();
-
         else if (controllerInput.GetButtonDown(ControllerButton.DPadLeft))
             DPadLeft.Invoke();
-
         else if (controllerInput.GetButtonDown(ControllerButton.DPadRight))
             DPadRight.Invoke();
+        else if (controllerInput.GetButtonDown(ControllerButton.Menu))
+            Menu.Invoke();
+
+            
     }
 }
