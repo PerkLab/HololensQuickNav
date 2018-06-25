@@ -5,11 +5,15 @@ using UnityEngine.Events;
 
 public class TurnOnLayers : MonoBehaviour {
 
-    public UnityEvent TurnOn;
 
 	// Use this for initialization
 	void OnEnable () {
-        TurnOn.Invoke();
+
+        //turn on all layers
+        foreach(Transform child in GameObject.Find("WorldAnchor/Model").transform.Find("Layers").GetComponentInChildren<Transform>())
+        {
+            child.gameObject.SetActive(true);
+        }
 	}
 	
 }

@@ -17,7 +17,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/HoloQuickNav/Scenes/GeneralProcedure.unity
     guid: f399137290808eb45b4c8c422b66f003
+  - enabled: 1
+    path: Assets/HoloQuickNav/Scenes/OpenIGTLink.unity
+    guid: 7635ef079f3c7524ea0ba59aae47c1c5
   - enabled: 0
     path: Assets/HoloQuickNav/Scenes/BreastNav.unity
     guid: ddbe781d2ccf74445a846bcb67f32d0d
+  - enabled: 0
+    path: Assets/HoloQuickNav/Scenes/MRITest.unity
+    guid: 685e7d9b78a6d664b95395b0366c4a78
   m_configObjects: {}

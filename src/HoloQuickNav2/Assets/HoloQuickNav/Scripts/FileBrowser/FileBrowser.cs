@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using UnityEngine.Events;
 
 public class FileBrowser : MonoBehaviour
 {
@@ -25,11 +26,13 @@ public class FileBrowser : MonoBehaviour
     {
         //set initial directory
         setMainDirectory();
-        createTestFolder();
+        createFolders();
         getCurrentFiles();
         selectorBaseLocation = GameObject.Find("FileMenu/Button").transform.position.y;
         selectorPosition = 0;
         setSelectorLocation();
+
+        DontDestroyOnLoad(GameObject.Find("LoadedModels"));
 
     }
 
@@ -99,64 +102,33 @@ public class FileBrowser : MonoBehaviour
     }
 
     // ------------------------------------------------------
-    // open directories/create models
+    // open directories
 
     public void selectFile()
     {
+
         DirectoryInfo newDir = new DirectoryInfo(filePath + "/" + allFiles[fileListIndex].Name);
 
-        if (newDir.GetDirectories().Length > 0) //directory contains more than one set of models
+        if (newDir.GetFiles().Length > 0) //directory contains models/files
         {
-            filePath = filePath + "/" + allFiles[fileListIndex].Name;
-            directoryName = "/" + allFiles[fileListIndex].Name;
-            getCurrentFiles();
-            setFileNames();
-            selectorPosition = 0;
-            setSelectorLocation();
-            GameObject.Find("FileMenu").transform.Find("DirectoryName").GetComponent<TextMesh>().text = filePath.Replace(Application.persistentDataPath, "");
+            //load all files and xml information
+            GameObject.Find("InputManager/FileBrowser").GetComponent<LoadModels>().Load(newDir, (filePath + "/" + allFiles[fileListIndex].Name));
+            GameObject.Find("LoadedModels").GetComponent<LocationValues>().readXMLPoints(newDir);
         }
-        else //directory contains models for one patient
+        else //directory contains other directories
         {
-            if (newDir.GetFiles().Length > 0) //if directory contains files
+            if(newDir.GetDirectories().Length > 0)
             {
-                //show loading screen
-                //GameObject.Find("LoadingLogo").transform.position += new Vector3(-5f, 0f, 0f);
-
-                //check if the patient already has meshes
-                bool hasMesh = false;
-                foreach (FileInfo file in newDir.GetFiles())
-                {
-                    if (file.Name.Contains("mesh_"))
-                        hasMesh = true;
-                }
-
-                if (hasMesh)
-                {
-                    foreach (FileInfo file in newDir.GetFiles())
-                    {
-                        if (file.Name.Contains("mesh_")) //if a mesh
-                        {
-                            loadMeshes(filePath + "/" + allFiles[fileListIndex].Name + "/" + file.Name, file.Name);
-                        }
-                    }
-                }
-                else
-                {
-                    foreach (FileInfo file in newDir.GetFiles())
-                    {
-                        if (file.Name.Contains(".obj")) //if an obj file
-                        {
-                            loadModel(filePath + "/" + allFiles[fileListIndex].Name + "/" + file.Name, file.Name);
-                        }
-                    }
-                    //saveMeshes();
-                }
-
-
-                //hide loading screen
-                //GameObject.Find("LoadingLogo").transform.position += new Vector3(5f, 0f, 0f);
+                filePath = filePath + "/" + allFiles[fileListIndex].Name;
+                directoryName = "/" + allFiles[fileListIndex].Name;
+                getCurrentFiles();
+                setFileNames();
+                selectorPosition = 0;
+                setSelectorLocation();
+                GameObject.Find("FileMenu").transform.Find("DirectoryName").GetComponent<TextMesh>().text = filePath.Replace(Application.persistentDataPath, "");
             }
         }
+
     }
 
     public void lastDirectory()
@@ -177,83 +149,27 @@ public class FileBrowser : MonoBehaviour
 
     }
 
-    private void loadModel(string path, string name)
+    // ------------------------------------------------------
+    // load location values
+
+    private void loadFiducials(DirectoryInfo newDir)
     {
-
-
-        //copy file and load object 
-        if (File.Exists(Application.persistentDataPath + "tempFile.obj"))
-            File.Delete(Application.persistentDataPath + "tempFile.obj");
-        File.Copy(path, Application.persistentDataPath + "tempFile.obj");
-        GameObject newObj;
-        newObj = OBJLoader.LoadOBJFile(Application.persistentDataPath + "tempFile.obj");
-        File.Delete(Application.persistentDataPath + "tempFile.obj");
-
-        //change model location
-        newObj.transform.localScale = new Vector3(0.001f, 0.001f, 0.001f);
-        newObj.transform.position = new Vector3(0.2f, 0.1f, 1.5f);
-        newObj.transform.parent = GameObject.Find("WorldAnchor/Model/Layers").transform;
-        newObj.name = name.Replace(".obj", "");
-
-        //change model material based on type
-        Material[] mat = new Material[1];
-        if (newObj.name == "Skin")
-            mat[0] = GameObject.Find("InputManager/MaterialManager").GetComponent<MaterialManager>().Skin;
-        else if (newObj.name == "Brain")
-            mat[0] = GameObject.Find("InputManager/MaterialManager").GetComponent<MaterialManager>().Brain;
-        else
-            mat[0] = GameObject.Find("InputManager/MaterialManager").GetComponent<MaterialManager>().ROI;
-
-        if (newObj.transform.childCount > 0)
-        {
-            foreach (Transform child in newObj.transform)
-            {
-                child.GetComponent<MeshRenderer>().materials = mat;
-            }
-        }
-        else
-        {
-            newObj.GetComponent<MeshRenderer>().materials = mat;
-        }
-
-        //save mesh to binary file
-
-    }
-
-    private void saveMeshes()
-    {
+        //clear past values
+        GameObject.Find("LoadedModels").GetComponent<LocationValues>().clearValues();
+        GameObject.Find("LoadedModels").GetComponent<LocationValues>().readXMLPoints(newDir);
         /*
-        foreach(Transform meshParent in GameObject.Find("WorldAnchor/Model/Layers").transform.GetComponentsInChildren<Transform>())
+        foreach (FileInfo file in newDir.GetFiles())
         {
-            foreach(Transform meshChild in meshParent.GetComponentInChildren<Transform>())
+            if (file.Name.Contains("fiducials.csv")) //if fiducials for registration
             {
-                Mesh meshToSave = meshChild.GetComponent<MeshFilter>().mesh;
-                SaveMeshes.SaveMesh(filePath + "/mesh_" + meshParent.name + "_" + meshChild.name, meshToSave);
+                GameObject.Find("LoadedModels").GetComponent<LocationValues>().readFiducials(file);
             }
-        }
-        */
+            else if (file.Name.Contains("targets.csv")) //if targets
+            {
+                GameObject.Find("LoadedModels").GetComponent<LocationValues>().readTargets(file);
+            }
 
-    }
-
-    private void loadMeshes(string path, string name)
-    {
-        //meshes saved as "mesh_Skin_grp1"
-        //parse name to create objects
-        /*
-        string[] meshNames = name.Split('_');
-
-        if(GameObject.Find("WorldAnchor/Model/Layers").transform.Find(meshNames[1]) == null) //parent object doesn't exist
-        {
-            GameObject newParent = new GameObject(meshNames[1]);
-            newParent.transform.parent = GameObject.Find("WorldAnchor/Model/Layers").transform;
-        }
-        
-        GameObject meshObject = new GameObject(meshNames[2]);
-        meshObject.transform.parent = GameObject.Find("WorldAnchor/Model/Layers/" + meshNames[1]).transform;
-        meshObject.AddComponent<MeshFilter>();
-        meshObject.AddComponent<MeshRenderer>();
-        meshObject.GetComponent<MeshFilter>().mesh = SaveMeshes.LoadMesh(path);
-        */
+        }*/
     }
 
     // ------------------------------------------------------
@@ -328,41 +244,42 @@ public class FileBrowser : MonoBehaviour
     // ------------------------------------------------------
     // create folders for testing
 
-    private void createTestFolder()
+    private void createFolders()
     {
         //create 5 folders
         DirectoryInfo testDir;
-        for (int i = 0; i <= 4; i++)
+        testDir = new DirectoryInfo(filePath + "/SDH Demo");
+        if (!testDir.Exists)
         {
-            testDir = new DirectoryInfo(filePath + "/test" + i);
+            testDir.Create();
+        }
+
+        testDir = new DirectoryInfo(filePath + "/ClinicalTrials");
+        if (!testDir.Exists)
+        {
+            testDir.Create();
+        }
+
+        for (int i = 1;i<=5;i++)
+        {
+            testDir = new DirectoryInfo(filePath + "/ClinicalTrials/Patient00" + i);
             if (!testDir.Exists)
             {
                 testDir.Create();
             }
         }
 
-        for (int i = 0; i <= 5; i++)
+        testDir = new DirectoryInfo(filePath + "/ClinicalTrials/BTUM_001");
+        if (!testDir.Exists)
         {
-            testDir = new DirectoryInfo(filePath + "/test1/test1-" + i);
-            if (!testDir.Exists)
-            {
-                testDir.Create();
-            }
+            testDir.Create();
         }
 
-
-        /*
-        // create 6 text files
-        for (int i = 0; i <= 12; i++)
+        testDir = new DirectoryInfo(filePath + "/MRImageSlicing");
+        if (!testDir.Exists)
         {
-            StreamWriter sw = File.AppendText(Application.persistentDataPath + "/PatientData/text" + i + ".txt");
-            sw.AutoFlush = true;
-            sw.WriteLine(i);
-            sw.Dispose();
+            testDir.Create();
         }
-
-        
-    */
 
     }
 

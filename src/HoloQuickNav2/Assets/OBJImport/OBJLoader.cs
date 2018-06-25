@@ -172,7 +172,7 @@ public class OBJLoader
 
     public static GameObject LoadOBJFile(string fn)
     {
-        
+        //GameObject.Find("Loading").transform.Find("LoadingLogo").gameObject.SetActive(true); //-------------------------------------------------------------------------------------------added to display loading screen
 
         string meshName = Path.GetFileNameWithoutExtension(fn);
 
@@ -198,11 +198,9 @@ public class OBJLoader
         FileInfo OBJFileInfo = new FileInfo(fn);
 
         //---------------------------------------------------------test point
-        WriteLog.WriteData("Loader test1");
 
         string[] lines = File.ReadAllLines(fn);
 
-        WriteLog.WriteData("Loader test2");
 
         foreach (string ln in File.ReadAllLines(fn))
         {
@@ -357,7 +355,6 @@ public class OBJLoader
         //build objects
         GameObject parentObject = new GameObject(meshName);
 
-        WriteLog.WriteData("Loader test3");
 
         foreach (string obj in objectNames)
         {
@@ -483,9 +480,7 @@ public class OBJLoader
             mf.mesh = m;
 
         }
-
-        WriteLog.WriteData("Loader test4");
-
+        //GameObject.Find("Loading").transform.Find("LoadingLogo").gameObject.SetActive(true);  //-------------------------------------------------------------------------------------------added to display loading screen
         return parentObject;
         }
     }

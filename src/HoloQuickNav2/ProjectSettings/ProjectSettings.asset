@@ -551,14 +551,14 @@ PlayerSettings:
   scriptingDefineSymbols: {}
   platformArchitecture: {}
   scriptingBackend:
-    Metro: 2
+    Metro: 1
   il2cppCompilerConfiguration: {}
   incrementalIl2cppBuild: {}
   allowUnsafeCode: 0
   additionalIl2CppArgs: 
-  scriptingRuntimeVersion: 0
+  scriptingRuntimeVersion: 1
   apiCompatibilityLevelPerPlatform:
-    Metro: 1
+    Metro: 3
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
   metroPackageName: HoloQuickNav2
@@ -663,7 +663,7 @@ PlayerSettings:
   cloudServicesEnabled:
     UNet: 1
   facebookSdkVersion: 7.9.4
-  apiCompatibilityLevel: 2
+  apiCompatibilityLevel: 3
   cloudProjectId: 2ba1239e-0cf9-4fcc-aec6-70178d21d877
   projectName: HoloQuickNav2
   organizationId: emilyrae

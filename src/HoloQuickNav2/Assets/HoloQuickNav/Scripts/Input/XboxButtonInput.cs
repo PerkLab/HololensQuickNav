@@ -18,6 +18,7 @@ public class XboxButtonInput : MonoBehaviour {
     public UnityEvent DPadRight;
     public UnityEvent DPadLeft;
     public UnityEvent Menu;
+    public UnityEvent View;
 
     //public UnityEvent RightTrigger;
     //public UnityEvent LeftTrigger;
@@ -58,7 +59,9 @@ public class XboxButtonInput : MonoBehaviour {
             DPadRight.Invoke();
         else if (controllerInput.GetButtonDown(ControllerButton.Menu))
             Menu.Invoke();
+        else if (controllerInput.GetButtonDown(ControllerButton.View))
+            View.Invoke();
 
-            
+
     }
 }
