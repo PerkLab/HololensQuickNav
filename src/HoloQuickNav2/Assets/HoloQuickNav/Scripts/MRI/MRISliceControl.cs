@@ -19,12 +19,6 @@ public class MRISliceControl : MonoBehaviour {
 
         currentSlice = 0;
         updateSlices();
-
-
-
-
-
-
     }
 	
 	public void nextSlice()

@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
+/// <summary>
+/// Used to position test displaying current command and available tools 
+/// </summary>
 public class CommandText : MonoBehaviour {
 
     [Tooltip("Hololens Camera")]
@@ -24,7 +26,11 @@ public class CommandText : MonoBehaviour {
         }
         gameObject.transform.LookAt(2 * gameObject.transform.position - cam.transform.position);
     }
-
+    /// <summary>
+    /// Toggle object was used in the case of 3point registration to switch the selected object so the text would appear around each point as it was placed
+    /// Can be removed if old scripts for 3point registration are removed entirely 
+    /// </summary>
+    /// <param name="secondObject"></param>
     static public void ToggleObject(bool secondObject)
     {
         toggleObject = secondObject;

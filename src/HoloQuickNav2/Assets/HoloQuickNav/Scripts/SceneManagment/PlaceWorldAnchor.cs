@@ -5,11 +5,17 @@ using UnityEngine.XR.WSA;
 using UnityEngine.XR.WSA.Persistence;
 
 
-
+/// <summary>
+/// Place anchor at location of selected object to improve stability of holograms in space
+/// </summary>
 public class PlaceWorldAnchor : MonoBehaviour {
 
+    //--------------------------------------------------------
+    //This script was copied from the Untiy Manual
+    //--------------------------------------------------------
+
     WorldAnchor anchor;
-    WorldAnchorStore store;
+    WorldAnchorStore anchorStore;
     private bool StoreReady = false;
     public GameObject selectedObject;
 
@@ -36,7 +42,7 @@ public class PlaceWorldAnchor : MonoBehaviour {
 
     private void AnchorStoreLoaded(UnityEngine.XR.WSA.Persistence.WorldAnchorStore store)
     {
-        this.store = store;
+        this.anchorStore = store;
         LoadAnchors();
         StoreReady = true; //for future OnEnable calls when opening "home"
         SaveAnchor();
@@ -45,7 +51,7 @@ public class PlaceWorldAnchor : MonoBehaviour {
     private void LoadAnchors()
     {
         //load world anchor and check if loaded
-        bool retTrue = this.store.Load("model", selectedObject);
+        bool retTrue = this.anchorStore.Load("model", selectedObject);
         if (!retTrue)
         {
             // Until the gameObjectIWantAnchored has an anchor saved at least once it will not be in the AnchorStore
@@ -58,9 +64,9 @@ public class PlaceWorldAnchor : MonoBehaviour {
         //create anchor for head
         anchor = GameObject.Find("model").AddComponent<UnityEngine.XR.WSA.WorldAnchor>();
         // Remove any previous worldanchor saved with the same name so we can save new one
-        this.store.Delete("model");
+        this.anchorStore.Delete("model");
         //save anchor and check if saved
-        retTrue = this.store.Save("model", anchor);
+        retTrue = this.anchorStore.Save("model", anchor);
         if (!retTrue)
         {
             Debug.Log("Anchor save failed.");

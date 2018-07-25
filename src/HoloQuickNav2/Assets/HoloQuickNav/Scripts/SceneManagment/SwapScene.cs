@@ -4,11 +4,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Events;
 
+/// <summary>
+/// Specify name of scene to swap to
+/// </summary>
 public class SwapScene : MonoBehaviour {
-
-    
-    public static string CommandName;
-    
 
     public void LoadScene(string SceneName) {
         WriteLog.WriteData("Scene: " + SceneName);

@@ -1,43 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// Attach to menus and help windows to ensure they are positioned properly infront of the user
+/// </summary>
 public class MenuBehaviour : MonoBehaviour {
 
     [Tooltip("Hololens camera")]
     public GameObject cam;
 
-    //developer can choose which window they're displaying
+    [Tooltip("Help windows open to the user's right")]
+    /// <summary> Select if help window, positions menu to the user's right </summary>
     public bool HelpWindow;
+    [Tooltip("Menus open directly in front of the user")]
+    /// <summary> Select if help window, positions menu to the user's right </summary>
     public bool Menu;
-    public bool PrimaryMenu = false;
-    public bool SecondaryMenu = false;
-    public bool PrimaryFixed;
 
-    public static Vector3 menuPos;
 
 	void OnEnable () {
 
         if (Menu) //place menu 1.5 meters infront of user
         {
-            if(PrimaryMenu) 
-            {
-                if (PrimaryFixed) //don't update with users gaze, keep in same location as last secondary menu
-                {
-                    gameObject.transform.position = new Vector3(menuPos.x, menuPos.y, menuPos.z);
-                    PrimaryFixed = false;
-                }
-                else //place in front of user's gaze
-                {
-                    gameObject.transform.position = cam.transform.position + cam.transform.forward * 1.5f;
-                    menuPos = gameObject.transform.position;
-                }
-            }
-            else if(SecondaryMenu) //don't update with users gaze, keep in same location as primary menu
-            {
-                gameObject.transform.position = new Vector3(menuPos.x, menuPos.y, menuPos.z);
-            }
-            
+            gameObject.transform.position = cam.transform.position + cam.transform.forward * 1.5f;
         }
         else if(HelpWindow) //place help window infront of user but slightly to the side so as to not cover model
         {
@@ -49,12 +33,8 @@ public class MenuBehaviour : MonoBehaviour {
 	}
 	
 	void Update () {
-        //always have window face user
+        //always have window face user as they move around
         gameObject.transform.LookAt(2 * gameObject.transform.position - cam.transform.position);
     }
 
-    public void Fixed()
-    {
-       PrimaryFixed = true;
-    }
 }

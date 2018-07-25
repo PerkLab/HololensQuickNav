@@ -6,12 +6,16 @@ using UnityEngine;
 
 public class WriteLog : MonoBehaviour {
 
+
     static StreamWriter sw;
+    /// <summary>
+    /// Last string written to file, to check for duplicates if a tool is called twice by accident
+    /// </summary>
     static private string lastString;
 
-    // Use this for initialization
     void Awake () {
 
+        //don't destroy WriteLog component when switching to other scenes
         DontDestroyOnLoad(gameObject);
         DontDestroyOnLoad(GameObject.Find("ClickAudio").gameObject);
 
@@ -27,20 +31,18 @@ public class WriteLog : MonoBehaviour {
 
     public static void WriteData(string Data)
     {
+        //if the string to be written is not a duplicate
         if(Data != lastString)
         {
+            //print the time the string is written to the file
             string minutes = Mathf.Floor(Time.timeSinceLevelLoad / 60f).ToString("00");
             string seconds = (Time.timeSinceLevelLoad % 60f).ToString("00");
             sw.Write(minutes + ":" + seconds);
             sw.WriteLine("," + Data);
         }
-        else
-        {
-            //don't print command if the same as the last one
-        }
 
+        //update lastString to current string
         lastString = Data;
-        
         
     }
 

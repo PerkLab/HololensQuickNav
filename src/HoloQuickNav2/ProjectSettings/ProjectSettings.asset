@@ -551,7 +551,7 @@ PlayerSettings:
   scriptingDefineSymbols: {}
   platformArchitecture: {}
   scriptingBackend:
-    Metro: 1
+    Metro: 2
   il2cppCompilerConfiguration: {}
   incrementalIl2cppBuild: {}
   allowUnsafeCode: 0
@@ -590,7 +590,7 @@ PlayerSettings:
       Chat: False
       CodeGeneration: False
       EnterpriseAuthentication: False
-      HumanInterfaceDevice: True
+      HumanInterfaceDevice: False
       InputInjectionBrokered: False
       InternetClient: True
       InternetClientServer: True
@@ -599,7 +599,7 @@ PlayerSettings:
       MusicLibrary: False
       Objects3D: False
       PhoneCall: False
-      PicturesLibrary: False
+      PicturesLibrary: True
       PrivateNetworkClientServer: False
       Proximity: False
       RemovableStorage: False
@@ -608,7 +608,7 @@ PlayerSettings:
       UserAccountInformation: False
       VideosLibrary: False
       VoipCall: False
-      WebCam: False
+      WebCam: True
   metroFTAName: 
   metroFTAFileTypes: []
   metroProtocolName: 

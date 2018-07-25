@@ -5,14 +5,15 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// Controls behaviour of logo when application is first opened
+/// </summary>
 public class Opening : MonoBehaviour {
 
+    /// <summary> Hololens camera in scene </summary>
     public GameObject cam;
     private float timer;
     private bool IsRunning;
-
-    static StreamWriter sw;
-
 
     // Use this for initialization
     void Awake () {
@@ -30,6 +31,7 @@ public class Opening : MonoBehaviour {
 	void Update () {
         if(IsRunning)
         {
+            //display logo directly infront of the user as they move their head
             if (timer < 3f)
             {
                 timer += Time.deltaTime;
@@ -37,6 +39,7 @@ public class Opening : MonoBehaviour {
                 GameObject.Find("Logo").transform.position = Vector3.Slerp(GameObject.Find("Logo").transform.position, newPosition, 0.1f);
                 GameObject.Find("Logo").transform.LookAt(2 * GameObject.Find("Logo").transform.position - cam.transform.position);
             }
+            //after 3 second swap scenes to the main menu
             else
             {
                 Swap();
