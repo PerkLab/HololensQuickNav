@@ -21,7 +21,21 @@
 
 TBD When we have CT images to confirm workflow.
 
-## Setting up and deploying from Unity
+## Upload Patient Files to PatientManager File Browser
+1. Ensure file size of all exported models is under ~1MB so they can be loaded quickly by the PatientManager
+2. Create .xml as per the example template in [SDH_Demo](https://github.com/PerkLab/HololensQuickNav/tree/master/data)
+3. Create folder on desktop containing all exported models and .xml 
+4. Access the HoloLens Device Portal on the desktop
+5. Go to File explorer then AppData/HoloQuickNav2/LocalState/PatientData and select the corresponding folder for the patient
+   * Folders within PatientData are created by the script [FileBrowser.cs ](https://github.com/PerkLab/HololensQuickNav/blob/master/src/HoloQuickNav2/Assets/HoloQuickNav/Scripts/FileBrowser/FileBrowser.cs)
+   * This script can be edited to create additional patient folders and the app can then be redeployed from Unity
+   * In the future, these folders will be created automatically once the .xml is read from Slicer over the OpenIGTLink connection
+6. Upload all .obj files and the .xml file into the patient's folder on the Device Portal
+7. Load patient models for registration by selecting the patient's folder in the PatientManager scene in HoloQuickNav
+
+## Creating Scene for Patient Without PatientManager
+
+**_Outdated - Use PatientManager setup for new patients_**
 
 ### Setting up the Unity Scene
 
