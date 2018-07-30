@@ -1,8 +1,20 @@
 # HoloLensQuickNav
 
-Large scene files and images can be found at on the perkdata server: p:\data\PerkTutor\HololensQuickNav.
+_Large scene files and images can be found at on the perkdata server: p:\data\PerkTutor\HololensQuickNav._
 
-## Installation Requirements and Notes (*[From Microsoft](https://developer.microsoft.com/en-us/windows/mixed-reality/install_the_tools#installation_checklist_for_hololens)*)
+## Workflow and Clinical Study Protocol
+
+For the latest workflow information and process, see [Workflow](https://github.com/PerkLab/HololensQuickNav/blob/master/Workflow.md).
+
+## Segmentation and Model Generation
+
+For the latest segmentation and model creation workflow process, see [Patient Data Setup](https://github.com/PerkLab/HololensQuickNav/blob/master/PatientDataSetup.md).
+
+## Developer Guide
+
+TBD.
+
+## Additional Software Installation Requirements and Notes (*[From Microsoft](https://developer.microsoft.com/en-us/windows/mixed-reality/install_the_tools#installation_checklist_for_hololens)*)
 
 ### Visual Studio 2017
 * Select the Universal Windows Platform development workload
