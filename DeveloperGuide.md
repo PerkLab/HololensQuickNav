@@ -19,22 +19,18 @@
 ## HoloQuickNav (assets created in the lab)
 ### Models
 #### Anatomy
-
    Contains models and .csv files containing fiducial points for old phantom models used in previous demos  
    and testing. Can be removed if not needed, models are on the P:\ drive if ever needed in the future. Also  
    contains material assets for skin, brain, and hematoma.
 
 #### Menus
-
    Contains material assets for menus such as backgrounds, buttons, and menu selectors. Also contains sprite  
    assets for Xbox button symbols and the Perk Lab logo.
    
 #### MRI
-
    Contains MRI slices from testing for volume rendering. Can be removed or used for future testing. 
    
 #### Tools
-
    Contains models for arrows used in various translating and rotating tools. Also contains materials for  
    these models as well as the axes shown during rotation and translation.
    
