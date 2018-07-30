@@ -12,7 +12,7 @@ For the latest segmentation and model creation workflow process, see [Patient Da
 
 ## Developer Guide
 
-TBD.
+For descriptions of the current assets and scene structure of the application, see [DeveloperGuide](https://github.com/PerkLab/HololensQuickNav/blob/master/DeveloperGuide.md)
 
 ## Additional Software Installation Requirements and Notes (*[From Microsoft](https://developer.microsoft.com/en-us/windows/mixed-reality/install_the_tools#installation_checklist_for_hololens)*)
 
