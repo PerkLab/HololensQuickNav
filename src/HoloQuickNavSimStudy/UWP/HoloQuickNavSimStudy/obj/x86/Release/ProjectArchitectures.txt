@@ -1,0 +1,2 @@
+D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\GeneratedProjects\UWP\Assembly-CSharp\Assembly-CSharp.csproj;x86
+D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\HoloQuickNavSimStudy.csproj;x86

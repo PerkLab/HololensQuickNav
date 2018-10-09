@@ -1,0 +1,4 @@
+sceneSetups:
+- path: Assets/HoloQuickNav/Scenes/PT002_5_8_11_14.unity
+  isLoaded: 1
+  isActive: 1
