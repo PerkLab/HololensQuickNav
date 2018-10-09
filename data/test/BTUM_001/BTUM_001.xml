@@ -1,0 +1,19 @@
+<HoloNavProcedure
+  Type="BrainTumor"
+  StudyId="BTUM_001"
+>
+  <Assets>
+    <Model Id="Target" File="Tumor.obj" />
+    <Model Id="Brain" File="Brain.obj" />
+    <Model Id="Skin" File="Skin.obj" />
+    <Point Id="Point1" Label="Point1"
+      x="-1.7668" y="116.813" z="-71.1815" 
+    />
+    <Point Id="Point2" Label="Point2"
+      x="52.4458" y="81.8607" z="-31.8773" 
+    />
+    <Point Id="Point3" Label ="Point3"
+      x="-52.3647" y="81.7575" z="-32.8073" 
+    />
+  </Assets>
+</HoloNavProcedure>
