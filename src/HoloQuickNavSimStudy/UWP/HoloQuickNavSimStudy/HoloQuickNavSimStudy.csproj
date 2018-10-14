@@ -369,7 +369,7 @@
 
   <ItemGroup>
     <ProjectReference Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\GeneratedProjects\UWP\Assembly-CSharp\Assembly-CSharp.csproj">
-      <Project>{537b215d-b633-44ba-a2ad-91d8d61d1198}</Project>
+      <Project>{14c37912-0afd-4be5-a24f-ff465ad10ca6}</Project>
       <Name>Assembly-CSharp</Name>
       <Private>False</Private>
     </ProjectReference>

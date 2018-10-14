@@ -19,7 +19,7 @@
     <DeployOptionalPackages>false</DeployOptionalPackages>
     <WindowsSdkPath>C:\Program Files %28x86%29\Windows Kits\10\</WindowsSdkPath>
     <LayoutDir>D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\bin\x86\Release\AppX</LayoutDir>
-    <RegisteredManifestChecksum>E342477CE559C2AB774B4F0581196189FED74754FF3574D4FBA9C1EEEA403C04</RegisteredManifestChecksum>
+    <RegisteredManifestChecksum>2774A88A433287268DDCCBA21D2A85C634CB4BDA1D6EEB88E3EC47B46C465DFB</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>HoloQuickNav2_1.0.0.0_x86__pzq3xp76mxafg</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>HoloQuickNav2_pzq3xp76mxafg!App</RegisteredUserModeAppID>
     <RegisteredPackageID>HoloQuickNav2</RegisteredPackageID>
@@ -31,13 +31,13 @@
     <AppXManifest Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\bin\x86\Release\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-10-09T14:45:34.934</Modified>
+      <Modified>2018-10-14T14:13:45.578</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\bin\x86\Release\HoloQuickNavSimStudy.exe">
       <PackagePath>entrypoint\HoloQuickNavSimStudy.exe</PackagePath>
-      <Modified>2018-10-09T14:45:12.124</Modified>
+      <Modified>2018-10-14T14:13:22.846</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\baum\.nuget\packages\microsoft.applicationinsights\1.0.0\lib\portable-win81+wpa81\Microsoft.ApplicationInsights.dll">
       <PackagePath>Microsoft.ApplicationInsights.dll</PackagePath>
@@ -501,7 +501,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\Resource.res">
       <PackagePath>Resource.res</PackagePath>
-      <Modified>2018-10-09T14:44:12.666</Modified>
+      <Modified>2018-10-14T14:10:41.888</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
@@ -564,31 +564,31 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\Data\boot.config">
       <PackagePath>Data\boot.config</PackagePath>
-      <Modified>2018-10-09T14:43:59.320</Modified>
+      <Modified>2018-10-14T14:10:31.941</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\Data\globalgamemanagers">
       <PackagePath>Data\globalgamemanagers</PackagePath>
-      <Modified>2018-10-09T14:43:44.441</Modified>
+      <Modified>2018-10-14T14:10:17.995</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\Data\level0">
       <PackagePath>Data\level0</PackagePath>
-      <Modified>2018-10-09T14:43:40.865</Modified>
+      <Modified>2018-10-14T14:10:14.418</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\Data\level1">
       <PackagePath>Data\level1</PackagePath>
-      <Modified>2018-10-09T14:43:41.137</Modified>
+      <Modified>2018-10-14T14:10:14.697</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\Data\level2">
       <PackagePath>Data\level2</PackagePath>
-      <Modified>2018-10-09T14:43:41.600</Modified>
+      <Modified>2018-10-14T14:10:15.124</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\Data\level3">
       <PackagePath>Data\level3</PackagePath>
-      <Modified>2018-10-09T14:43:41.958</Modified>
+      <Modified>2018-10-14T14:10:15.520</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\Data\level4">
       <PackagePath>Data\level4</PackagePath>
-      <Modified>2018-10-09T14:43:42.352</Modified>
+      <Modified>2018-10-14T14:10:15.889</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\Data\Resources\unity default resources">
       <PackagePath>Data\Resources\unity default resources</PackagePath>
@@ -596,79 +596,79 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\Data\Resources\unity_builtin_extra">
       <PackagePath>Data\Resources\unity_builtin_extra</PackagePath>
-      <Modified>2018-10-09T14:43:59.315</Modified>
+      <Modified>2018-10-14T14:10:31.937</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\Data\globalgamemanagers.assets">
       <PackagePath>Data\globalgamemanagers.assets</PackagePath>
-      <Modified>2018-10-09T14:43:44.570</Modified>
+      <Modified>2018-10-14T14:10:18.124</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\Data\resources.assets">
       <PackagePath>Data\resources.assets</PackagePath>
-      <Modified>2018-10-09T14:43:51.386</Modified>
+      <Modified>2018-10-14T14:10:24.625</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\Data\sharedassets0.assets">
       <PackagePath>Data\sharedassets0.assets</PackagePath>
-      <Modified>2018-10-09T14:43:51.550</Modified>
+      <Modified>2018-10-14T14:10:24.768</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\Data\sharedassets1.assets">
       <PackagePath>Data\sharedassets1.assets</PackagePath>
-      <Modified>2018-10-09T14:43:53.928</Modified>
+      <Modified>2018-10-14T14:10:26.932</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\Data\sharedassets2.assets">
       <PackagePath>Data\sharedassets2.assets</PackagePath>
-      <Modified>2018-10-09T14:43:55.138</Modified>
+      <Modified>2018-10-14T14:10:27.517</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\Data\sharedassets3.assets">
       <PackagePath>Data\sharedassets3.assets</PackagePath>
-      <Modified>2018-10-09T14:43:55.182</Modified>
+      <Modified>2018-10-14T14:10:27.552</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\Data\sharedassets4.assets">
       <PackagePath>Data\sharedassets4.assets</PackagePath>
-      <Modified>2018-10-09T14:43:55.238</Modified>
+      <Modified>2018-10-14T14:10:27.604</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\Data\level0.resS">
       <PackagePath>Data\level0.resS</PackagePath>
-      <Modified>2018-10-09T14:43:40.862</Modified>
+      <Modified>2018-10-14T14:10:14.415</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\Data\level1.resS">
       <PackagePath>Data\level1.resS</PackagePath>
-      <Modified>2018-10-09T14:43:41.134</Modified>
+      <Modified>2018-10-14T14:10:14.695</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\Data\level2.resS">
       <PackagePath>Data\level2.resS</PackagePath>
-      <Modified>2018-10-09T14:43:41.593</Modified>
+      <Modified>2018-10-14T14:10:15.118</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\Data\level3.resS">
       <PackagePath>Data\level3.resS</PackagePath>
-      <Modified>2018-10-09T14:43:41.950</Modified>
+      <Modified>2018-10-14T14:10:15.514</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\Data\level4.resS">
       <PackagePath>Data\level4.resS</PackagePath>
-      <Modified>2018-10-09T14:43:42.345</Modified>
+      <Modified>2018-10-14T14:10:15.882</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\Data\resources.assets.resS">
       <PackagePath>Data\resources.assets.resS</PackagePath>
-      <Modified>2018-10-09T14:43:51.383</Modified>
+      <Modified>2018-10-14T14:10:24.623</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\Data\sharedassets0.assets.resS">
       <PackagePath>Data\sharedassets0.assets.resS</PackagePath>
-      <Modified>2018-10-09T14:43:51.547</Modified>
+      <Modified>2018-10-14T14:10:24.765</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\Data\sharedassets1.assets.resS">
       <PackagePath>Data\sharedassets1.assets.resS</PackagePath>
-      <Modified>2018-10-09T14:43:53.925</Modified>
+      <Modified>2018-10-14T14:10:26.930</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\Data\managedAssemblies.txt">
       <PackagePath>Data\managedAssemblies.txt</PackagePath>
-      <Modified>2018-10-09T14:44:12.592</Modified>
+      <Modified>2018-10-14T14:10:41.835</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\Data\nativePlugins.txt">
       <PackagePath>Data\nativePlugins.txt</PackagePath>
-      <Modified>2018-10-09T14:44:12.596</Modified>
+      <Modified>2018-10-14T14:10:41.839</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\Data\sharedassets0.resource">
       <PackagePath>Data\sharedassets0.resource</PackagePath>
-      <Modified>2018-10-09T14:43:51.551</Modified>
+      <Modified>2018-10-14T14:10:24.769</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.16299.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -677,243 +677,243 @@
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\bin\x86\Release\resources.pri">
       <PackagePath>resources.pri</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-10-09T14:45:13.133</Modified>
+      <Modified>2018-10-14T14:13:23.563</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\UnityEngine.SpriteMaskModule.dll">
       <PackagePath>UnityEngine.SpriteMaskModule.dll</PackagePath>
-      <Modified>2018-10-09T14:45:23.721</Modified>
+      <Modified>2018-10-14T14:13:34.238</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\UnityEngine.SpriteShapeModule.dll">
       <PackagePath>UnityEngine.SpriteShapeModule.dll</PackagePath>
-      <Modified>2018-10-09T14:45:23.744</Modified>
+      <Modified>2018-10-14T14:13:34.257</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\UnityEngine.StyleSheetsModule.dll">
       <PackagePath>UnityEngine.StyleSheetsModule.dll</PackagePath>
-      <Modified>2018-10-09T14:45:23.765</Modified>
+      <Modified>2018-10-14T14:13:34.281</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\UnityEngine.TerrainModule.dll">
       <PackagePath>UnityEngine.TerrainModule.dll</PackagePath>
-      <Modified>2018-10-09T14:45:23.784</Modified>
+      <Modified>2018-10-14T14:13:34.296</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\UnityEngine.TerrainPhysicsModule.dll">
       <PackagePath>UnityEngine.TerrainPhysicsModule.dll</PackagePath>
-      <Modified>2018-10-09T14:45:23.814</Modified>
+      <Modified>2018-10-14T14:13:34.318</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\UnityEngine.TextRenderingModule.dll">
       <PackagePath>UnityEngine.TextRenderingModule.dll</PackagePath>
-      <Modified>2018-10-09T14:45:23.826</Modified>
+      <Modified>2018-10-14T14:13:34.342</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\UnityEngine.TilemapModule.dll">
       <PackagePath>UnityEngine.TilemapModule.dll</PackagePath>
-      <Modified>2018-10-09T14:45:23.864</Modified>
+      <Modified>2018-10-14T14:13:34.362</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\UnityEngine.UIElementsModule.dll">
       <PackagePath>UnityEngine.UIElementsModule.dll</PackagePath>
-      <Modified>2018-10-09T14:45:23.922</Modified>
+      <Modified>2018-10-14T14:13:34.408</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\UnityEngine.SharedInternalsModule.dll">
       <PackagePath>UnityEngine.SharedInternalsModule.dll</PackagePath>
-      <Modified>2018-10-09T14:45:23.946</Modified>
+      <Modified>2018-10-14T14:13:34.436</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\UnityEngine.UIModule.dll">
       <PackagePath>UnityEngine.UIModule.dll</PackagePath>
-      <Modified>2018-10-09T14:45:23.967</Modified>
+      <Modified>2018-10-14T14:13:34.452</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\UnityEngine.UnityAnalyticsModule.dll">
       <PackagePath>UnityEngine.UnityAnalyticsModule.dll</PackagePath>
-      <Modified>2018-10-09T14:45:23.980</Modified>
+      <Modified>2018-10-14T14:13:34.477</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\UnityEngine.UnityConnectModule.dll">
       <PackagePath>UnityEngine.UnityConnectModule.dll</PackagePath>
-      <Modified>2018-10-09T14:45:24.013</Modified>
+      <Modified>2018-10-14T14:13:34.503</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\UnityEngine.UnityWebRequestAssetBundleModule.dll">
       <PackagePath>UnityEngine.UnityWebRequestAssetBundleModule.dll</PackagePath>
-      <Modified>2018-10-09T14:45:24.051</Modified>
+      <Modified>2018-10-14T14:13:34.525</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\UnityEngine.UnityWebRequestAudioModule.dll">
       <PackagePath>UnityEngine.UnityWebRequestAudioModule.dll</PackagePath>
-      <Modified>2018-10-09T14:45:24.080</Modified>
+      <Modified>2018-10-14T14:13:34.551</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\UnityEngine.UnityWebRequestModule.dll">
       <PackagePath>UnityEngine.UnityWebRequestModule.dll</PackagePath>
-      <Modified>2018-10-09T14:45:24.095</Modified>
+      <Modified>2018-10-14T14:13:34.578</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\UnityEngine.UnityWebRequestTextureModule.dll">
       <PackagePath>UnityEngine.UnityWebRequestTextureModule.dll</PackagePath>
-      <Modified>2018-10-09T14:45:24.119</Modified>
+      <Modified>2018-10-14T14:13:34.600</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\UnityEngine.UnityWebRequestWWWModule.dll">
       <PackagePath>UnityEngine.UnityWebRequestWWWModule.dll</PackagePath>
-      <Modified>2018-10-09T14:45:24.151</Modified>
+      <Modified>2018-10-14T14:13:34.622</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\UnityEngine.VehiclesModule.dll">
       <PackagePath>UnityEngine.VehiclesModule.dll</PackagePath>
-      <Modified>2018-10-09T14:45:24.169</Modified>
+      <Modified>2018-10-14T14:13:34.643</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\UnityEngine.VideoModule.dll">
       <PackagePath>UnityEngine.VideoModule.dll</PackagePath>
-      <Modified>2018-10-09T14:45:24.196</Modified>
+      <Modified>2018-10-14T14:13:34.667</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\UnityEngine.VRModule.dll">
       <PackagePath>UnityEngine.VRModule.dll</PackagePath>
-      <Modified>2018-10-09T14:45:24.214</Modified>
+      <Modified>2018-10-14T14:13:34.690</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\UnityEngine.WebModule.dll">
       <PackagePath>UnityEngine.WebModule.dll</PackagePath>
-      <Modified>2018-10-09T14:45:24.237</Modified>
+      <Modified>2018-10-14T14:13:34.716</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\UnityEngine.WindModule.dll">
       <PackagePath>UnityEngine.WindModule.dll</PackagePath>
-      <Modified>2018-10-09T14:45:24.267</Modified>
+      <Modified>2018-10-14T14:13:34.743</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\UnityEngine.UNETModule.dll">
       <PackagePath>UnityEngine.UNETModule.dll</PackagePath>
-      <Modified>2018-10-09T14:45:24.292</Modified>
+      <Modified>2018-10-14T14:13:34.767</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\UnityEngine.XRModule.dll">
       <PackagePath>UnityEngine.XRModule.dll</PackagePath>
-      <Modified>2018-10-09T14:45:24.309</Modified>
+      <Modified>2018-10-14T14:13:34.790</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\UnityEngine.ScreenCaptureModule.dll">
       <PackagePath>UnityEngine.ScreenCaptureModule.dll</PackagePath>
-      <Modified>2018-10-09T14:45:24.335</Modified>
+      <Modified>2018-10-14T14:13:34.812</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\UnityEngine.Physics2DModule.dll">
       <PackagePath>UnityEngine.Physics2DModule.dll</PackagePath>
-      <Modified>2018-10-09T14:45:24.379</Modified>
+      <Modified>2018-10-14T14:13:34.832</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\UnityEngine.AccessibilityModule.dll">
       <PackagePath>UnityEngine.AccessibilityModule.dll</PackagePath>
-      <Modified>2018-10-09T14:45:24.413</Modified>
+      <Modified>2018-10-14T14:13:34.861</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\UnityEngine.AIModule.dll">
       <PackagePath>UnityEngine.AIModule.dll</PackagePath>
-      <Modified>2018-10-09T14:45:24.434</Modified>
+      <Modified>2018-10-14T14:13:34.889</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\UnityEngine.AnimationModule.dll">
       <PackagePath>UnityEngine.AnimationModule.dll</PackagePath>
-      <Modified>2018-10-09T14:45:24.467</Modified>
+      <Modified>2018-10-14T14:13:34.907</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\UnityEngine.ARModule.dll">
       <PackagePath>UnityEngine.ARModule.dll</PackagePath>
-      <Modified>2018-10-09T14:45:24.496</Modified>
+      <Modified>2018-10-14T14:13:34.937</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\UnityEngine.AssetBundleModule.dll">
       <PackagePath>UnityEngine.AssetBundleModule.dll</PackagePath>
-      <Modified>2018-10-09T14:45:24.527</Modified>
+      <Modified>2018-10-14T14:13:34.975</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\UnityEngine.AudioModule.dll">
       <PackagePath>UnityEngine.AudioModule.dll</PackagePath>
-      <Modified>2018-10-09T14:45:24.552</Modified>
+      <Modified>2018-10-14T14:13:35.007</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\UnityEngine.ClothModule.dll">
       <PackagePath>UnityEngine.ClothModule.dll</PackagePath>
-      <Modified>2018-10-09T14:45:24.567</Modified>
+      <Modified>2018-10-14T14:13:35.038</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\UnityEngine.CoreModule.dll">
       <PackagePath>UnityEngine.CoreModule.dll</PackagePath>
-      <Modified>2018-10-09T14:45:24.802</Modified>
+      <Modified>2018-10-14T14:13:35.343</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\UnityEngine.PhysicsModule.dll">
       <PackagePath>UnityEngine.PhysicsModule.dll</PackagePath>
-      <Modified>2018-10-09T14:45:24.821</Modified>
+      <Modified>2018-10-14T14:13:35.375</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\UnityEngine.CrashReportingModule.dll">
       <PackagePath>UnityEngine.CrashReportingModule.dll</PackagePath>
-      <Modified>2018-10-09T14:45:24.849</Modified>
+      <Modified>2018-10-14T14:13:35.405</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\UnityEngine.dll">
       <PackagePath>UnityEngine.dll</PackagePath>
-      <Modified>2018-10-09T14:44:06.194</Modified>
+      <Modified>2018-10-14T14:10:35.864</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\UnityEngine.GameCenterModule.dll">
       <PackagePath>UnityEngine.GameCenterModule.dll</PackagePath>
-      <Modified>2018-10-09T14:45:24.870</Modified>
+      <Modified>2018-10-14T14:13:35.444</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\UnityEngine.GridModule.dll">
       <PackagePath>UnityEngine.GridModule.dll</PackagePath>
-      <Modified>2018-10-09T14:45:24.894</Modified>
+      <Modified>2018-10-14T14:13:35.473</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\UnityEngine.ImageConversionModule.dll">
       <PackagePath>UnityEngine.ImageConversionModule.dll</PackagePath>
-      <Modified>2018-10-09T14:45:24.917</Modified>
+      <Modified>2018-10-14T14:13:35.510</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\UnityEngine.IMGUIModule.dll">
       <PackagePath>UnityEngine.IMGUIModule.dll</PackagePath>
-      <Modified>2018-10-09T14:45:24.946</Modified>
+      <Modified>2018-10-14T14:13:35.553</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\UnityEngine.InputModule.dll">
       <PackagePath>UnityEngine.InputModule.dll</PackagePath>
-      <Modified>2018-10-09T14:45:24.969</Modified>
+      <Modified>2018-10-14T14:13:35.580</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\UnityEngine.JSONSerializeModule.dll">
       <PackagePath>UnityEngine.JSONSerializeModule.dll</PackagePath>
-      <Modified>2018-10-09T14:45:25.007</Modified>
+      <Modified>2018-10-14T14:13:35.617</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\UnityEngine.ParticlesLegacyModule.dll">
       <PackagePath>UnityEngine.ParticlesLegacyModule.dll</PackagePath>
-      <Modified>2018-10-09T14:45:25.018</Modified>
+      <Modified>2018-10-14T14:13:35.652</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\UnityEngine.ParticleSystemModule.dll">
       <PackagePath>UnityEngine.ParticleSystemModule.dll</PackagePath>
-      <Modified>2018-10-09T14:45:25.041</Modified>
+      <Modified>2018-10-14T14:13:35.686</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\UnityEngine.PerformanceReportingModule.dll">
       <PackagePath>UnityEngine.PerformanceReportingModule.dll</PackagePath>
-      <Modified>2018-10-09T14:45:25.066</Modified>
+      <Modified>2018-10-14T14:13:35.718</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\UnityEngine.DirectorModule.dll">
       <PackagePath>UnityEngine.DirectorModule.dll</PackagePath>
-      <Modified>2018-10-09T14:45:25.086</Modified>
+      <Modified>2018-10-14T14:13:35.748</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\Newtonsoft.Json.dll">
       <PackagePath>Newtonsoft.Json.dll</PackagePath>
-      <Modified>2018-10-09T14:45:25.137</Modified>
+      <Modified>2018-10-14T14:13:35.796</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\UnityEngine.Timeline.dll">
       <PackagePath>UnityEngine.Timeline.dll</PackagePath>
-      <Modified>2018-10-09T14:45:25.172</Modified>
+      <Modified>2018-10-14T14:13:35.832</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\UnityEngine.UI.dll">
       <PackagePath>UnityEngine.UI.dll</PackagePath>
-      <Modified>2018-10-09T14:45:25.256</Modified>
+      <Modified>2018-10-14T14:13:35.891</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\UnityEngine.SpatialTracking.dll">
       <PackagePath>UnityEngine.SpatialTracking.dll</PackagePath>
-      <Modified>2018-10-09T14:45:25.280</Modified>
+      <Modified>2018-10-14T14:13:35.906</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\UnityEngine.Analytics.dll">
       <PackagePath>UnityEngine.Analytics.dll</PackagePath>
-      <Modified>2018-10-09T14:45:25.303</Modified>
+      <Modified>2018-10-14T14:13:35.926</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\UnityEngine.HoloLens.dll">
       <PackagePath>UnityEngine.HoloLens.dll</PackagePath>
-      <Modified>2018-10-09T14:45:25.327</Modified>
+      <Modified>2018-10-14T14:13:35.949</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\UnityEngine.StandardEvents.dll">
       <PackagePath>UnityEngine.StandardEvents.dll</PackagePath>
-      <Modified>2018-10-09T14:45:25.353</Modified>
+      <Modified>2018-10-14T14:13:35.968</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\UnityEngine.Networking.dll">
       <PackagePath>UnityEngine.Networking.dll</PackagePath>
-      <Modified>2018-10-09T14:45:25.407</Modified>
+      <Modified>2018-10-14T14:13:36.015</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\GLTFSerializationUWP.dll">
       <PackagePath>GLTFSerializationUWP.dll</PackagePath>
-      <Modified>2018-10-09T14:45:25.436</Modified>
+      <Modified>2018-10-14T14:13:36.041</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\HoloLensXboxController.dll">
       <PackagePath>HoloLensXboxController.dll</PackagePath>
-      <Modified>2018-10-09T14:45:25.471</Modified>
+      <Modified>2018-10-14T14:13:36.064</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\Assembly-CSharp.dll">
       <PackagePath>Assembly-CSharp.dll</PackagePath>
-      <Modified>2018-10-09T14:45:23.701</Modified>
+      <Modified>2018-10-14T14:13:34.220</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\bin\x86\Release\Core\HoloQuickNavSimStudy.exe">
       <PackagePath>HoloQuickNavSimStudy.exe</PackagePath>
-      <Modified>2018-10-09T14:45:34.931</Modified>
+      <Modified>2018-10-14T14:13:45.575</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

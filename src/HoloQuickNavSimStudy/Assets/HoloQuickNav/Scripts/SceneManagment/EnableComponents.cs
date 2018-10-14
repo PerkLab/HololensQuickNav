@@ -295,19 +295,27 @@ public class EnableComponents : MonoBehaviour {
 
     public void ShowNextPatient()
     {
-        // figure out which models are visible (and hide them) so we know which to show next
+        // Figure out which models are visible (and hide them) so we know which to show next
         int highestActiveModelIndex = 0;
+        int numberOfVisibleModels = 0;
         int index = 0;
         foreach (Transform child in GameObject.Find("Model").transform.Find("Layers").transform)
         {
             if (child.gameObject.active == true)
             {
                 highestActiveModelIndex = index;
+                numberOfVisibleModels++;
             }
             child.gameObject.SetActive(false);
             index++;
         }
-        // show only the desired models (skin / current patient) -- If we are at the end, then set back to first plan.
+        /*TODO: Make this work for when the skin is hidden too... Probably easiest to just call ShowHidePath/ShowHideSkin as needed. */
+        if (numberOfVisibleModels == 3) // Make sure path (if hidden) is counted when switching patients
+        {
+            highestActiveModelIndex++;
+        }
+
+        // Show only the desired models (skin / current patient) -- If we are at the end, then set back to first plan.
         if (highestActiveModelIndex == GameObject.Find("Model").transform.Find("Layers").transform.childCount)
         {
             highestActiveModelIndex = 0;
@@ -316,5 +324,57 @@ public class EnableComponents : MonoBehaviour {
         GameObject.Find("Model").transform.Find("Layers").transform.GetChild(highestActiveModelIndex + 1).gameObject.SetActive(true);
         GameObject.Find("Model").transform.Find("Layers").transform.GetChild(highestActiveModelIndex + 2).gameObject.SetActive(true);
         GameObject.Find("Model").transform.Find("Layers").transform.GetChild(highestActiveModelIndex + 3).gameObject.SetActive(true);
+    }
+
+    public void ShowHidePath()
+    {
+        // Figure out which models are visible (and hide them) so we know which to show next
+        int highestActiveModelIndex = 0;
+        int numberOfVisibleModels = 0;
+        int index = 0;
+        foreach (Transform child in GameObject.Find("Model").transform.Find("Layers").transform)
+        {
+            if (child.gameObject.active == true)
+            {
+                highestActiveModelIndex = index;
+                numberOfVisibleModels++;
+            }
+            index++;
+        }
+        // Show / hide the path model.
+        bool skinVisible = GameObject.Find("Model").transform.Find("Layers").transform.GetChild(0).gameObject.active;
+        if (numberOfVisibleModels == 2 && !skinVisible) // We are hiding the path and the skin, show the path.
+        {
+            GameObject.Find("Model").transform.Find("Layers").transform.GetChild(highestActiveModelIndex + 1).gameObject.SetActive(true);
+        }
+        else if (numberOfVisibleModels == 3) // Either hiding the path and showing skin, so show path OR hiding the skin and showing the path, so hide path.
+        {
+            if (skinVisible) // Showing skin, show path.
+            {
+                GameObject.Find("Model").transform.Find("Layers").transform.GetChild(highestActiveModelIndex + 1).gameObject.SetActive(true);
+            }
+            else // Hiding skin, hide path.
+            {
+                GameObject.Find("Model").transform.Find("Layers").transform.GetChild(highestActiveModelIndex).gameObject.SetActive(false);
+            }
+        }
+        else if (numberOfVisibleModels == 4) // We are showing the path and the skin, hide the path.
+        {
+            GameObject.Find("Model").transform.Find("Layers").transform.GetChild(highestActiveModelIndex).gameObject.SetActive(false);
+        }
+    }
+
+    public void ShowHideSkin()
+    {
+        bool skinVisible = GameObject.Find("Model").transform.Find("Layers").transform.GetChild(0).gameObject.active;
+        // Show / hide the skin model.
+        if (skinVisible) // We are showing the skin, hide it.
+        {
+            GameObject.Find("Model").transform.Find("Layers").transform.GetChild(0).gameObject.SetActive(false);
+        }
+        else // We are hiding the skin, show it.
+        {
+            GameObject.Find("Model").transform.Find("Layers").transform.GetChild(0).gameObject.SetActive(true);
+        }
     }
 }

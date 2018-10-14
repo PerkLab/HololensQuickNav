@@ -1,9 +1,10 @@
+D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\bin\x86\Release\UnityEngine.Timeline.pdb
+D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\obj\x86\Release\HoloQuickNavSimStudy.csprojResolveAssemblyReference.cache
 D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\bin\x86\Release\HoloQuickNavSimStudy.exe
 D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\bin\x86\Release\HoloQuickNavSimStudy.pdb
 D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\bin\x86\Release\resources.pri
 D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\bin\x86\Release\AppxManifest.xml
 D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\bin\x86\Release\Core\AppxManifest.xml
-D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\bin\x86\Release\Core\HoloQuickNav2.exe
 D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\bin\x86\Release\Core\HoloQuickNavSimStudy.exe
 D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\bin\x86\Release\HoloQuickNavSimStudy.build.appxrecipe
 D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\bin\x86\Release\Microsoft.ApplicationInsights.dll
@@ -223,7 +224,6 @@ D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\bin
 D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\bin\x86\Release\UnityEngine.PerformanceReportingModule.pdb
 D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\bin\x86\Release\UnityEngine.DirectorModule.pdb
 D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\bin\x86\Release\Newtonsoft.Json.pdb
-D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\bin\x86\Release\UnityEngine.Timeline.pdb
 D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\bin\x86\Release\UnityEngine.UI.pdb
 D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\bin\x86\Release\UnityEngine.SpatialTracking.pdb
 D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\bin\x86\Release\UnityEngine.Analytics.pdb
@@ -240,7 +240,6 @@ D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\bin
 D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\bin\x86\Release\UnityEngineDelegates.dll
 D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\bin\x86\Release\UnityEngineDelegates.pdb
 D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\bin\x86\Release\UnityEngineProxy.pdb
-D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\obj\x86\Release\HoloQuickNavSimStudy.csprojResolveAssemblyReference.cache
 D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\obj\x86\Release\HoloQuickNavSimStudy.csproj.CoreCompileInputs.cache
 D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\obj\x86\Release\HoloQuickNavSimStudy.exe
 D:\Github\HololensQuickNav\src\HoloQuickNavSimStudy\UWP\HoloQuickNavSimStudy\obj\x86\Release\HoloQuickNavSimStudy.pdb

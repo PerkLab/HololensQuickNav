@@ -10,7 +10,7 @@ project.json: 1D02BC64BAC0D041019673A1C4C51737
 GeneratedProjects\UWP\Assembly-CSharp\project.json: 1D02BC64BAC0D041019673A1C4C51737
 HoloQuickNavSimStudy\App.cs: A4A06E61D05BEDFD7029D733DBB5673B
 HoloQuickNavSimStudy\AssemblyConverterArgs.txt: 499613CAF53C5FA87BB15AE3083267C4
-HoloQuickNavSimStudy\HoloQuickNavSimStudy.csproj: 14628109126524B9212E9EB8EBDF2936
+HoloQuickNavSimStudy\HoloQuickNavSimStudy.csproj: B81F5C45F00AF8F5B5EFC15A2AC36437
 HoloQuickNavSimStudy\HoloQuickNavSimStudy.csproj.user: modified
 HoloQuickNavSimStudy\Package.appxmanifest: 09460EB47932B3DFA97E8BC1A1BD4B53
 HoloQuickNavSimStudy\project.json: 1D02BC64BAC0D041019673A1C4C51737
