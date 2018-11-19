@@ -4,6 +4,7 @@ import vtk, qt, ctk, slicer
 from slicer.ScriptedLoadableModule import *
 import logging
 import math
+import numpy as np
 
 #
 # Metrics
@@ -63,7 +64,7 @@ class MetricsWidget(ScriptedLoadableModuleWidget):
     self.modelSelector.showChildNodeTypes = False
     self.modelSelector.setMRMLScene( slicer.mrmlScene )
     self.modelSelector.setToolTip( "Pick the input to the algorithm." )
-    parametersFormLayout.addRow("Input Volume: ", self.modelSelector)
+    parametersFormLayout.addRow("Lesion Model: ", self.modelSelector)
 
     #
     # markups selector
@@ -73,20 +74,43 @@ class MetricsWidget(ScriptedLoadableModuleWidget):
     self.markupsSelector.selectNodeUponCreation = True
     self.markupsSelector.addEnabled = False
     self.markupsSelector.removeEnabled = False
-    self.markupsSelector.noneEnabled = False
+    self.markupsSelector.noneEnabled = True
     self.markupsSelector.showHidden = False
     self.markupsSelector.showChildNodeTypes = False
     self.markupsSelector.setMRMLScene( slicer.mrmlScene )
     self.markupsSelector.setToolTip( "Pick the output to the algorithm." )
-    parametersFormLayout.addRow("Output Volume: ", self.markupsSelector)
+    parametersFormLayout.addRow("Entry Points Fiducials: ", self.markupsSelector)
+
+    #
+    # markups selector
+    #
+    self.angleMarkupsSelector = slicer.qMRMLNodeComboBox()
+    self.angleMarkupsSelector.nodeTypes = ["vtkMRMLMarkupsFiducialNode"]
+    self.angleMarkupsSelector.selectNodeUponCreation = True
+    self.angleMarkupsSelector.addEnabled = False
+    self.angleMarkupsSelector.removeEnabled = False
+    self.angleMarkupsSelector.noneEnabled = True
+    self.angleMarkupsSelector.showHidden = False
+    self.angleMarkupsSelector.showChildNodeTypes = False
+    self.angleMarkupsSelector.setMRMLScene( slicer.mrmlScene )
+    self.angleMarkupsSelector.setToolTip( "Pick the output to the algorithm." )
+    parametersFormLayout.addRow("Angle Measurement Fiducials: ", self.angleMarkupsSelector)
 
     #
     # Apply Button
     #
-    self.applyButton = qt.QPushButton("Apply")
+    self.applyButton = qt.QPushButton("Compute Point To Point Distances")
     self.applyButton.toolTip = "Compute Metrics."
     self.applyButton.enabled = False
     parametersFormLayout.addRow(self.applyButton)
+
+    #
+    # Apply Button
+    #
+    self.angleApplyButton = qt.QPushButton("Compute Angle To Optimal")
+    self.angleApplyButton.toolTip = "Compute Metrics."
+    self.angleApplyButton.enabled = False
+    parametersFormLayout.addRow(self.angleApplyButton)
 
     #
     # point-to-point distances results table
@@ -97,10 +121,18 @@ class MetricsWidget(ScriptedLoadableModuleWidget):
     parametersFormLayout.addRow(qt.QLabel('Point to Point Metrics:'))
     parametersFormLayout.addRow(self.resultsTable)
 
+    #
+    # angle label
+    #
+    self.resultsLabel = qt.QLabel('Computed Angle:')
+    parametersFormLayout.addRow(self.resultsLabel)
+
     # connections
     self.applyButton.connect('clicked(bool)', self.onApplyButton)
+    self.angleApplyButton.connect('clicked(bool)', self.onAngleApplyButton)
     self.modelSelector.connect("currentNodeChanged(vtkMRMLNode*)", self.onSelect)
     self.markupsSelector.connect("currentNodeChanged(vtkMRMLNode*)", self.onSelect)
+    self.angleMarkupsSelector.connect("currentNodeChanged(vtkMRMLNode*)", self.onSelect)
 
     # Add vertical spacer
     self.layout.addStretch(1)
@@ -113,10 +145,15 @@ class MetricsWidget(ScriptedLoadableModuleWidget):
 
   def onSelect(self):
     self.applyButton.enabled = self.modelSelector.currentNode() and self.markupsSelector.currentNode()
+    self.angleApplyButton.enabled = self.modelSelector.currentNode() and self.angleMarkupsSelector.currentNode()
 
   def onApplyButton(self):
     logic = MetricsLogic()
-    logic.run(self.modelSelector.currentNode(), self.markupsSelector.currentNode(), self.resultsTable)
+    logic.runP2PDist(self.modelSelector.currentNode(), self.markupsSelector.currentNode(), self.resultsTable)
+
+  def onAngleApplyButton(self):
+    logic = MetricsLogic()
+    logic.runAngle(self.modelSelector.currentNode(), self.angleMarkupsSelector.currentNode(), self.resultsLabel)
 
 #
 # MetricsLogic
@@ -189,12 +226,47 @@ class MetricsLogic(ScriptedLoadableModuleLogic):
     table.resizeColumnsToContents()
     table.resizeRowsToContents()
 
-  def run(self, model, markups, resultsTable):
+  def PopulateAngleResultsLabel(self, markups, label):
+  	[userTrajectory, gsTrajectory] = self.GetVectors(markups)
+  	label.setText('Computed Angle: ' + str(round(self.GetAngleBetween(userTrajectory, gsTrajectory), 1)))
+
+  def GetVectors(self, markups):
+  	entry = [0, 0, 0]
+  	markups.GetNthFiducialPosition(0, entry)
+  	trajectory = [0, 0, 0]
+  	markups.GetNthFiducialPosition(1, trajectory)
+  	com = [0, 0, 0]
+  	markups.GetNthFiducialPosition(2, com)
+
+  	entryVec = [a_i - b_i for a_i, b_i in zip(trajectory, entry)]
+  	optimalVec = [a_i - b_i for a_i, b_i in zip(entry, com)]
+
+  	return entryVec, optimalVec
+
+  def GetUnitVector(self, vector):
+    return vector / np.linalg.norm(vector)
+
+  def GetAngleBetween(self, v1, v2):
+    v1_u = self.GetUnitVector(v1)
+    v2_u = self.GetUnitVector(v2)
+    return np.degrees(np.arccos(np.clip(np.dot(v1_u, v2_u), -1.0, 1.0)))
+
+  def runP2PDist(self, model, markups, resultsTable):
     """
     Run the actual algorithm
     """
     comPoint = self.GetModelCenterOfMass(model)
     self.CreateCenterOfMassFiducial(markups, comPoint)
     self.PopulatePointToPointDistancesResultsTable(markups, resultsTable)
+
+    return True
+
+  def runAngle(self, model, markups, resultsLabel):
+    """
+    Run the actual algorithm
+    """
+    comPoint = self.GetModelCenterOfMass(model)
+    self.CreateCenterOfMassFiducial(markups, comPoint)
+    self.PopulateAngleResultsLabel(markups, resultsLabel)
 
     return True
